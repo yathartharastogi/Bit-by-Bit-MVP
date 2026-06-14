@@ -1,0 +1,36 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Event {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  date        DateTime
+  type        String   // e.g. "hackathon", "workshop", "design"
+  capacity    Int?
+  imageUrl    String?
+  status      String   // e.g. "UPCOMING", "PAST"
+  location    String?
+}
+
+model Announcement {
+  id        String   @id @default(uuid())
+  title     String
+  content   String
+  tag       String   // e.g. "HACKATHON", "WORKSHOP", "EVENT", "GENERAL"
+  pinned    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model FormSubmission {
+  id        String   @id @default(uuid())
+  type      String   // e.g. "JOIN", "CONTACT", "REGISTER"
+  payload   String   // JSON stringified data of the submission
+  createdAt DateTime @default(now())
+}
