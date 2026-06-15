@@ -13,27 +13,19 @@ import { Calendar, MapPin, Sparkles, Code, Palette, Share2, Layers, ClipboardLis
 const defaultAnnouncements = [
   {
     id: '1',
-    title: 'BitHack registrations are OPEN!',
-    content: '🚀 BitHack registrations are OPEN! 36-hour national hackathon · ₹1.5L prize pool · 500+ participants expected. Register now!',
+    title: 'Mindzilla Registrations Open!',
+    content: '🚀 Mindzilla registrations are now OPEN! 6-hour logical coding challenge · ₹50K prize pool · Tech Park Arena. Register now!',
     tag: 'HACKATHON',
     pinned: true,
     createdAt: new Date()
   },
   {
     id: '2',
-    title: 'Full-Stack Bootcamp Resources',
-    content: '📚 Full-Stack Bootcamp — Session 3 resources uploaded! Git repos, slides & project templates in the drive. Next session: Saturday 6 PM in CR-401.',
-    tag: 'WORKSHOP',
+    title: 'Mindzilla Photo Gallery is Live',
+    content: '📸 The official Mindzilla 2025 photo gallery is live! Relive the high-energy problem-solving atmosphere and check out team photos.',
+    tag: 'GENERAL',
     pinned: false,
     createdAt: new Date(Date.now() - 86400000)
-  },
-  {
-    id: '3',
-    title: 'Design Jam 3.0 Sprint',
-    content: '🎨 Design Jam 3.0 — Call for participants! 6-hour collaborative UI/UX sprint · Teams of 2–3 · Register by Sunday 11:59 PM.',
-    tag: 'EVENT',
-    pinned: false,
-    createdAt: new Date(Date.now() - 172800000)
   }
 ]
 
@@ -52,33 +44,13 @@ interface Event {
 const defaultEvents: Event[] = [
   {
     id: '1',
-    title: 'BitHack 2026',
-    description: '36-hour national hackathon with ₹1.5L in prizes. 500+ developers, designers, and builders expected.',
-    date: new Date('2026-10-25T10:00:00Z'),
+    title: 'Mindzilla',
+    description: 'Flagship technical problem-solving competition of Bit-By-Bit Club. Challenge your critical thinking, resolve logical sprints, and solve analytical puzzles under pressure.',
+    date: new Date('2026-11-20T10:00:00Z'),
     type: 'hackathon',
-    imageUrl: '🏗️',
+    imageUrl: '/events/mindzilla/20250220_091159.webp',
     status: 'UPCOMING',
-    location: 'VIT Bhopal Campus'
-  },
-  {
-    id: '2',
-    title: 'Design Jam 3.0',
-    description: 'High-energy UI/UX design sprint. Build beautiful products fast. Teams of 2–3.',
-    date: new Date('2026-11-08T10:00:00Z'),
-    type: 'design',
-    imageUrl: '🎨',
-    status: 'UPCOMING',
-    location: 'Innovation Lab'
-  },
-  {
-    id: '3',
-    title: 'ML Foundations Bootcamp',
-    description: 'From linear regression to deep neural networks — intensive 2-day bootcamp for beginners.',
-    date: new Date('2026-11-15T09:00:00Z'),
-    type: 'workshop',
-    imageUrl: '🤖',
-    status: 'UPCOMING',
-    location: 'CR-401'
+    location: 'Tech Park Lab, VIT Bhopal'
   }
 ]
 

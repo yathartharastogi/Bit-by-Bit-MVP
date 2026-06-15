@@ -19,33 +19,14 @@ interface Event {
 const defaultEvents: Event[] = [
   {
     id: '1',
-    title: 'BitHack 2026',
-    description: '36-hour national hackathon with ₹1.5L in prizes. 500+ developers, designers, and builders expected.',
-    date: new Date('2026-10-25T10:00:00Z'),
+    title: 'Mindzilla',
+    description: 'Flagship technical problem-solving competition of Bit-By-Bit Club. Challenge your critical thinking, resolve logical sprints, and solve analytical puzzles under pressure.',
+    date: new Date('2026-11-20T10:00:00Z'),
     type: 'hackathon',
-    imageUrl: '🏗️',
+    capacity: 250,
+    imageUrl: '/events/mindzilla/20250220_091159.webp',
     status: 'UPCOMING',
-    location: 'VIT Bhopal Campus'
-  },
-  {
-    id: '2',
-    title: 'Design Jam 3.0',
-    description: 'High-energy UI/UX design sprint. Build beautiful products fast. Teams of 2–3.',
-    date: new Date('2026-11-08T10:00:00Z'),
-    type: 'design',
-    imageUrl: '🎨',
-    status: 'UPCOMING',
-    location: 'Innovation Lab'
-  },
-  {
-    id: '3',
-    title: 'ML Foundations Bootcamp',
-    description: 'From linear regression to deep neural networks — intensive 2-day bootcamp for beginners.',
-    date: new Date('2026-11-15T09:00:00Z'),
-    type: 'workshop',
-    imageUrl: '🤖',
-    status: 'UPCOMING',
-    location: 'CR-401'
+    location: 'Tech Park Lab, VIT Bhopal'
   }
 ]
 
