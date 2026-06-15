@@ -91,7 +91,7 @@ export default function Loader() {
               </motion.div>
 
               {/* Progress bar and numeric percentage */}
-              <div className="flex flex-col items-center gap-2 pt-2 w-48 sm:w-64">
+              <div className="flex flex-col items-center gap-3 pt-2 w-64 sm:w-80">
                 <div className="w-full h-[3px] bg-white/5 rounded-full overflow-hidden relative">
                   <motion.div
                     className="h-full bg-gradient-to-r from-blue-500 via-cyan-400 to-indigo-500 rounded-full"
@@ -100,8 +100,30 @@ export default function Loader() {
                     transition={{ duration: 0.05 }}
                   />
                 </div>
-                <div className="font-mono text-[9px] text-text-sec tracking-wider">
-                  LOADING: {progress}%
+                
+                <div className="flex justify-between items-center w-full font-mono text-[9px] text-text-sec tracking-wider">
+                  <span>SYSTEM LOAD ACTIVE</span>
+                  <span>{progress}%</span>
+                </div>
+
+                {/* Compiler style loading logs terminal */}
+                <div className="w-full h-16 rounded-xl border border-border-custom bg-black/40 p-3 text-left font-mono text-[9px] text-blue-400/90 leading-relaxed overflow-hidden relative">
+                  <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(37,99,235,0.015)_1px,transparent_1px)] bg-[size:100%_4px] pointer-events-none" />
+                  <div className="text-text-sec/30 select-none">$ npm run dev --verbose</div>
+                  <div className="flex items-center gap-1.5 text-white/90 mt-1 select-none">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="truncate">
+                      {progress < 12 && 'SCANNING PACKAGE CONFIGURATIONS...'}
+                      {progress >= 12 && progress < 25 && 'RESOLVING DYNAMIC ROUTER ENDPOINTS...'}
+                      {progress >= 25 && progress < 38 && 'ESTABLISHING DATABASE CONNECTION...'}
+                      {progress >= 38 && progress < 50 && 'COMPILING TAILWIND DESIGN TOKENS...'}
+                      {progress >= 50 && progress < 63 && 'FETCHING UPCOMING PROGRAMS...'}
+                      {progress >= 63 && progress < 75 && 'LAUNCHING WEB AUDIO SYNTH ENGINE...'}
+                      {progress >= 75 && progress < 88 && 'OPTIMIZING STATIC ASSET CHUNKS...'}
+                      {progress >= 88 && progress < 98 && 'WARMING ROUTER CACHE STACK...'}
+                      {progress >= 98 && 'APPLICATION INITIALIZED SUCCESSFULLY.'}
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -111,3 +133,4 @@ export default function Loader() {
     </AnimatePresence>
   )
 }
+

@@ -123,6 +123,7 @@ export default function Navbar() {
         </div>
       </div>
 
+
       {/* Mobile Menu Sidebar */}
       <AnimatePresence>
         {mobileMenuOpen && (
