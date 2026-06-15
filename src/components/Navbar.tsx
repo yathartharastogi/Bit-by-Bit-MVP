@@ -52,7 +52,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/70 backdrop-blur-md border-b border-border-custom transition-all duration-300">
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo with Image and Typography */}
         <Link href="/" className="font-sans font-bold text-lg tracking-tight select-none flex items-center gap-2 group">
           <div className="relative w-8 h-8 group-hover:rotate-6 transition-transform duration-200">

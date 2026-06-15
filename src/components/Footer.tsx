@@ -5,7 +5,7 @@ export default function Footer() {
 
   return (
     <footer className="relative z-10 bg-card-bg border-t border-border-custom py-16 px-6 mt-auto transition-colors duration-300">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
         {/* Brand Column */}
         <div className="md:col-span-2">
           <Link href="/" className="font-sans font-bold text-lg tracking-tight select-none flex items-center gap-1.5 mb-4">
@@ -46,7 +46,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between border-t border-border-custom/50 mt-12 pt-8 text-xs text-text-sec">
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between border-t border-border-custom/50 mt-12 pt-8 text-xs text-text-sec">
         <div>
           &copy; {currentYear} Bit-By-Bit Club, VIT Bhopal. All rights reserved.
         </div>
