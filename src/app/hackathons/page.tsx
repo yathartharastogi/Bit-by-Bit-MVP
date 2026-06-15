@@ -31,7 +31,7 @@ export default function Hackathons() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       {/* Page Hero */}
-      <section className="py-20 bg-background relative overflow-hidden">
+      <section className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(37,99,235,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(37,99,235,0.015)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
         <div className="max-w-4xl mx-auto px-6 space-y-6 text-left relative z-10">
@@ -53,7 +53,7 @@ export default function Hackathons() {
       </section>
 
       {/* Featured Countdown */}
-      <section className="py-12 bg-card-bg border-y border-border-custom transition-colors duration-300">
+      <section className="py-12 transition-colors duration-300">
         <div className="max-w-6xl mx-auto px-6">
           <ScrollReveal>
             <SpotlightCard className="p-8 bg-background border border-border-custom relative overflow-hidden">
@@ -113,7 +113,7 @@ export default function Hackathons() {
       </section>
 
       {/* Hall of Fame & Timeline */}
-      <section className="py-24 bg-background border-b border-border-custom transition-colors duration-300">
+      <section className="py-24 border-b border-border-custom transition-colors duration-300">
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16">
           {/* Hall of fame */}
           <div className="lg:col-span-6 space-y-8">
@@ -198,7 +198,7 @@ export default function Hackathons() {
       </section>
 
       {/* FAQ Accordion Section */}
-      <section className="py-24 bg-card-bg transition-colors duration-300">
+      <section className="py-24 transition-colors duration-300">
         <div className="max-w-6xl mx-auto px-6 space-y-12">
           <div className="text-center space-y-4 max-w-xl mx-auto">
             <ScrollReveal>
