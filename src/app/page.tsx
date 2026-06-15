@@ -6,6 +6,7 @@ import Testimonials from '@/components/Testimonials'
 import SpotlightCard from '@/components/SpotlightCard'
 import ScrollReveal from '@/components/ScrollReveal'
 import TextReveal from '@/components/TextReveal'
+import BinarySphere from '@/components/BinarySphere'
 import { Calendar, MapPin, Sparkles, Code, Palette, Share2, Layers, ClipboardList } from 'lucide-react'
 
 // Default fallbacks in case DB is not seeded or encounters issues
@@ -192,9 +193,21 @@ export default async function Home() {
             </ScrollReveal>
           </div>
 
-          <div className="lg:col-span-5 w-full mt-10 lg:mt-0 animate-fade-in-up">
+          <div className="lg:col-span-5 w-full mt-10 lg:mt-0 flex flex-col gap-6 animate-fade-in-up">
             <ScrollReveal delay={0.3}>
               <Terminal />
+            </ScrollReveal>
+            <ScrollReveal delay={0.4}>
+              <SpotlightCard className="p-5 bg-[#030912]/90 border border-border-custom w-full h-[300px] overflow-hidden flex flex-col justify-between">
+                <div className="w-full flex items-center justify-between border-b border-border-custom/30 pb-2.5 mb-1.5 font-mono text-[9px] text-text-sec tracking-wider relative z-10 select-none">
+                  <span className="flex items-center gap-1.5 font-bold">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    CORE_SYS: 3D_MATRIX_SPHERE
+                  </span>
+                  <span className="opacity-60">PORT: 3001</span>
+                </div>
+                <BinarySphere />
+              </SpotlightCard>
             </ScrollReveal>
           </div>
         </div>
