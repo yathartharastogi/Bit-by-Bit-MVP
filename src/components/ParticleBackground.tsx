@@ -16,133 +16,163 @@ export default function ParticleBackground() {
     let width = (canvas.width = window.innerWidth)
     let height = (canvas.height = window.innerHeight)
 
-    const particles: Array<{
+    // Check dark mode
+    const isDarkMode = () => document.documentElement.classList.contains('dark')
+
+    const columns: Array<{
       x: number
       y: number
-      vx: number
-      vy: number
-      radius: number
-      char: '0' | '1'
+      speed: number
+      depth: number // 1: far (bg), 2: mid, 3: close (fg)
+      fontSize: number
+      opacity: number
+      chars: string[]
     }> = []
 
-    // Adjust count based on screen size for optimal performance
-    const particleCount = Math.min(80, Math.floor((width * height) / 18000))
-    const connectionDistance = 110
-    const mouse = { x: -1000, y: -1000, active: false }
+    const initColumns = () => {
+      columns.length = 0
+      // Dynamic column spacing: each stream gets about 18px of horizontal width
+      const colWidth = 18
+      const colCount = Math.floor(width / colWidth)
 
-    // Initialize particles as binary bits
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.15,
-        vy: (Math.random() - 0.5) * 0.15,
-        radius: 6, // Radius bounds for line connection calculations
-        char: Math.random() > 0.5 ? '1' : '0'
-      })
+      for (let i = 0; i < colCount; i++) {
+        // Randomize depth layers to create a 3D space effect
+        const rand = Math.random()
+        let depth = 2 // Midground
+        let fontSize = 11
+        let opacity = 0.32
+        let speed = 1.0 + Math.random() * 1.2
+
+        if (rand < 0.4) {
+          depth = 1 // Far background
+          fontSize = 8
+          opacity = 0.12
+          speed = 0.4 + Math.random() * 0.5
+        } else if (rand > 0.88) {
+          depth = 3 // Foreground close
+          fontSize = 15
+          opacity = 0.55
+          speed = 2.2 + Math.random() * 1.5
+        }
+
+        // Stagger initial vertical position (fully off-screen)
+        const y = Math.random() * height * -1.5 - 100
+
+        // Create stream binary chars (0s and 1s)
+        const streamLength = Math.floor(Math.random() * 12) + 6
+        const chars = Array.from({ length: streamLength }, () => 
+          Math.random() > 0.5 ? '1' : '0'
+        )
+
+        columns.push({
+          x: i * colWidth,
+          y,
+          speed,
+          depth,
+          fontSize,
+          opacity,
+          chars
+        })
+      }
     }
 
-    // Resize handler
+    initColumns()
+
     const handleResize = () => {
       if (!canvas) return
       width = canvas.width = window.innerWidth
       height = canvas.height = window.innerHeight
+      initColumns()
     }
 
+    // Keep track of cursor coordinates relative to center for parallax
+    const mouse = { x: 0, y: 0 }
     const handleMouseMove = (e: MouseEvent) => {
-      mouse.x = e.clientX
-      mouse.y = e.clientY
-      mouse.active = true
-    }
-
-    const handleMouseLeave = () => {
-      mouse.active = false
+      mouse.x = e.clientX - width / 2
+      mouse.y = e.clientY - height / 2
     }
 
     window.addEventListener('resize', handleResize)
     window.addEventListener('mousemove', handleMouseMove)
-    document.addEventListener('mouseleave', handleMouseLeave)
-
-    // Check dark mode
-    const isDarkMode = () => document.documentElement.classList.contains('dark')
 
     const animate = () => {
-      ctx.clearRect(0, 0, width, height)
-
       const dark = isDarkMode()
-      const colorParticle = dark ? 'rgba(59, 130, 246, 0.4)' : 'rgba(37, 99, 235, 0.25)'
-      const colorLine = dark ? 'rgba(37, 99, 235, ' : 'rgba(29, 78, 216, '
-      const colorMouseLine = dark ? 'rgba(139, 92, 246, ' : 'rgba(168, 85, 247, '
+      
+      // Clear with slight opacity to get the trailing cmatrix blur effect
+      ctx.fillStyle = dark ? 'rgba(3, 7, 18, 0.12)' : 'rgba(247, 243, 238, 0.15)'
+      ctx.fillRect(0, 0, width, height)
 
-      // Update and draw particles
-      particles.forEach((p) => {
-        p.x += p.vx
-        p.y += p.vy
+      // Draw scrolling columns
+      columns.forEach((col) => {
+        // Update vertical position
+        col.y += col.speed
 
-        // Wall collisions
-        if (p.x < 0 || p.x > width) p.vx *= -1
-        if (p.y < 0 || p.y > height) p.vy *= -1
+        // Reset once stream goes fully off screen
+        if (col.y > height + 150) {
+          col.y = Math.random() * -200 - 100
+          col.speed = col.depth === 1 
+            ? 0.4 + Math.random() * 0.5 
+            : col.depth === 3 
+              ? 2.2 + Math.random() * 1.5 
+              : 1.0 + Math.random() * 1.2
+        }
 
-        // Mouse interaction (soft repel away from cursor)
-        if (mouse.active) {
-          const dx = p.x - mouse.x
-          const dy = p.y - mouse.y
-          const dist = Math.sqrt(dx * dx + dy * dy)
-          if (dist < 120) {
-            const force = (120 - dist) / 120
-            const angle = Math.atan2(dy, dx)
-            p.x += Math.cos(angle) * force * 1.5
-            p.y += Math.sin(angle) * force * 1.5
+        // Parallax X & Y offsets: Foreground streams (depth 3) shift more than Background (depth 1)
+        const parallaxOffsetX = mouse.x * (col.depth - 2) * 0.035
+        const parallaxOffsetY = mouse.y * (col.depth - 2) * 0.02
+        
+        const drawX = col.x + parallaxOffsetX
+
+        // Render characters
+        for (let i = 0; i < col.chars.length; i++) {
+          const charY = col.y - i * col.fontSize
+          const drawY = charY + parallaxOffsetY
+
+          // Skip drawing if characters are out of bounds
+          if (drawY < -20 || drawY > height + 20) continue
+
+          // Random bit flip mutation
+          if (Math.random() < 0.025) {
+            col.chars[i] = Math.random() > 0.5 ? '1' : '0'
           }
-        }
 
-        // Randomly flip bit values (0 <-> 1) over time to represent active data streams
-        if (Math.random() < 0.005) {
-          p.char = p.char === '1' ? '0' : '1'
-        }
+          // Calculate fading tail opacity
+          const tailFade = 1 - i / col.chars.length
+          const currentOpacity = col.opacity * tailFade
 
-        // Draw binary character
-        ctx.fillStyle = colorParticle
-        ctx.font = 'bold 10px monospace'
-        ctx.fillText(p.char, p.x - 3, p.y + 4)
+          let charColor = ''
+          if (i === 0) {
+            // Glowing stream head (Cyan in dark mode, Blue in light mode)
+            charColor = dark 
+              ? `rgba(34, 211, 238, ${col.opacity})` 
+              : `rgba(29, 78, 216, ${col.opacity})`
+            
+            // Apply a neon glow matching depth
+            if (col.depth === 3) {
+              ctx.shadowColor = dark ? 'rgba(34, 211, 238, 0.95)' : 'rgba(29, 78, 216, 0.95)'
+              ctx.shadowBlur = 12
+            } else if (col.depth === 2) {
+              ctx.shadowColor = dark ? 'rgba(16, 185, 129, 0.8)' : 'rgba(5, 150, 105, 0.8)'
+              ctx.shadowBlur = 6
+            } else {
+              ctx.shadowBlur = 0
+            }
+          } else {
+            // Classic matrix green body
+            charColor = dark
+              ? `rgba(16, 185, 129, ${currentOpacity})`
+              : `rgba(5, 150, 105, ${currentOpacity})`
+            ctx.shadowBlur = 0
+          }
+
+          ctx.fillStyle = charColor
+          ctx.font = `bold ${col.fontSize}px monospace`
+          ctx.fillText(col.chars[i], drawX, drawY)
+        }
       })
 
-      // Draw connections between bits
-      for (let i = 0; i < particles.length; i++) {
-        const p1 = particles[i]
-        for (let j = i + 1; j < particles.length; j++) {
-          const p2 = particles[j]
-          const dx = p1.x - p2.x
-          const dy = p1.y - p2.y
-          const dist = Math.sqrt(dx * dx + dy * dy)
-
-          if (dist < connectionDistance) {
-            const alpha = (1 - dist / connectionDistance) * (dark ? 0.08 : 0.04)
-            ctx.beginPath()
-            ctx.moveTo(p1.x, p1.y)
-            ctx.lineTo(p2.x, p2.y)
-            ctx.strokeStyle = `${colorLine}${alpha})`
-            ctx.lineWidth = 0.5
-            ctx.stroke()
-          }
-        }
-
-        // Draw connection lines to mouse cursor
-        if (mouse.active) {
-          const dx = p1.x - mouse.x
-          const dy = p1.y - mouse.y
-          const dist = Math.sqrt(dx * dx + dy * dy)
-          if (dist < 120) {
-            const alpha = (1 - dist / 120) * (dark ? 0.12 : 0.06)
-            ctx.beginPath()
-            ctx.moveTo(p1.x, p1.y)
-            ctx.lineTo(mouse.x, mouse.y)
-            ctx.strokeStyle = `${colorMouseLine}${alpha})`
-            ctx.lineWidth = 0.7
-            ctx.stroke()
-          }
-        }
-      }
+      // Reset shadow blur so other canvas draws aren't affected
+      ctx.shadowBlur = 0
 
       animationFrameId = requestAnimationFrame(animate)
     }
@@ -152,7 +182,6 @@ export default function ParticleBackground() {
     return () => {
       window.removeEventListener('resize', handleResize)
       window.removeEventListener('mousemove', handleMouseMove)
-      document.removeEventListener('mouseleave', handleMouseLeave)
       cancelAnimationFrame(animationFrameId)
     }
   }, [])
@@ -160,7 +189,7 @@ export default function ParticleBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 w-full h-full -z-10 pointer-events-none transition-opacity duration-500"
+      className="fixed inset-0 w-full h-full -z-10 pointer-events-none"
     />
   )
 }

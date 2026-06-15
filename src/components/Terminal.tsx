@@ -8,8 +8,38 @@ export default function Terminal() {
   const [outputsVisible, setOutputsVisible] = useState(0)
   const [activeLine, setActiveLine] = useState(1) // 1: typing cmd1, 2: output, 3: typing cmd2, 4: complete
 
+  const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 })
+  const [isHovered, setIsHovered] = useState(false)
+
   const cmd1 = 'git clone community/bitbybit'
   const cmd2 = 'npm run grow-together'
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+
+    // Normalize coordinates: range -0.5 to 0.5
+    const normalizedX = (x / rect.width) - 0.5
+    const normalizedY = (y / rect.height) - 0.5
+
+    // Angle of rotation (max 6 degrees for a larger card)
+    const maxRotate = 6
+
+    setTilt({
+      rotateX: -normalizedY * maxRotate,
+      rotateY: normalizedX * maxRotate
+    })
+  }
+
+  const handleMouseEnter = () => {
+    setIsHovered(true)
+  }
+
+  const handleMouseLeave = () => {
+    setIsHovered(false)
+    setTilt({ rotateX: 0, rotateY: 0 })
+  }
 
   useEffect(() => {
     let isMounted = true
@@ -87,7 +117,20 @@ export default function Terminal() {
   }, [])
 
   return (
-    <div className="w-full bg-[#030912]/95 border border-border-custom rounded-2xl p-5 font-mono text-xs shadow-2xl relative overflow-hidden group">
+    <div 
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        transform: `perspective(1000px) rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg) scale3d(1.015, 1.015, 1.015)`,
+        transition: isHovered 
+          ? 'none' 
+          : 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+        willChange: 'transform',
+        transformStyle: 'preserve-3d'
+      }}
+      className="w-full bg-[#030912]/95 border border-border-custom rounded-2xl p-5 font-mono text-xs shadow-2xl relative overflow-hidden group"
+    >
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(37,99,235,0.012)_1px,transparent_1px),linear-gradient(to_bottom,rgba(37,99,235,0.012)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
       
@@ -101,7 +144,13 @@ export default function Terminal() {
         <span className="w-2.5 h-2.5 rounded-full bg-[#28c840] block" />
       </div>
 
-      <div className="space-y-3 text-text-sec relative z-10">
+      <div 
+        className="space-y-3 text-text-sec relative z-10"
+        style={{
+          transform: isHovered ? 'translateZ(25px)' : 'none',
+          transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
+        }}
+      >
         {/* Comment block */}
         <div>
           <span className="text-text-sec/40 select-none">// Bit-By-Bit Club · VIT Bhopal</span>
