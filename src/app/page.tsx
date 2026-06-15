@@ -105,7 +105,7 @@ export default async function Home() {
         {/* Subtle grid background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(37,99,235,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(37,99,235,0.015)_1px,transparent_1px)] bg-[size:32px_32px] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
 
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 w-full">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 w-full">
           <div className="lg:col-span-6 space-y-6 text-left">
             <ScrollReveal delay={0.1}>
               <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-mono font-semibold text-primary bg-primary/10 rounded-full border border-primary/20">
@@ -176,7 +176,7 @@ export default async function Home() {
 
       {/* About Section */}
       <section className="py-24 transition-colors duration-300">
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
           <div className="md:col-span-6 space-y-6">
             <ScrollReveal>
               <div className="font-mono text-xs font-semibold text-primary uppercase tracking-widest">Our Story</div>
@@ -241,7 +241,7 @@ export default async function Home() {
 
       {/* Domains Section */}
       <section className="py-24 transition-colors duration-300">
-        <div className="max-w-6xl mx-auto px-6 space-y-12">
+        <div className="max-w-7xl mx-auto px-6 space-y-12">
           <div className="text-center space-y-4 max-w-xl mx-auto">
             <ScrollReveal>
               <div className="font-mono text-xs font-semibold text-primary uppercase tracking-widest">What We Do</div>
@@ -281,7 +281,7 @@ export default async function Home() {
 
       {/* Dynamic News / Announcements Feed & Events */}
       <section className="py-24 transition-colors duration-300">
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Feed Column */}
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-4">
@@ -390,7 +390,7 @@ export default async function Home() {
 
       {/* Testimonials Section */}
       <section className="py-24 overflow-hidden transition-colors duration-300">
-        <div className="max-w-6xl mx-auto px-6 space-y-12">
+        <div className="max-w-7xl mx-auto px-6 space-y-12">
           <div className="text-center space-y-4 max-w-xl mx-auto">
             <ScrollReveal>
               <div className="font-mono text-xs font-semibold text-primary uppercase tracking-widest">Community Voices</div>
@@ -415,37 +415,37 @@ export default async function Home() {
 
       {/* Apply CTA Section */}
       <section className="relative py-24 overflow-hidden transition-colors duration-300">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(37,99,235,0.03),transparent_40%),radial-gradient(circle_at_top_right,rgba(168,85,247,0.02),transparent_40%)] pointer-events-none" />
-
-        <div className="max-w-4xl mx-auto px-6 text-center space-y-8 relative z-10">
-          <ScrollReveal>
-            <h2 className="font-sans font-bold text-4xl md:text-5xl tracking-tight text-foreground">
-              Ready to Build?
-            </h2>
-          </ScrollReveal>
-          
-          <ScrollReveal delay={0.1}>
-            <p className="text-text-sec text-base md:text-lg max-w-xl mx-auto leading-relaxed">
-              Whether you are looking to win your first hackathon or just want to hang out with other builders. We have a spot for you.
-            </p>
-          </ScrollReveal>
-          
-          <ScrollReveal delay={0.2}>
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
+        <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-8 space-y-4 text-left">
+              <ScrollReveal>
+                <h2 className="font-sans font-bold text-4xl md:text-5xl tracking-tight text-foreground">
+                  Ready to Build?
+                </h2>
+              </ScrollReveal>
+              
+              <ScrollReveal delay={0.1}>
+                <p className="text-text-sec text-base md:text-lg max-w-xl leading-relaxed">
+                  Whether you are looking to win your first hackathon or just want to hang out with other builders. We have a spot for you.
+                </p>
+              </ScrollReveal>
+            </div>
+            
+            <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-row gap-4 justify-end items-center w-full">
               <Link
                 href="/contact"
-                className="w-full sm:w-auto px-8 py-4 font-mono text-sm uppercase font-bold tracking-wider text-white bg-primary hover:bg-primary-hover rounded-full transition-all duration-200 hover:-translate-y-1 shadow-lg shadow-primary/20"
+                className="w-full sm:w-auto px-8 py-4 font-mono text-sm uppercase font-bold tracking-wider text-white bg-primary hover:bg-primary-hover rounded-full transition-all duration-200 hover:-translate-y-1 shadow-lg shadow-primary/20 text-center"
               >
                 Join Us 🚀
               </Link>
               <Link
                 href="/team"
-                className="w-full sm:w-auto px-8 py-4 font-mono text-sm uppercase font-bold tracking-wider text-text-sec hover:text-foreground bg-card-bg border border-border-custom hover:border-primary rounded-full transition-all duration-200 hover:-translate-y-1"
+                className="w-full sm:w-auto px-8 py-4 font-mono text-sm uppercase font-bold tracking-wider text-text-sec hover:text-foreground bg-card-bg border border-border-custom hover:border-primary rounded-full transition-all duration-200 hover:-translate-y-1 text-center"
               >
                 Ping Officers 💬
               </Link>
             </div>
-          </ScrollReveal>
+          </div>
         </div>
       </section>
     </div>

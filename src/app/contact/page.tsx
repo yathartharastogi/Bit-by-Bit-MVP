@@ -102,7 +102,7 @@ export default function Contact() {
       <section className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(37,99,235,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(37,99,235,0.01)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
-        <div className="max-w-4xl mx-auto px-6 space-y-6 text-left relative z-10">
+        <div className="max-w-7xl mx-auto px-6 space-y-6 text-left relative z-10">
           <div className="font-mono text-xs font-semibold text-primary uppercase tracking-widest">Connect</div>
           <h1 className="font-sans font-bold text-4xl md:text-5xl tracking-tight text-foreground leading-[1.1]">
             Get in <span className="text-primary bg-clip-text">Touch.</span>
@@ -115,7 +115,7 @@ export default function Contact() {
 
       {/* Forms Section */}
       <section className="py-16 transition-colors duration-300">
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
           {/* Info and General Contact Column */}
           <div className="lg:col-span-5 space-y-8">

@@ -5,171 +5,257 @@ import SpotlightCard from '@/components/SpotlightCard'
 import ScrollReveal from '@/components/ScrollReveal'
 import TextReveal from '@/components/TextReveal'
 import { Mail, Phone, Search, Copy, Check, Eye, EyeOff } from 'lucide-react'
+import MemberAvatar from '@/components/MemberAvatar'
 
-// Heads data from official CSV
-const HEADS = [
-  { name: 'Atherva Sahai', role: 'President', reg: '24BCE10072', email: 'atherverva.24bce10072@vitbhopal.ac.in', phone: '8817136170', av: 'AS', color: 'border-blue-500/30 text-blue-500 bg-blue-500/10' },
-  { name: 'Chavi Agrawal', role: 'Vice President', reg: '24BCY10035', email: 'chhavi.24bcy10035@vitbhopal.ac.in', phone: '9471009641', av: 'CA', color: 'border-purple-500/30 text-purple-500 bg-purple-500/10' },
-  { name: 'Jiya Arora', role: 'General Secretary', reg: '24BAI10034', email: 'jiya.24bai10034@vitbhopal.ac.in', phone: '9910448908', av: 'JA', color: 'border-emerald-500/30 text-emerald-500 bg-emerald-500/10' }
+// Executive Committee (Core Board)
+const CORE_TEAM = [
+  { 
+    name: 'Atherva Sahai', 
+    role: 'President', 
+    reg: '24BCE10072', 
+    email: 'atherverva.24bce10072@vitbhopal.ac.in', 
+    phone: '8817136170', 
+    av: 'AS', 
+    color: 'border-blue-500/30 text-blue-500 bg-blue-500/10', 
+    gradient: 'from-blue-600 via-indigo-600 to-violet-600', 
+    avatar: '/team/atherva.jpg', 
+    quote: 'Insert personal quote here...' 
+  },
+  { 
+    name: 'Chavi Agrawal', 
+    role: 'Vice President', 
+    reg: '24BCY10035', 
+    email: 'chhavi.24bcy10035@vitbhopal.ac.in', 
+    phone: '9471009641', 
+    av: 'CA', 
+    color: 'border-purple-500/30 text-purple-500 bg-purple-500/10', 
+    gradient: 'from-purple-600 via-fuchsia-600 to-pink-600', 
+    avatar: '/team/chavi.jpg', 
+    quote: 'Insert personal quote here...' 
+  },
+  { 
+    name: 'Jiya Arora', 
+    role: 'General Secretary', 
+    reg: '24BAI10034', 
+    email: 'jiya.24bai10034@vitbhopal.ac.in', 
+    phone: '9910448908', 
+    av: 'JA', 
+    color: 'border-emerald-500/30 text-emerald-500 bg-emerald-500/10', 
+    gradient: 'from-emerald-600 via-teal-600 to-cyan-600', 
+    avatar: '/team/jiya.jpg', 
+    quote: 'Insert personal quote here...' 
+  }
 ]
 
-// Domain Teams data from official CSV
-const DOMAIN_TEAMS = [
-  {
-    name: 'Event Management Team',
-    color: 'emerald',
-    themeClass: {
-      border: 'border-emerald-500/20 group-hover:border-emerald-500/40 focus-within:border-emerald-500/50',
-      text: 'text-emerald-500',
-      bg: 'bg-emerald-500/10',
-      badge: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20'
-    },
-    leads: [
-      { name: 'Yashodhara Singh', role: 'Lead', reg: '24BCE10696', email: 'yashodhara.24bce10696@vitbhopal.ac.in', phone: '6265440730', av: 'YS' },
-      { name: 'Abhimanyu Singh', role: 'Co-Lead', reg: '24BCE10726', email: 'abhimanyu.24bce10726@vitbhopal.ac.in', phone: '9460389012', av: 'AS' }
-    ],
-    members: [
-      { name: 'Sonu Kumar', reg: '24BSA10142', email: 'sonu.24bsa10142@vitbhopal.ac.in', phone: '8109246603', av: 'SK' },
-      { name: 'Anupriya', reg: '24BCE10726', email: 'anupriya.24bce11110@vitbhopal.ac.in', phone: '8298534101', av: 'AN' },
-      { name: 'Ambuj Singh', reg: '24BAI10729', email: 'ambuj.24bai10729@vitbhopal.ac.in', phone: '8090116306', av: 'AS' },
-      { name: 'Sandhya Kumari', reg: '24BCY10154', email: 'sandhya.24bcy10154@vitbhopal.ac.in', phone: '6207476796', av: 'SK' },
-      { name: 'Ritambhar Advait', reg: '25BCY10086', email: 'ritambhar.25bcy10086@vitbhopal.ac.in', phone: '7800889005', av: 'RA' },
-      { name: 'Ayonija Tripathi', reg: '25BCE10679', email: 'ayonija.25bce10679@vitbhopal.ac.in', phone: '9528211781', av: 'AT' },
-      { name: 'Aditya Raj', reg: '25BAI10708', email: 'aditya.25bai10708@vitbhopal.ac.in', phone: '7482891365', av: 'AR' },
-      { name: 'Yashila Verma', reg: '25BAI11574', email: 'yashila.25bai11574@vitbhopal.ac.in', phone: '8208746701', av: 'YV' },
-      { name: 'Pratyaksha Singh', reg: '25BCE10604', email: 'pratyaksha.25bce10604@vitbhopal.ac.in', phone: '9793535557', av: 'PS' },
-      { name: 'Aayush Shukla', reg: '25BCE10125', email: 'aayush.25bce10125@vitbhopal.ac.in', phone: '9838302038', av: 'AS' },
-      { name: 'Nupur Hedau', reg: '25MIP10123', email: 'nupur.25mip10123@vitbhopal.ac.in', phone: '9073194252', av: 'NH' },
-      { name: 'Jeet Biswas', reg: '25MIM10181', email: 'jeet.25mim10181@vitbhopal.ac.in', phone: '8777316349', av: 'JB' }
-    ]
+// Domain Leads (Leads & Co-leads)
+const DOMAIN_LEADS = [
+  { 
+    name: 'Yashodhara Singh', 
+    domain: 'Event Management', 
+    role: 'Domain Lead', 
+    reg: '24BCE10696', 
+    email: 'yashodhara.24bce10696@vitbhopal.ac.in', 
+    phone: '6265440730', 
+    av: 'YS', 
+    color: 'border-emerald-500/30 text-emerald-500 bg-emerald-500/10', 
+    gradient: 'from-teal-500 to-emerald-500', 
+    avatar: '/team/yashodhara.jpg', 
+    quote: 'Insert personal quote here...' 
   },
-  {
-    name: 'Technical Team',
-    color: 'blue',
-    themeClass: {
-      border: 'border-blue-500/20 group-hover:border-blue-500/40 focus-within:border-blue-500/50',
-      text: 'text-blue-500',
-      bg: 'bg-blue-500/10',
-      badge: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20'
-    },
-    leads: [
-      { name: 'Vedant Mishra', role: 'Lead', reg: '24BCE10779', email: 'vedant.24bce10779@vitbhopal.ac.in', phone: '7565842406', av: 'VM' },
-      { name: 'Dipanshu Joshi', role: 'Co-Lead', reg: '24BAI10707', email: 'dipanshu.24bai10707@vitbhopal.ac.in', phone: '8502076849', av: 'DJ' }
-    ],
-    members: [
-      { name: 'Raghav Gupta', reg: '24BCE10427', email: 'raghav.24bce10427@vitbhopal.ac.in', phone: '8630299661', av: 'RG' },
-      { name: 'Divyanshu Karma', reg: '24BET10016', email: 'divyanshu.24bet10016@vitbhopal.ac.in', phone: '7974440319', av: 'DK' },
-      { name: 'Adarsh Kumar Raiwal', reg: '25BCY10183', email: 'adarsh.25bcy10183@vitbhopal.ac.in', phone: '8825302299', av: 'AR' },
-      { name: 'Kripa Mehndiratta', reg: '25BAI10906', email: 'kripa.25bai10906@vitbhopal.ac.in', phone: '8737086169', av: 'KM' },
-      { name: 'Prerna Sharma', reg: '25BAI11432', email: 'prerna.25bai11432@vitbhopal.ac.in', phone: '7827577066', av: 'PS' },
-      { name: 'Yathartha Rastogi', reg: '24BCE10410', email: 'yathartha.24bce10410@vitbhopal.ac.in', phone: '7984509001', av: 'YR' },
-      { name: 'Yashwant Ravindra Sonawane', reg: '25BAI10061', email: 'yashwant.25bai10061@vitbhopal.ac.in', phone: '7744942169', av: 'YS' },
-      { name: 'Aman Garg', reg: '24BAI10826', email: 'aman.24bai10826@vitbhopal.ac.in', phone: '7302359973', av: 'AG' },
-      { name: 'Vansh Singh', reg: '25BCE10723', email: 'vansh.25bce10723@vitbhopal.ac.in', phone: '9997503925', av: 'VS' },
-      { name: 'Paarth Juneja', reg: '24BAI10160', email: 'paarth.24bai10160@vitbhopal.ac.in', phone: '9899050969', av: 'PJ' },
-      { name: 'Joydeep Dutta', reg: '25BCY10002', email: 'joydeep.25bcy10002@vitbhopal.ac.in', phone: '7905083253', av: 'JD' }
-    ]
+  { 
+    name: 'Abhimanyu Singh', 
+    domain: 'Event Management', 
+    role: 'Co-Lead', 
+    reg: '24BCE10726', 
+    email: 'abhimanyu.24bce10726@vitbhopal.ac.in', 
+    phone: '9460389012', 
+    av: 'AS', 
+    color: 'border-emerald-500/30 text-emerald-500 bg-emerald-500/10', 
+    gradient: 'from-teal-400 to-emerald-400', 
+    avatar: '/team/abhimanyu.jpg', 
+    quote: 'Insert personal quote here...' 
   },
-  {
-    name: 'Content Team',
-    color: 'pink',
-    themeClass: {
-      border: 'border-pink-500/20 group-hover:border-pink-500/40 focus-within:border-pink-500/50',
-      text: 'text-pink-500',
-      bg: 'bg-pink-500/10',
-      badge: 'bg-pink-500/10 text-pink-600 dark:text-pink-400 border-pink-500/20'
-    },
-    leads: [
-      { name: 'Tanisha Sharma', role: 'Lead', reg: '24BAI10165', email: 'tanisha.24bai10165@vitbhopal.ac.in', phone: '8094444766', av: 'TS' },
-      { name: 'Divyansh Singh', role: 'Co-Lead', reg: '24BCE11135', email: 'divyansh.24bce11135@vitbhopal.ac.in', phone: '9695391306', av: 'DS' }
-    ],
-    members: [
-      { name: 'Bhuvi Jain', reg: '24BCE10650', email: 'bhuvi.24bce10650@vitbhopal.ac.in', phone: '8305970767', av: 'BJ' },
-      { name: 'Naina Yadav', reg: '24BCE10400', email: 'naina.24bce10400@vitbhopal.ac.in', phone: '8859190888', av: 'NY' },
-      { name: 'Purna Jain', reg: '24BCE10221', email: 'purna.24bce10221@vitbhopal.ac.in', phone: '7426933240', av: 'PJ' },
-      { name: 'Aadi Jain', reg: '25BCE10331', email: 'aadi.25bce10331@vitbhopal.ac.in', phone: '9039220771', av: 'AJ' }
-    ]
+  { 
+    name: 'Vedant Mishra', 
+    domain: 'Technical Team', 
+    role: 'Domain Lead', 
+    reg: '24BCE10779', 
+    email: 'vedant.24bce10779@vitbhopal.ac.in', 
+    phone: '7565842406', 
+    av: 'VM', 
+    color: 'border-blue-500/30 text-blue-500 bg-blue-500/10', 
+    gradient: 'from-blue-500 to-cyan-500', 
+    avatar: '/team/vedant.jpg', 
+    quote: 'Insert personal quote here...' 
   },
-  {
-    name: 'PR and Outreach Team',
-    color: 'orange',
-    themeClass: {
-      border: 'border-orange-500/20 group-hover:border-orange-500/40 focus-within:border-orange-500/50',
-      text: 'text-orange-500',
-      bg: 'bg-orange-500/10',
-      badge: 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20'
-    },
-    leads: [
-      { name: 'Shreya Mittal', role: 'Lead', reg: '24BSA10056', email: 'shreya.24bsa10056@vitbhopal.ac.in', phone: '9893161565', av: 'SM' }
-    ],
-    members: [
-      { name: 'Prakhar Srivastava', reg: '24MSI10008', email: 'prakhar.24msi10008@vitbhopal.ac.in', phone: '7011171787', av: 'PS' },
-      { name: 'Priyanshi Dengre', reg: '25BBA10060', email: 'priyanshi.25bba10060@vitbhopal.ac.in', phone: '6265736887', av: 'PD' },
-      { name: 'Sara', reg: '24bsa10335', email: 'sara.24bsa10335@vitbhopal.ac.in', phone: '8708064963', av: 'SA' },
-      { name: 'Kaustubh Maniar', reg: '24bce11322', email: 'kaustubh.24bce11322@vitbhopal.ac.in', phone: '8708064963', av: 'KM' },
-      { name: 'Vardaan Yadav', reg: '25bai11227', email: 'vardaan.25bai11227@vitbhopal.ac.in', phone: '8400883952', av: 'VY' },
-      { name: 'Pratyush Kumar', reg: '24bce10473', email: 'pratyush.24bce10473@vitbhopal.ac.in', phone: '9142358413', av: 'PK' }
-    ]
+  { 
+    name: 'Dipanshu Joshi', 
+    domain: 'Technical Team', 
+    role: 'Co-Lead', 
+    reg: '24BAI10707', 
+    email: 'dipanshu.24bai10707@vitbhopal.ac.in', 
+    phone: '8502076849', 
+    av: 'DJ', 
+    color: 'border-blue-500/30 text-blue-500 bg-blue-500/10', 
+    gradient: 'from-blue-400 to-cyan-400', 
+    avatar: '/team/dipanshu.jpg', 
+    quote: 'Insert personal quote here...' 
   },
-  {
-    name: 'Design Team',
-    color: 'purple',
-    themeClass: {
-      border: 'border-purple-500/20 group-hover:border-purple-500/40 focus-within:border-purple-500/50',
-      text: 'text-purple-500',
-      bg: 'bg-purple-500/10',
-      badge: 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20'
-    },
-    leads: [
-      { name: 'Akshit Bakshi', role: 'Lead', reg: '24BCY10356', email: 'akshit.24bcy10356@vitbhopal.ac.in', phone: '9818394521', av: 'AB' },
-      { name: 'Gayatri Palodkar', role: 'Co-Lead', reg: '25MIM10096', email: 'gayatri.25mim10096@vitbhopal.ac.in', phone: '9699188461', av: 'GP' }
-    ],
-    members: [
-      { name: 'Krrish Ambwani', reg: '24BAI10644', email: 'krrish.24bai10644@vitbhopal.ac.in', phone: '8010172401', av: 'KA' },
-      { name: 'Srija Panda', reg: '24BAS10126', email: 'srija.24bas10126@vitbhopal.ac.in', phone: '7439107101', av: 'SP' },
-      { name: 'P Jahnavi', reg: '24MIP10157', email: 'jahnavi.24mip10157@vitbhopal.ac.in', phone: '9573803997', av: 'PJ' },
-      { name: 'Dhairya Garg', reg: '25BAI10224', email: 'dhairya.25bai10224@vitbhopal.ac.in', phone: '9818482302', av: 'DG' },
-      { name: 'Moksh Patel', reg: '25MIM10028', email: 'moksh.25mim10028@vitbhopal.ac.in', phone: '9027686419', av: 'MP' }
-    ]
+  { 
+    name: 'Tanisha Sharma', 
+    domain: 'Content Team', 
+    role: 'Domain Lead', 
+    reg: '24BAI10165', 
+    email: 'tanisha.24bai10165@vitbhopal.ac.in', 
+    phone: '8094444766', 
+    av: 'TS', 
+    color: 'border-pink-500/30 text-pink-500 bg-pink-500/10', 
+    gradient: 'from-pink-500 to-rose-500', 
+    avatar: '/team/tanisha.jpg', 
+    quote: 'Insert personal quote here...' 
   },
-  {
-    name: 'Finance Team',
-    color: 'yellow',
-    themeClass: {
-      border: 'border-yellow-500/20 group-hover:border-yellow-500/40 focus-within:border-yellow-500/50',
-      text: 'text-yellow-500',
-      bg: 'bg-yellow-500/10',
-      badge: 'bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border-yellow-500/20'
-    },
-    leads: [
-      { name: 'Dhyan Patel', role: 'Lead', reg: '24BSA10274', email: 'dhyan.24bsa10274@vitbhopal.ac.in', phone: '9426151944', av: 'DP' },
-      { name: 'Sarika Parmar', role: 'Co-Lead', reg: '23MIM10210', email: 'sarika.23mim10210@vitbhopal.ac.in', phone: '6268646624', av: 'SP' }
-    ],
-    members: [
-      { name: 'Manim Rohit Rao', reg: '24BCE10737', email: 'manim.24bce10737@vitbhopal.ac.in', phone: '9330646450', av: 'MR' },
-      { name: 'Soumyadeep Mondal', reg: '24BSA10018', email: 'soumyadeep.24bsa10018@vitbhopal.ac.in', phone: '9475413827', av: 'SM' },
-      { name: 'Havya Thakar', reg: '24BCE10148', email: 'havya.24bce10148@vitbhopal.ac.in', phone: '9638881030', av: 'HT' },
-      { name: 'Bhavya Vyas', reg: '25BCE10400', email: 'bhavya.25bce10400@vitbhopal.ac.in', phone: '9925033667', av: 'BV' },
-      { name: 'Rishita', reg: '25BSA10096', email: 'rishita.25bsa10096@vitbhopal.ac.in', phone: '9311250709', av: 'RI' }
-    ]
+  { 
+    name: 'Divyansh Singh', 
+    domain: 'Content Team', 
+    role: 'Co-Lead', 
+    reg: '24BCE11135', 
+    email: 'divyansh.24bce11135@vitbhopal.ac.in', 
+    phone: '9695391306', 
+    av: 'DS', 
+    color: 'border-pink-500/30 text-pink-500 bg-pink-500/10', 
+    gradient: 'from-pink-400 to-rose-400', 
+    avatar: '/team/divyansh.jpg', 
+    quote: 'Insert personal quote here...' 
   },
-  {
-    name: 'Social Media Team',
-    color: 'cyan',
-    themeClass: {
-      border: 'border-cyan-500/20 group-hover:border-cyan-500/40 focus-within:border-cyan-500/50',
-      text: 'text-cyan-500',
-      bg: 'bg-cyan-500/10',
-      badge: 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/20'
-    },
-    leads: [],
-    members: [
-      { name: 'Tejas Singh', reg: '24BCE11418', email: 'tejas.24bce11418@vitbhopal.ac.in', phone: '6386232192', av: 'TS' },
-      { name: 'Karthik Gupta', reg: '25BAI11416', email: 'gupta.25bai11416@vitbhopal.ac.in', phone: '9879942627', av: 'KG' },
-      { name: 'Palak Jain', reg: '23MIM10175', email: 'palakjain.23mim10175@vitbhopal.ac.in', phone: '7879239020', av: 'PJ' },
-      { name: 'Rishi Raj', reg: '24BAI10593', email: 'rishi.24bai10593@vitbhopal.ac.in', phone: '9728106776', av: 'RR' },
-      { name: 'Lokesh Kiraula', reg: '24BAI10521', email: 'lokesh.24bai10521@vitbhopal.ac.in', phone: '9056535491', av: 'LK' }
-    ]
+  { 
+    name: 'Shreya Mittal', 
+    domain: 'PR & Outreach', 
+    role: 'Domain Lead', 
+    reg: '24BSA10056', 
+    email: 'shreya.24bsa10056@vitbhopal.ac.in', 
+    phone: '9893161565', 
+    av: 'SM', 
+    color: 'border-orange-500/30 text-orange-500 bg-orange-500/10', 
+    gradient: 'from-amber-500 to-orange-500', 
+    avatar: '/team/shreya.jpg', 
+    quote: 'Insert personal quote here...' 
+  },
+  { 
+    name: 'Akshit Bakshi', 
+    domain: 'Design Team', 
+    role: 'Domain Lead', 
+    reg: '24BCY10356', 
+    email: 'akshit.24bcy10356@vitbhopal.ac.in', 
+    phone: '9818394521', 
+    av: 'AB', 
+    color: 'border-purple-500/30 text-purple-500 bg-purple-500/10', 
+    gradient: 'from-violet-500 to-fuchsia-500', 
+    avatar: '/team/akshit.jpg', 
+    quote: 'Insert personal quote here...' 
+  },
+  { 
+    name: 'Gayatri Palodkar', 
+    domain: 'Design Team', 
+    role: 'Co-Lead', 
+    reg: '25MIM10096', 
+    email: 'gayatri.25mim10096@vitbhopal.ac.in', 
+    phone: '9699188461', 
+    av: 'GP', 
+    color: 'border-purple-500/30 text-purple-500 bg-purple-500/10', 
+    gradient: 'from-violet-400 to-fuchsia-400', 
+    avatar: '/team/gayatri.jpg', 
+    quote: 'Insert personal quote here...' 
+  },
+  { 
+    name: 'Dhyan Patel', 
+    domain: 'Finance Team', 
+    role: 'Domain Lead', 
+    reg: '24BSA10274', 
+    email: 'dhyan.24bsa10274@vitbhopal.ac.in', 
+    phone: '9426151944', 
+    av: 'DP', 
+    color: 'border-yellow-500/30 text-yellow-500 bg-yellow-500/10', 
+    gradient: 'from-yellow-500 to-amber-500', 
+    avatar: '/team/dhyan.jpg', 
+    quote: 'Insert personal quote here...' 
+  },
+  { 
+    name: 'Sarika Parmar', 
+    domain: 'Finance Team', 
+    role: 'Co-Lead', 
+    reg: '23MIM10210', 
+    email: 'sarika.23mim10210@vitbhopal.ac.in', 
+    phone: '6268646624', 
+    av: 'SP', 
+    color: 'border-yellow-500/30 text-yellow-500 bg-yellow-500/10', 
+    gradient: 'from-yellow-400 to-amber-400', 
+    avatar: '/team/sarika.jpg', 
+    quote: 'Insert personal quote here...' 
+  }
+]
+
+// Web Development Team Roster
+const DEV_TEAM_LEAD = {
+  name: 'Yathartha Rastogi',
+  role: 'Lead of Development',
+  reg: '24BCE10410',
+  email: 'yathartha.24bce10410@vitbhopal.ac.in',
+  phone: '7984509001',
+  av: 'YR',
+  color: 'border-indigo-500/30 text-indigo-500 bg-indigo-500/10',
+  gradient: 'from-indigo-600 via-blue-600 to-cyan-500',
+  avatar: '/team/yathartha.jpg',
+  quote: 'Insert personal quote here...'
+}
+
+const DEV_TEAM_MEMBERS = [
+  { 
+    name: 'Joydeep Dutta', 
+    role: 'Core Developer', 
+    reg: '25BCY10002', 
+    email: 'joydeep.25bcy10002@vitbhopal.ac.in', 
+    phone: '7905083253', 
+    av: 'JD', 
+    color: 'border-cyan-500/30 text-cyan-500 bg-cyan-500/10', 
+    gradient: 'from-cyan-500 to-teal-500', 
+    avatar: '/team/joydeep.jpg', 
+    quote: 'Insert personal quote here...' 
+  },
+  { 
+    name: 'Kripa Mehndiratta', 
+    role: 'Core Developer', 
+    reg: '25BAI10906', 
+    email: 'kripa.25bai10906@vitbhopal.ac.in', 
+    phone: '8737086169', 
+    av: 'KM', 
+    color: 'border-purple-500/30 text-purple-500 bg-purple-500/10', 
+    gradient: 'from-violet-500 to-indigo-500', 
+    avatar: '/team/kripa.jpg', 
+    quote: 'Insert personal quote here...' 
+  },
+  { 
+    name: 'Vansh Singh', 
+    role: 'Core Developer', 
+    reg: '25BCE10723', 
+    email: 'vansh.25bce10723@vitbhopal.ac.in', 
+    phone: '9997503925', 
+    av: 'VS', 
+    color: 'border-emerald-500/30 text-emerald-500 bg-emerald-500/10', 
+    gradient: 'from-emerald-500 to-teal-500', 
+    avatar: '/team/vansh.jpg', 
+    quote: 'Insert personal quote here...' 
+  },
+  { 
+    name: 'Yashwant Sonawane', 
+    role: 'Core Developer', 
+    reg: '25BAI10061', 
+    email: 'yashwant.25bai10061@vitbhopal.ac.in', 
+    phone: '7744942169', 
+    av: 'YS', 
+    color: 'border-blue-500/30 text-blue-500 bg-blue-500/10', 
+    gradient: 'from-blue-500 to-indigo-500', 
+    avatar: '/team/yashwant.jpg', 
+    quote: 'Insert personal quote here...' 
   }
 ]
 
@@ -187,36 +273,45 @@ export default function Team() {
   }
 
   // Filter lists based on search query
-  const filteredHeads = useMemo(() => {
-    if (!searchQuery) return HEADS
-    const query = searchQuery.toLowerCase()
-    return HEADS.filter(h => 
-      h.name.toLowerCase().includes(query) || 
-      h.role.toLowerCase().includes(query) || 
-      h.reg.toLowerCase().includes(query)
+  const filteredCores = useMemo(() => {
+    if (!searchQuery) return CORE_TEAM
+    const q = searchQuery.toLowerCase()
+    return CORE_TEAM.filter(c => 
+      c.name.toLowerCase().includes(q) || 
+      c.role.toLowerCase().includes(q) || 
+      c.reg.toLowerCase().includes(q)
     )
   }, [searchQuery])
 
-  const filteredTeams = useMemo(() => {
-    return DOMAIN_TEAMS.map(team => {
-      const query = searchQuery.toLowerCase()
-      const filteredLeads = team.leads.filter(lead => 
-        lead.name.toLowerCase().includes(query) || 
-        lead.role.toLowerCase().includes(query) || 
-        lead.reg.toLowerCase().includes(query)
-      )
-      const filteredMembers = team.members.filter(member => 
-        member.name.toLowerCase().includes(query) || 
-        member.reg.toLowerCase().includes(query)
-      )
+  const filteredLeads = useMemo(() => {
+    if (!searchQuery) return DOMAIN_LEADS
+    const q = searchQuery.toLowerCase()
+    return DOMAIN_LEADS.filter(l => 
+      l.name.toLowerCase().includes(q) || 
+      l.role.toLowerCase().includes(q) || 
+      l.domain.toLowerCase().includes(q) || 
+      l.reg.toLowerCase().includes(q)
+    )
+  }, [searchQuery])
 
-      return {
-        ...team,
-        leads: filteredLeads,
-        members: filteredMembers,
-        totalMatches: filteredLeads.length + filteredMembers.length
-      }
-    }).filter(team => searchQuery === '' || team.totalMatches > 0)
+  const filteredDevLead = useMemo(() => {
+    if (!searchQuery) return [DEV_TEAM_LEAD]
+    const q = searchQuery.toLowerCase()
+    const match = 
+      DEV_TEAM_LEAD.name.toLowerCase().includes(q) || 
+      DEV_TEAM_LEAD.role.toLowerCase().includes(q) || 
+      DEV_TEAM_LEAD.reg.toLowerCase().includes(q)
+    return match ? [DEV_TEAM_LEAD] : []
+  }, [searchQuery])
+
+  const filteredDevMembers = useMemo(() => {
+    if (!searchQuery) return DEV_TEAM_MEMBERS
+    const q = searchQuery.toLowerCase()
+    return DEV_TEAM_MEMBERS.filter(d => 
+      d.name.toLowerCase().includes(q) || 
+      d.role.toLowerCase().includes(q) || 
+      d.reg.toLowerCase().includes(q)
+    )
   }, [searchQuery])
 
   return (
@@ -225,7 +320,7 @@ export default function Team() {
       <section className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(37,99,235,0.012)_1px,transparent_1px),linear-gradient(to_bottom,rgba(37,99,235,0.012)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
-        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row md:items-end justify-between gap-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row md:items-end justify-between gap-8 relative z-10">
           <div className="space-y-5 text-left max-w-xl">
             <ScrollReveal>
               <div className="font-mono text-xs font-semibold text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full w-fit">
@@ -238,7 +333,7 @@ export default function Team() {
             />
             <ScrollReveal delay={0.1}>
               <p className="text-text-sec text-base md:text-lg leading-relaxed">
-                A highly skilled group of developers, designers, writers, and organizers pushing technical limits.
+                The builders, designers, and organizers leading our community forward.
               </p>
             </ScrollReveal>
           </div>
@@ -281,9 +376,9 @@ export default function Team() {
       </section>
 
       {/* Heads / Leadership Section */}
-      {filteredHeads.length > 0 && (
+      {filteredCores.length > 0 && (
         <section className="py-10 transition-colors duration-300">
-          <div className="max-w-6xl mx-auto px-6">
+          <div className="max-w-7xl mx-auto px-6">
             <ScrollReveal>
               <div className="flex items-center gap-3 mb-8">
                 <span className="h-px w-6 bg-primary/50" />
@@ -294,38 +389,48 @@ export default function Team() {
               </div>
             </ScrollReveal>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {filteredHeads.map((head, idx) => (
-                <ScrollReveal key={head.name} delay={idx * 0.05}>
-                  <SpotlightCard className="p-6 bg-card-bg/50 border border-border-custom flex flex-col items-center text-center justify-between rounded-2xl min-h-[200px] hover:border-primary/30 transition-colors duration-300">
-                    <div className="flex flex-col items-center w-full">
-                      {/* Initials Avatar */}
-                      <div className={`w-16 h-16 rounded-full flex items-center justify-center font-bold text-lg mb-4 border transition-all duration-300 ${head.color}`}>
-                        {head.av}
-                      </div>
-                      <h3 className="font-sans font-bold text-base text-foreground mb-1">{head.name}</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+              {filteredCores.map((member, idx) => (
+                <ScrollReveal key={member.name} delay={idx * 0.05}>
+                  <SpotlightCard className="p-6 bg-card-bg/50 border border-border-custom flex flex-col justify-between rounded-2xl min-h-[350px] hover:border-primary/30 transition-all duration-300 group">
+                    <div className="flex flex-col w-full">
+                      {/* Portrait Avatar Frame */}
+                      <MemberAvatar 
+                        src={member.avatar} 
+                        name={member.name} 
+                        initials={member.av} 
+                        gradient={member.gradient} 
+                      />
+
+                      <h3 className="font-sans font-bold text-lg text-foreground mt-4 mb-0.5 leading-tight">{member.name}</h3>
                       <div className="font-mono text-[10px] font-bold text-primary uppercase tracking-wider mb-2">
-                        {head.role}
+                        {member.role}
                       </div>
-                      <div className="font-mono text-[9px] text-text-sec px-2 py-0.5 rounded bg-background border border-border-custom">
-                        {head.reg}
+
+                      {/* Quote block */}
+                      <div className="relative mt-2 mb-4 px-3 py-2 bg-foreground/[0.015] border-l-2 border-primary/50 rounded-r-lg font-sans text-xs italic text-text-sec leading-relaxed">
+                        {member.quote}
+                      </div>
+
+                      <div className="font-mono text-[9px] text-text-sec px-2 py-0.5 rounded bg-background border border-border-custom w-fit">
+                        {member.reg}
                       </div>
                     </div>
 
                     {/* Contact Details (Conditional Draw) */}
                     {showContacts && (
-                      <div className="w-full mt-5 pt-4 border-t border-border-custom/50 flex flex-col gap-2 text-left">
+                      <div className="w-full mt-4 pt-3 border-t border-border-custom/50 flex flex-col gap-2 text-left">
                         {/* Email */}
                         <div className="flex items-center justify-between text-[10px] text-text-sec font-mono group/field bg-background/50 rounded-lg p-2 border border-border-custom/30 hover:border-primary/20 transition-all">
                           <span className="flex items-center gap-1.5 truncate">
                             <Mail className="w-3 h-3 text-primary/70 flex-shrink-0" />
-                            <span className="truncate">{head.email}</span>
+                            <span className="truncate">{member.email}</span>
                           </span>
                           <button
-                            onClick={() => handleCopy(head.email, `${head.name}-email`)}
+                            onClick={() => handleCopy(member.email, `${member.name}-email`)}
                             className="text-text-sec/60 hover:text-foreground cursor-pointer flex-shrink-0 ml-1.5"
                           >
-                            {copiedId === `${head.name}-email` ? (
+                            {copiedId === `${member.name}-email` ? (
                               <Check className="w-3 h-3 text-emerald-500" />
                             ) : (
                               <Copy className="w-3 h-3" />
@@ -336,13 +441,13 @@ export default function Team() {
                         <div className="flex items-center justify-between text-[10px] text-text-sec font-mono group/field bg-background/50 rounded-lg p-2 border border-border-custom/30 hover:border-primary/20 transition-all">
                           <span className="flex items-center gap-1.5">
                             <Phone className="w-3 h-3 text-primary/70 flex-shrink-0" />
-                            <span>{head.phone}</span>
+                            <span>{member.phone}</span>
                           </span>
                           <button
-                            onClick={() => handleCopy(head.phone, `${head.name}-phone`)}
+                            onClick={() => handleCopy(member.phone, `${member.name}-phone`)}
                             className="text-text-sec/60 hover:text-foreground cursor-pointer flex-shrink-0"
                           >
-                            {copiedId === `${head.name}-phone` ? (
+                            {copiedId === `${member.name}-phone` ? (
                               <Check className="w-3 h-3 text-emerald-500" />
                             ) : (
                               <Copy className="w-3 h-3" />
@@ -359,167 +464,265 @@ export default function Team() {
         </section>
       )}
 
-      {/* Domain Teams Section */}
-      <section className="py-8">
-        <div className="max-w-6xl mx-auto px-6 space-y-16">
-          {filteredTeams.map((team, teamIdx) => {
-            const hasLeads = team.leads.length > 0
-            
-            return (
-              <div key={team.name} className="space-y-6">
-                {/* Team Header */}
-                <ScrollReveal>
-                  <div className="flex items-center gap-3">
-                    <span className="font-mono text-xs text-text-sec font-bold">
-                      0{teamIdx + 1} /
-                    </span>
-                    <h2 className="font-sans font-bold text-lg md:text-xl text-foreground tracking-tight">
-                      {team.name}
-                    </h2>
-                    <span className="font-mono text-[9px] px-2 py-0.5 rounded-full border border-border-custom text-text-sec bg-card-bg">
-                      {team.leads.length + team.members.length}
-                    </span>
-                    <span className="h-px flex-grow bg-border-custom" />
-                  </div>
-                </ScrollReveal>
-
-                {/* Team Content Grid */}
-                <div className="space-y-4">
-                  {/* Leads Sub-grid */}
-                  {hasLeads && (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                      {team.leads.map((lead, idx) => (
-                        <ScrollReveal key={lead.name} delay={idx * 0.04}>
-                          <SpotlightCard className={`p-5 bg-card-bg flex flex-col justify-between rounded-xl min-h-[160px] border border-border-custom hover:border-primary/20 transition-all duration-300 relative group`}>
-                            <div>
-                              <div className="flex items-start justify-between w-full mb-3">
-                                {/* Initials avatar with team accent styling */}
-                                <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-sm border transition-all duration-300 ${team.themeClass.border} ${team.themeClass.text} ${team.themeClass.bg}`}>
-                                  {lead.av}
-                                </div>
-                                <span className={`text-[8px] font-mono font-extrabold uppercase px-2 py-0.5 rounded-full border ${team.themeClass.badge}`}>
-                                  {lead.role}
-                                </span>
-                              </div>
-                              <h4 className="font-sans font-bold text-sm text-foreground mb-1 leading-tight">{lead.name}</h4>
-                              <div className="font-mono text-[9px] text-text-sec mb-2">
-                                {lead.reg}
-                              </div>
-                            </div>
-
-                            {/* Contact Details (Conditional Draw) */}
-                            {showContacts && (
-                              <div className="w-full pt-3 mt-2 border-t border-border-custom/30 flex flex-col gap-1.5 text-left">
-                                <div className="flex items-center justify-between text-[9px] text-text-sec font-mono bg-background/50 rounded p-1.5 border border-border-custom/30">
-                                  <span className="flex items-center gap-1 truncate">
-                                    <Mail className="w-2.5 h-2.5 text-primary/70 flex-shrink-0" />
-                                    <span className="truncate">{lead.email}</span>
-                                  </span>
-                                  <button
-                                    onClick={() => handleCopy(lead.email, `${lead.name}-email`)}
-                                    className="text-text-sec/60 hover:text-foreground cursor-pointer flex-shrink-0 ml-1"
-                                  >
-                                    {copiedId === `${lead.name}-email` ? (
-                                      <Check className="w-2.5 h-2.5 text-emerald-500" />
-                                    ) : (
-                                      <Copy className="w-2.5 h-2.5" />
-                                    )}
-                                  </button>
-                                </div>
-                                <div className="flex items-center justify-between text-[9px] text-text-sec font-mono bg-background/50 rounded p-1.5 border border-border-custom/30">
-                                  <span className="flex items-center gap-1">
-                                    <Phone className="w-2.5 h-2.5 text-primary/70 flex-shrink-0" />
-                                    <span>{lead.phone}</span>
-                                  </span>
-                                  <button
-                                    onClick={() => handleCopy(lead.phone, `${lead.name}-phone`)}
-                                    className="text-text-sec/60 hover:text-foreground cursor-pointer flex-shrink-0"
-                                  >
-                                    {copiedId === `${lead.name}-phone` ? (
-                                      <Check className="w-2.5 h-2.5 text-emerald-500" />
-                                    ) : (
-                                      <Copy className="w-2.5 h-2.5" />
-                                    )}
-                                  </button>
-                                </div>
-                              </div>
-                            )}
-                          </SpotlightCard>
-                        </ScrollReveal>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Members Sub-grid */}
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                    {team.members.map((member, idx) => (
-                      <ScrollReveal key={member.name} delay={idx * 0.02} className="h-full">
-                        <SpotlightCard className="p-4 bg-background flex flex-col justify-between border border-border-custom hover:-translate-y-0.5 rounded-xl hover:border-primary/20 transition-all duration-300 relative group overflow-hidden h-full min-h-[140px]">
-                          <div>
-                            <div className="flex items-center justify-between mb-3">
-                              {/* Simple initials avatar */}
-                              <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs border text-text-sec/80 border-border-custom/50 bg-card-bg/50`}>
-                                {member.av}
-                              </div>
-                              <span className="text-[8px] font-mono text-text-sec/60 bg-card-bg border border-border-custom/50 px-1.5 py-0.5 rounded">
-                                Member
-                              </span>
-                            </div>
-                            <h5 className="font-sans font-bold text-xs text-foreground mb-0.5 leading-snug group-hover:text-primary transition-colors duration-200">
-                              {member.name}
-                            </h5>
-                            <div className="font-mono text-[9px] text-text-sec/70">
-                              {member.reg}
-                            </div>
-                          </div>
-
-                          {/* Contact Details (Conditional Draw) */}
-                          {showContacts && (
-                            <div className="w-full pt-3 mt-2 border-t border-border-custom/30 flex flex-col gap-1 text-left">
-                              <div className="flex items-center justify-between text-[8px] text-text-sec font-mono bg-background/50 rounded p-1 border border-border-custom/30">
-                                <span className="flex items-center gap-1 truncate">
-                                  <Mail className="w-2 h-2 text-primary/70 flex-shrink-0" />
-                                  <span className="truncate">{member.email}</span>
-                                </span>
-                                <button
-                                  onClick={() => handleCopy(member.email, `${member.name}-email`)}
-                                  className="text-text-sec/60 hover:text-foreground cursor-pointer flex-shrink-0 ml-1"
-                                >
-                                  {copiedId === `${member.name}-email` ? (
-                                    <Check className="w-2 h-2 text-emerald-500" />
-                                  ) : (
-                                    <Copy className="w-2 h-2" />
-                                  )}
-                                </button>
-                              </div>
-                              <div className="flex items-center justify-between text-[8px] text-text-sec font-mono bg-background/50 rounded p-1 border border-border-custom/30">
-                                <span className="flex items-center gap-1">
-                                  <Phone className="w-2 h-2 text-primary/70 flex-shrink-0" />
-                                  <span>{member.phone}</span>
-                                </span>
-                                <button
-                                  onClick={() => handleCopy(member.phone, `${member.name}-phone`)}
-                                  className="text-text-sec/60 hover:text-foreground cursor-pointer flex-shrink-0"
-                                >
-                                  {copiedId === `${member.name}-phone` ? (
-                                    <Check className="w-2 h-2 text-emerald-500" />
-                                  ) : (
-                                    <Copy className="w-2 h-2" />
-                                  )}
-                                </button>
-                              </div>
-                            </div>
-                          )}
-                        </SpotlightCard>
-                      </ScrollReveal>
-                    ))}
-                  </div>
-                </div>
+      {/* Domain Leads Section */}
+      {filteredLeads.length > 0 && (
+        <section className="py-10 transition-colors duration-300">
+          <div className="max-w-7xl mx-auto px-6">
+            <ScrollReveal>
+              <div className="flex items-center gap-3 mb-8">
+                <span className="h-px w-6 bg-primary/50" />
+                <h2 className="font-mono text-[10px] font-extrabold uppercase tracking-widest text-primary">
+                  Domain Leadership
+                </h2>
+                <span className="h-px flex-grow bg-border-custom" />
               </div>
-            )
-          })}
-        </div>
-      </section>
+            </ScrollReveal>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+              {filteredLeads.map((member, idx) => (
+                <ScrollReveal key={member.name} delay={idx * 0.04}>
+                  <SpotlightCard className="p-5 bg-card-bg/50 border border-border-custom flex flex-col justify-between rounded-2xl min-h-[300px] hover:border-primary/20 transition-all duration-300 group">
+                    <div className="flex flex-col w-full">
+                      {/* Portrait Avatar Frame */}
+                      <MemberAvatar 
+                        src={member.avatar} 
+                        name={member.name} 
+                        initials={member.av} 
+                        gradient={member.gradient} 
+                      />
+
+                      <h3 className="font-sans font-bold text-base text-foreground mt-4 mb-0.5 leading-tight">{member.name}</h3>
+
+                      <div className="flex flex-wrap items-center gap-1.5 mt-1 mb-2">
+                        <span className="font-mono text-[8px] font-bold text-primary uppercase tracking-wider bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-full">
+                          {member.domain}
+                        </span>
+                        <span className="font-mono text-[8px] font-bold text-text-sec uppercase tracking-wider bg-foreground/5 border border-border-custom/50 px-2 py-0.5 rounded-full">
+                          {member.role}
+                        </span>
+                      </div>
+
+                      {/* Quote block */}
+                      <div className="relative mt-2 mb-4 px-3 py-2 bg-foreground/[0.015] border-l-2 border-primary/50 rounded-r-lg font-sans text-xs italic text-text-sec leading-relaxed">
+                        {member.quote}
+                      </div>
+
+                      <div className="font-mono text-[9px] text-text-sec px-2 py-0.5 rounded bg-background border border-border-custom w-fit">
+                        {member.reg}
+                      </div>
+                    </div>
+
+                    {/* Contact Details (Conditional Draw) */}
+                    {showContacts && (
+                      <div className="w-full mt-4 pt-3 border-t border-border-custom/30 flex flex-col gap-1.5 text-left">
+                        <div className="flex items-center justify-between text-[9px] text-text-sec font-mono bg-background/50 rounded p-1.5 border border-border-custom/30">
+                          <span className="flex items-center gap-1 truncate">
+                            <Mail className="w-2.5 h-2.5 text-primary/70 flex-shrink-0" />
+                            <span className="truncate">{member.email}</span>
+                          </span>
+                          <button
+                            onClick={() => handleCopy(member.email, `${member.name}-email`)}
+                            className="text-text-sec/60 hover:text-foreground cursor-pointer flex-shrink-0 ml-1"
+                          >
+                            {copiedId === `${member.name}-email` ? (
+                              <Check className="w-2.5 h-2.5 text-emerald-500" />
+                            ) : (
+                              <Copy className="w-2.5 h-2.5" />
+                            )}
+                          </button>
+                        </div>
+                        <div className="flex items-center justify-between text-[9px] text-text-sec font-mono bg-background/50 rounded p-1.5 border border-border-custom/30">
+                          <span className="flex items-center gap-1">
+                            <Phone className="w-2.5 h-2.5 text-primary/70 flex-shrink-0" />
+                            <span>{member.phone}</span>
+                          </span>
+                          <button
+                            onClick={() => handleCopy(member.phone, `${member.name}-phone`)}
+                            className="text-text-sec/60 hover:text-foreground cursor-pointer flex-shrink-0"
+                          >
+                            {copiedId === `${member.name}-phone` ? (
+                              <Check className="w-2.5 h-2.5 text-emerald-500" />
+                            ) : (
+                              <Copy className="w-2.5 h-2.5" />
+                            )}
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </SpotlightCard>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Website Development Crew Section */}
+      {(filteredDevLead.length > 0 || filteredDevMembers.length > 0) && (
+        <section className="py-10 transition-colors duration-300">
+          <div className="max-w-7xl mx-auto px-6">
+            <ScrollReveal>
+              <div className="flex items-center gap-3 mb-8">
+                <span className="h-px w-6 bg-primary/50" />
+                <h2 className="font-mono text-[10px] font-extrabold uppercase tracking-widest text-primary">
+                  Website Development Crew
+                </h2>
+                <span className="h-px flex-grow bg-border-custom" />
+              </div>
+            </ScrollReveal>
+
+            {/* Development Lead Card (Prominent Center/Left placement) */}
+            {filteredDevLead.length > 0 && (
+              <div className="max-w-md mx-auto md:mx-0 mb-10">
+                <ScrollReveal>
+                  <SpotlightCard className="p-6 bg-card-bg/60 border border-primary/30 flex flex-col justify-between rounded-2xl min-h-[350px] shadow-lg shadow-primary/5 hover:border-primary/50 transition-all duration-300 group">
+                    <div className="flex flex-col w-full">
+                      {/* Portrait Avatar Frame */}
+                      <MemberAvatar 
+                        src={DEV_TEAM_LEAD.avatar} 
+                        name={DEV_TEAM_LEAD.name} 
+                        initials={DEV_TEAM_LEAD.av} 
+                        gradient={DEV_TEAM_LEAD.gradient} 
+                      />
+
+                      <h3 className="font-sans font-bold text-lg text-foreground mt-4 mb-0.5 leading-tight flex items-center gap-2">
+                        {DEV_TEAM_LEAD.name}
+                        <span className="text-[9px] font-mono font-black uppercase text-[#3b82f6] bg-[#3b82f6]/10 px-2 py-0.5 rounded border border-[#3b82f6]/20">
+                          DEV LEAD
+                        </span>
+                      </h3>
+                      <div className="font-mono text-[10px] font-bold text-primary uppercase tracking-wider mb-2">
+                        {DEV_TEAM_LEAD.role}
+                      </div>
+
+                      {/* Quote block */}
+                      <div className="relative mt-2 mb-4 px-3 py-2 bg-[#3b82f6]/5 border-l-2 border-[#3b82f6] rounded-r-lg font-sans text-xs italic text-text-sec leading-relaxed">
+                        {DEV_TEAM_LEAD.quote}
+                      </div>
+
+                      <div className="font-mono text-[9px] text-text-sec px-2 py-0.5 rounded bg-background border border-border-custom w-fit">
+                        {DEV_TEAM_LEAD.reg}
+                      </div>
+                    </div>
+
+                    {/* Contact Details (Conditional Draw) */}
+                    {showContacts && (
+                      <div className="w-full mt-4 pt-3 border-t border-border-custom/50 flex flex-col gap-2 text-left">
+                        <div className="flex items-center justify-between text-[10px] text-text-sec font-mono group/field bg-background/50 rounded-lg p-2 border border-border-custom/30 hover:border-primary/20 transition-all">
+                          <span className="flex items-center gap-1.5 truncate">
+                            <Mail className="w-3 h-3 text-primary/70 flex-shrink-0" />
+                            <span className="truncate">{DEV_TEAM_LEAD.email}</span>
+                          </span>
+                          <button
+                            onClick={() => handleCopy(DEV_TEAM_LEAD.email, `${DEV_TEAM_LEAD.name}-email`)}
+                            className="text-text-sec/60 hover:text-foreground cursor-pointer flex-shrink-0 ml-1.5"
+                          >
+                            {copiedId === `${DEV_TEAM_LEAD.name}-email` ? (
+                              <Check className="w-3 h-3 text-emerald-500" />
+                            ) : (
+                              <Copy className="w-3 h-3" />
+                            )}
+                          </button>
+                        </div>
+                        <div className="flex items-center justify-between text-[10px] text-text-sec font-mono group/field bg-background/50 rounded-lg p-2 border border-border-custom/30 hover:border-primary/20 transition-all">
+                          <span className="flex items-center gap-1.5">
+                            <Phone className="w-3 h-3 text-primary/70 flex-shrink-0" />
+                            <span>{DEV_TEAM_LEAD.phone}</span>
+                          </span>
+                          <button
+                            onClick={() => handleCopy(DEV_TEAM_LEAD.phone, `${DEV_TEAM_LEAD.name}-phone`)}
+                            className="text-text-sec/60 hover:text-foreground cursor-pointer flex-shrink-0"
+                          >
+                            {copiedId === `${DEV_TEAM_LEAD.name}-phone` ? (
+                              <Check className="w-3 h-3 text-emerald-500" />
+                            ) : (
+                              <Copy className="w-3 h-3" />
+                            )}
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </SpotlightCard>
+                </ScrollReveal>
+              </div>
+            )}
+
+            {/* Developers Grid */}
+            {filteredDevMembers.length > 0 && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                {filteredDevMembers.map((member, idx) => (
+                  <ScrollReveal key={member.name} delay={idx * 0.04}>
+                    <SpotlightCard className="p-5 bg-card-bg/40 border border-border-custom flex flex-col justify-between rounded-2xl min-h-[300px] hover:border-primary/20 transition-all duration-300 group">
+                      <div className="flex flex-col w-full">
+                        {/* Portrait Avatar Frame */}
+                        <MemberAvatar 
+                          src={member.avatar} 
+                          name={member.name} 
+                          initials={member.av} 
+                          gradient={member.gradient} 
+                        />
+
+                        <h3 className="font-sans font-bold text-base text-foreground mt-4 mb-0.5 leading-tight">{member.name}</h3>
+                        <div className="font-mono text-[9px] font-bold text-text-sec uppercase tracking-wider mb-2">
+                          {member.role}
+                        </div>
+
+                        {/* Quote block */}
+                        <div className="relative mt-2 mb-4 px-3 py-2 bg-foreground/[0.015] border-l-2 border-primary/50 rounded-r-lg font-sans text-xs italic text-text-sec leading-relaxed">
+                          {member.quote}
+                        </div>
+
+                        <div className="font-mono text-[9px] text-text-sec px-2 py-0.5 rounded bg-background border border-border-custom w-fit">
+                          {member.reg}
+                        </div>
+                      </div>
+
+                      {/* Contact Details (Conditional Draw) */}
+                      {showContacts && (
+                        <div className="w-full mt-4 pt-3 border-t border-border-custom/30 flex flex-col gap-1.5 text-left">
+                          <div className="flex items-center justify-between text-[9px] text-text-sec font-mono bg-background/50 rounded p-1.5 border border-border-custom/30">
+                            <span className="flex items-center gap-1 truncate">
+                              <Mail className="w-2.5 h-2.5 text-primary/70 flex-shrink-0" />
+                              <span className="truncate">{member.email}</span>
+                            </span>
+                            <button
+                              onClick={() => handleCopy(member.email, `${member.name}-email`)}
+                              className="text-text-sec/60 hover:text-foreground cursor-pointer flex-shrink-0 ml-1"
+                            >
+                              {copiedId === `${member.name}-email` ? (
+                                <Check className="w-2.5 h-2.5 text-emerald-500" />
+                              ) : (
+                                <Copy className="w-2.5 h-2.5" />
+                              )}
+                            </button>
+                          </div>
+                          <div className="flex items-center justify-between text-[9px] text-text-sec font-mono bg-background/50 rounded p-1.5 border border-border-custom/30">
+                            <span className="flex items-center gap-1">
+                              <Phone className="w-2.5 h-2.5 text-primary/70 flex-shrink-0" />
+                              <span>{member.phone}</span>
+                            </span>
+                            <button
+                              onClick={() => handleCopy(member.phone, `${member.name}-phone`)}
+                              className="text-text-sec/60 hover:text-foreground cursor-pointer flex-shrink-0"
+                            >
+                              {copiedId === `${member.name}-phone` ? (
+                                <Check className="w-2.5 h-2.5 text-emerald-500" />
+                              ) : (
+                                <Copy className="w-2.5 h-2.5" />
+                              )}
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </SpotlightCard>
+                  </ScrollReveal>
+                ))}
+              </div>
+            )}
+
+          </div>
+        </section>
+      )}
     </div>
   )
 }

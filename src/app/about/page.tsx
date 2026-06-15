@@ -26,7 +26,7 @@ export default function About() {
       {/* Hero section — transparent so global Nexus background shows through */}
       <section className="py-20 relative overflow-hidden min-h-[60vh] flex items-center">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(37,99,235,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(37,99,235,0.015)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
-        <div className="max-w-6xl mx-auto px-6 relative z-10 w-full">
+        <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
           <div className="max-w-2xl space-y-6 text-left">
             <ScrollReveal>
               <div className="font-mono text-xs font-semibold text-primary uppercase tracking-widest">Our Story</div>
@@ -46,7 +46,7 @@ export default function About() {
 
       {/* Mission Section */}
       <section className="py-20 transition-colors duration-300">
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
           
           {/* Mission and values details */}
           <div className="space-y-6">
