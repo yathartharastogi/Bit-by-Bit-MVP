@@ -23,36 +23,35 @@ export default function About() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Hero section */}
-      <section className="py-20 bg-background relative overflow-hidden">
+      {/* Hero section — transparent so global Nexus background shows through */}
+      <section className="py-20 relative overflow-hidden min-h-[60vh] flex items-center">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(37,99,235,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(37,99,235,0.015)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
-        
-        <div className="max-w-4xl mx-auto px-6 space-y-6 text-left relative z-10">
-          <ScrollReveal>
-            <div className="font-mono text-xs font-semibold text-primary uppercase tracking-widest">Our Story</div>
-          </ScrollReveal>
-          
-          <TextReveal
-            text="More Than Code. We Build Community."
-            className="font-sans font-bold text-4xl md:text-5xl tracking-tight text-foreground leading-[1.1]"
-          />
-          
-          <ScrollReveal delay={0.2}>
-            <p className="text-text-sec text-base md:text-lg max-w-2xl leading-relaxed">
-              Bit-By-Bit Club was born from a simple belief — that students at VIT Bhopal deserve a space to build, fail, learn, and grow together without gatekeeping or prerequisites.
-            </p>
-          </ScrollReveal>
+        <div className="max-w-6xl mx-auto px-6 relative z-10 w-full">
+          <div className="max-w-2xl space-y-6 text-left">
+            <ScrollReveal>
+              <div className="font-mono text-xs font-semibold text-primary uppercase tracking-widest">Our Story</div>
+            </ScrollReveal>
+            <TextReveal
+              text="More Than Code. We Build Community."
+              className="font-sans font-bold text-4xl md:text-5xl tracking-tight text-foreground leading-[1.1]"
+            />
+            <ScrollReveal delay={0.2}>
+              <p className="text-text-sec text-base md:text-lg max-w-2xl leading-relaxed">
+                Bit-By-Bit Club was born from a simple belief — that students at VIT Bhopal deserve a space to build, fail, learn, and grow together without gatekeeping or prerequisites.
+              </p>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 
       {/* Mission Section */}
-      <section className="py-20 bg-card-bg border-y border-border-custom transition-colors duration-300">
+      <section className="py-20 transition-colors duration-300">
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
           
           {/* Mission and values details */}
           <div className="space-y-6">
             <ScrollReveal>
-              <div className="font-mono text-xs font-semibold text-primary uppercase tracking-widest">Mission & Vision</div>
+              <div className="font-mono text-xs font-semibold text-primary uppercase tracking-widest">Mission &amp; Vision</div>
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
               <h2 className="font-sans font-bold text-2xl md:text-3xl tracking-tight text-foreground">
@@ -66,14 +65,14 @@ export default function About() {
             </ScrollReveal>
             <ScrollReveal delay={0.3}>
               <p className="text-text-sec text-sm leading-relaxed">
-                Our vision is a campus-wide culture of building — where the default response to an idea is "let's try it," where failure is celebrated as a step forward, and where your first project leads to your next opportunity.
+                Our vision is a campus-wide culture of building — where the default response to an idea is &quot;let&apos;s try it,&quot; where failure is celebrated as a step forward, and where your first project leads to your next opportunity.
               </p>
             </ScrollReveal>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
               {values.map((v, idx) => (
                 <ScrollReveal key={v.title} delay={idx * 0.08}>
-                  <div className="p-5 rounded-xl border border-border-custom bg-background h-full">
+                  <div className="p-5 rounded-xl border border-border-custom bg-background/50 h-full">
                     <h4 className="font-sans font-bold text-sm text-foreground flex items-center gap-2 mb-2">
                       <CheckCircle2 size={16} className="text-primary" />
                       {v.title}
@@ -104,7 +103,7 @@ export default function About() {
       </section>
 
       {/* CTA section */}
-      <section className="py-20 bg-background text-center relative overflow-hidden transition-colors duration-300">
+      <section className="py-20 text-center relative overflow-hidden transition-colors duration-300">
         <div className="max-w-xl mx-auto px-6 space-y-6 relative z-10">
           <ScrollReveal>
             <div className="font-mono text-xs font-semibold text-primary uppercase tracking-widest">Be Part of It</div>
@@ -129,7 +128,7 @@ export default function About() {
               </Link>
               <Link
                 href="/contact"
-                className="px-6 py-3 font-mono text-xs uppercase font-bold tracking-wider text-text-sec hover:text-foreground bg-card-bg border border-border-custom rounded-full transition-all duration-200"
+                className="px-6 py-3 font-mono text-xs uppercase font-bold tracking-wider text-text-sec hover:text-foreground bg-card-bg/60 border border-border-custom rounded-full transition-all duration-200"
               >
                 Contact Us
               </Link>

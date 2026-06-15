@@ -49,30 +49,26 @@ export default function ParticleBackground() {
 
     const initColumns = () => {
       columns.length = 0
-      const colWidth = 20
+      const colWidth = 28   // wider spacing = fewer columns
       const colCount = Math.floor(width / colWidth)
 
       for (let i = 0; i < colCount; i++) {
         const rand = Math.random()
+        // Only two depth tiers now: far (60%) and mid (40%) — no heavy fg columns
         let depth = 2
-        let fontSize = 11
-        let opacity = 0.25
-        let speed = 1.0 + Math.random() * 1.0
+        let fontSize = 10
+        let opacity = 0.14
+        let speed = 0.8 + Math.random() * 0.8
 
-        if (rand < 0.45) {
-          depth = 1 // Far background
+        if (rand < 0.6) {
+          depth = 1 // Far background — very faint
           fontSize = 8
-          opacity = 0.08
-          speed = 0.4 + Math.random() * 0.4
-        } else if (rand > 0.92) {
-          depth = 3 // Foreground close
-          fontSize = 14
-          opacity = 0.42
-          speed = 2.0 + Math.random() * 1.0
+          opacity = 0.06
+          speed = 0.3 + Math.random() * 0.35
         }
 
         const y = Math.random() * height * -1.5 - 100
-        const streamLength = Math.floor(Math.random() * 10) + 5
+        const streamLength = Math.floor(Math.random() * 8) + 4
         const chars = Array.from({ length: streamLength }, () => 
           Math.random() > 0.5 ? '1' : '0'
         )
@@ -150,36 +146,6 @@ export default function ParticleBackground() {
       return { points, connections }
     }
 
-    const createTorusModel = (R: number, r: number, uSegs: number, vSegs: number): { points: Point3D[]; connections: Array<[number, number]> } => {
-      const points: Point3D[] = []
-      const connections: Array<[number, number]> = []
-
-      for (let i = 0; i < uSegs; i++) {
-        const u = (i / uSegs) * Math.PI * 2
-        for (let j = 0; j < vSegs; j++) {
-          const v = (j / vSegs) * Math.PI * 2
-          points.push({
-            x: (R + r * Math.cos(v)) * Math.cos(u),
-            y: (R + r * Math.cos(v)) * Math.sin(u),
-            z: r * Math.sin(v),
-            char: Math.random() > 0.5 ? '1' : '0'
-          })
-        }
-      }
-
-      for (let i = 0; i < uSegs; i++) {
-        for (let j = 0; j < vSegs; j++) {
-          const curr = i * vSegs + j
-          const nextU = ((i + 1) % uSegs) * vSegs + j
-          const nextV = i * vSegs + ((j + 1) % vSegs)
-          connections.push([curr, nextU])
-          connections.push([curr, nextV])
-        }
-      }
-
-      return { points, connections }
-    }
-
     // Initialize 3D Models array
     const models: Model3D[] = []
     const initModels = () => {
@@ -232,18 +198,6 @@ export default function ParticleBackground() {
         colorType: 'purple'
       })
 
-      // 3. Floating Torus (lower-right side)
-      const torus = createTorusModel(baseRadius * 0.11, baseRadius * 0.035, 12, 6)
-      models.push({
-        points: torus.points,
-        connections: torus.connections,
-        xOffset: 0.82,
-        yOffset: 0.74,
-        scaleMultiplier: 0.9,
-        rotateSpeedX: -0.002,
-        rotateSpeedY: 0.0028,
-        colorType: 'green'
-      })
     }
 
     initColumns()
@@ -288,11 +242,22 @@ export default function ParticleBackground() {
       })
     }
 
+    let lastScrollY = typeof window !== 'undefined' ? window.scrollY : 0
+
     const animate = () => {
       const dark = isDarkMode()
+      const currentScrollY = typeof window !== 'undefined' ? window.scrollY : 0
+      const scrollDelta = currentScrollY - lastScrollY
+      lastScrollY = currentScrollY
+      const scrollRot = scrollDelta * 0.001
+
       
-      // Clear with slight trailing alpha to create digital blur trails
-      ctx.fillStyle = dark ? 'rgba(3, 7, 18, 0.13)' : 'rgba(247, 243, 238, 0.15)'
+      // Clear canvas fully so the WebGL scenes below are never painted over
+      ctx.clearRect(0, 0, width, height)
+
+      // Re-paint a very subtle fade layer so rain columns have trailing effect
+      ctx.globalCompositeOperation = 'source-over'
+      ctx.fillStyle = dark ? 'rgba(3, 7, 18, 0.08)' : 'rgba(247, 243, 238, 0.10)'
       ctx.fillRect(0, 0, width, height)
 
       // 1. Draw matrix rain columns (background layers)
@@ -350,8 +315,8 @@ export default function ParticleBackground() {
         const mouseDistX = mouse.x / (width / 2)
         const mouseDistY = mouse.y / (height / 2)
         
-        rotateAngleX += mouseDistY * 0.0006
-        rotateAngleY += mouseDistX * 0.0006
+        rotateAngleX += mouseDistY * 0.0006 + scrollRot
+        rotateAngleY += mouseDistX * 0.0006 + (scrollRot * 0.5)
 
         // Rotate vertices
         rotatePoints(model.points, rotateAngleX, rotateAngleY)

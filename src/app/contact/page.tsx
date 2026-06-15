@@ -99,7 +99,7 @@ export default function Contact() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       {/* Page Hero */}
-      <section className="py-20 bg-background relative overflow-hidden">
+      <section className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(37,99,235,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(37,99,235,0.01)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
         <div className="max-w-4xl mx-auto px-6 space-y-6 text-left relative z-10">
@@ -114,7 +114,7 @@ export default function Contact() {
       </section>
 
       {/* Forms Section */}
-      <section className="py-16 bg-card-bg border-y border-border-custom transition-colors duration-300">
+      <section className="py-16 transition-colors duration-300">
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
           {/* Info and General Contact Column */}

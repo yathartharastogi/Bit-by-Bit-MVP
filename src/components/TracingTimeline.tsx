@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
-import { motion, useScroll, useSpring, useInView } from 'framer-motion'
+import { motion, useScroll, useInView } from 'framer-motion'
 
 interface Milestone {
   date?: string
@@ -61,12 +61,6 @@ export default function TracingTimeline({ items }: TracingTimelineProps) {
     offset: ['start center', 'end center']
   })
 
-  const scaleY = useSpring(scrollYProgress, {
-    stiffness: 80,
-    damping: 15,
-    restDelta: 0.001
-  })
-
   return (
     <div ref={containerRef} className="relative pl-6">
       {/* Background track line */}
@@ -74,7 +68,7 @@ export default function TracingTimeline({ items }: TracingTimelineProps) {
       
       {/* Interactive scroll progress line */}
       <motion.div
-        style={{ scaleY }}
+        style={{ scaleY: scrollYProgress }}
         className="absolute left-[3px] top-1.5 bottom-1.5 w-[2px] bg-primary origin-top"
       />
 

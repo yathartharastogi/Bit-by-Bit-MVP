@@ -222,7 +222,7 @@ export default function Team() {
   return (
     <div className="flex flex-col min-h-screen bg-background pb-24">
       {/* Page Hero */}
-      <section className="py-20 bg-background relative overflow-hidden">
+      <section className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(37,99,235,0.012)_1px,transparent_1px),linear-gradient(to_bottom,rgba(37,99,235,0.012)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row md:items-end justify-between gap-8 relative z-10">
@@ -282,7 +282,7 @@ export default function Team() {
 
       {/* Heads / Leadership Section */}
       {filteredHeads.length > 0 && (
-        <section className="py-10 border-t border-border-custom bg-card-bg/20 transition-colors duration-300">
+        <section className="py-10 transition-colors duration-300">
           <div className="max-w-6xl mx-auto px-6">
             <ScrollReveal>
               <div className="flex items-center gap-3 mb-8">
@@ -360,7 +360,7 @@ export default function Team() {
       )}
 
       {/* Domain Teams Section */}
-      <section className="py-8 border-t border-border-custom">
+      <section className="py-8">
         <div className="max-w-6xl mx-auto px-6 space-y-16">
           {filteredTeams.map((team, teamIdx) => {
             const hasLeads = team.leads.length > 0

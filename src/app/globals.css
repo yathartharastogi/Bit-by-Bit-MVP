@@ -14,25 +14,30 @@
 
 :root {
   --background: #f7f3ee;
+  --background-rgb: 247 243 238;
   --foreground: #111827;
   --primary: #2563eb;
   --primary-hover: #1d4ed8;
   --card-bg: #ffffff;
+  --card-bg-rgb: 255 255 255;
   --border-color: rgba(0, 0, 0, 0.06);
   --text-secondary: #4b5563;
 }
 
 .dark {
   --background: #030712;
+  --background-rgb: 3 7 18;
   --foreground: #f8fafc;
   --primary: #3b82f6;
   --primary-hover: #1d4ed8;
   --card-bg: #0b1329;
+  --card-bg-rgb: 11 19 41;
   --border-color: rgba(37, 99, 235, 0.08);
   --text-secondary: #94a3b8;
 }
 
 body {
+  /* No solid background — let the fixed canvas layers show through */
   background-color: var(--background);
   background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
   background-size: 24px 24px;
@@ -41,14 +46,29 @@ body {
   font-family: var(--font-sans);
 }
 
+/**
+ * Global override: make ALL bg-background and bg-card-bg usages
+ * semi-transparent so the fixed Nexus/ParticleBackground canvas
+ * shows through every section on every page automatically.
+ */
+.bg-background {
+  background-color: rgb(var(--background-rgb) / 0.52) !important;
+}
+
+.bg-card-bg {
+  background-color: rgb(var(--card-bg-rgb) / 0.52) !important;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--background);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--primary);
   border-radius: 3px;
@@ -74,8 +94,13 @@ body {
 
 /* Marquee keyframes */
 @keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .animate-marquee {

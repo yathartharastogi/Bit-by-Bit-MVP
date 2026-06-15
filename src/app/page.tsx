@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import { db } from '@/lib/db'
-import Terminal from '@/components/Terminal'
+
 import Counter from '@/components/Counter'
 import Testimonials from '@/components/Testimonials'
 import SpotlightCard from '@/components/SpotlightCard'
 import ScrollReveal from '@/components/ScrollReveal'
 import TextReveal from '@/components/TextReveal'
-import BinarySphere from '@/components/BinarySphere'
-import { Calendar, MapPin, Sparkles, Code, Palette, Share2, Layers, ClipboardList } from 'lucide-react'
+import AnimatedTerminal from '@/components/AnimatedTerminal'
+import { Calendar, MapPin, Code, Palette, Share2, Layers, ClipboardList } from 'lucide-react'
 
 // Default fallbacks in case DB is not seeded or encounters issues
 const defaultAnnouncements = [
@@ -101,30 +101,30 @@ export default async function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center py-20 overflow-hidden bg-background">
+      <section className="relative min-h-[90vh] flex items-center py-20 overflow-hidden">
         {/* Subtle grid background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(37,99,235,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(37,99,235,0.015)_1px,transparent_1px)] bg-[size:32px_32px] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
 
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 w-full">
-          <div className="lg:col-span-7 space-y-6 text-left">
+          <div className="lg:col-span-6 space-y-6 text-left">
             <ScrollReveal delay={0.1}>
               <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-mono font-semibold text-primary bg-primary/10 rounded-full border border-primary/20">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 VIT Bhopal Tech Community — Est. 2020
               </div>
             </ScrollReveal>
-            
+
             <TextReveal
               text="We Build Bit by Bit."
               className="font-sans font-bold text-4xl md:text-6xl tracking-tight text-foreground leading-[1.05]"
             />
-            
+
             <ScrollReveal delay={0.2}>
               <p className="text-text-sec text-base md:text-lg max-w-xl leading-relaxed">
                 VIT Bhopal's premier tech community — a launchpad for developers, designers, and innovators who want to build real things, win hackathons, and grow together.
               </p>
             </ScrollReveal>
-            
+
             <ScrollReveal delay={0.3}>
               <div className="flex flex-wrap gap-3 pt-2">
                 <Link
@@ -165,28 +165,17 @@ export default async function Home() {
             </ScrollReveal>
           </div>
 
-          <div className="lg:col-span-5 w-full mt-10 lg:mt-0 flex flex-col gap-6 animate-fade-in-up">
-            <ScrollReveal delay={0.3}>
-              <Terminal />
-            </ScrollReveal>
+          {/* Right Column: Animated Terminal */}
+          <div className="hidden lg:block lg:col-span-6">
             <ScrollReveal delay={0.4}>
-              <SpotlightCard className="p-5 bg-[#030912]/90 border border-border-custom w-full h-[300px] overflow-hidden flex flex-col justify-between">
-                <div className="w-full flex items-center justify-between border-b border-border-custom/30 pb-2.5 mb-1.5 font-mono text-[9px] text-text-sec tracking-wider relative z-10 select-none">
-                  <span className="flex items-center gap-1.5 font-bold">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                    CORE_SYS: 3D_MATRIX_SPHERE
-                  </span>
-                  <span className="opacity-60">PORT: 3001</span>
-                </div>
-                <BinarySphere />
-              </SpotlightCard>
+              <AnimatedTerminal />
             </ScrollReveal>
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section className="bg-card-bg border-y border-border-custom py-24 transition-colors duration-300">
+      <section className="py-24 transition-colors duration-300">
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
           <div className="md:col-span-6 space-y-6">
             <ScrollReveal>
@@ -251,7 +240,7 @@ export default async function Home() {
       </section>
 
       {/* Domains Section */}
-      <section className="py-24 bg-background transition-colors duration-300">
+      <section className="py-24 transition-colors duration-300">
         <div className="max-w-6xl mx-auto px-6 space-y-12">
           <div className="text-center space-y-4 max-w-xl mx-auto">
             <ScrollReveal>
@@ -291,7 +280,7 @@ export default async function Home() {
       </section>
 
       {/* Dynamic News / Announcements Feed & Events */}
-      <section className="py-24 bg-card-bg border-y border-border-custom transition-colors duration-300">
+      <section className="py-24 transition-colors duration-300">
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Feed Column */}
           <div className="lg:col-span-5 space-y-8">
@@ -313,11 +302,10 @@ export default async function Home() {
               {announcements.map((item, idx) => (
                 <ScrollReveal key={item.id} delay={idx * 0.1}>
                   <div
-                    className={`p-5 rounded-xl border transition-all duration-200 ${
-                      item.pinned
+                    className={`p-5 rounded-xl border transition-all duration-200 ${item.pinned
                         ? 'border-primary/30 bg-primary/5'
                         : 'border-border-custom bg-background'
-                    }`}
+                      }`}
                   >
                     <div className="flex items-center justify-between mb-3">
                       <span className="font-mono text-[9px] font-bold text-primary px-2 py-0.5 rounded border border-primary/20 bg-primary/10 uppercase tracking-widest">
@@ -401,7 +389,7 @@ export default async function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-24 bg-background overflow-hidden transition-colors duration-300">
+      <section className="py-24 overflow-hidden transition-colors duration-300">
         <div className="max-w-6xl mx-auto px-6 space-y-12">
           <div className="text-center space-y-4 max-w-xl mx-auto">
             <ScrollReveal>
@@ -426,39 +414,35 @@ export default async function Home() {
       </section>
 
       {/* Apply CTA Section */}
-      <section className="relative py-24 bg-card-bg border-t border-border-custom overflow-hidden transition-colors duration-300">
+      <section className="relative py-24 overflow-hidden transition-colors duration-300">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(37,99,235,0.03),transparent_40%),radial-gradient(circle_at_top_right,rgba(168,85,247,0.02),transparent_40%)] pointer-events-none" />
 
-        <div className="max-w-4xl mx-auto px-6 text-center space-y-6 relative z-10">
+        <div className="max-w-4xl mx-auto px-6 text-center space-y-8 relative z-10">
           <ScrollReveal>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-mono font-semibold text-primary bg-primary/10 rounded-full border border-primary/20">
-              <Sparkles size={12} />
+            <h2 className="font-sans font-bold text-4xl md:text-5xl tracking-tight text-foreground">
               Ready to Build?
-            </div>
+            </h2>
           </ScrollReveal>
-          <TextReveal
-            text="Join 500+ Builders at VIT Bhopal."
-            as="h2"
-            className="font-sans font-bold text-3xl md:text-5xl tracking-tight text-foreground leading-tight justify-center"
-          />
+          
           <ScrollReveal delay={0.1}>
-            <p className="text-text-sec text-sm md:text-base max-w-xl mx-auto leading-relaxed">
-              Whether you code, design, write, or organize — there's a place for you in Bit-By-Bit. Your next project, your next team, your next opportunity starts here.
+            <p className="text-text-sec text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+              Whether you are looking to win your first hackathon or just want to hang out with other builders. We have a spot for you.
             </p>
           </ScrollReveal>
+          
           <ScrollReveal delay={0.2}>
-            <div className="flex justify-center gap-3 pt-4">
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
               <Link
-                href="/contact#join"
-                className="px-8 py-3.5 font-mono text-xs uppercase font-bold tracking-wider text-white bg-primary hover:bg-primary-hover rounded-full transition-all duration-200 hover:-translate-y-0.5"
+                href="/contact"
+                className="w-full sm:w-auto px-8 py-4 font-mono text-sm uppercase font-bold tracking-wider text-white bg-primary hover:bg-primary-hover rounded-full transition-all duration-200 hover:-translate-y-1 shadow-lg shadow-primary/20"
               >
-                ⚡ Apply Now
+                Join Us 🚀
               </Link>
               <Link
-                href="/about"
-                className="px-8 py-3.5 font-mono text-xs uppercase font-bold tracking-wider text-text-sec hover:text-foreground bg-background border border-border-custom hover:border-primary rounded-full transition-all duration-200 hover:-translate-y-0.5"
+                href="/team"
+                className="w-full sm:w-auto px-8 py-4 font-mono text-sm uppercase font-bold tracking-wider text-text-sec hover:text-foreground bg-card-bg border border-border-custom hover:border-primary rounded-full transition-all duration-200 hover:-translate-y-1"
               >
-                Learn More
+                Ping Officers 💬
               </Link>
             </div>
           </ScrollReveal>
