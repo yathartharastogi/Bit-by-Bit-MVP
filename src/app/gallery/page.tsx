@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Folder, ArrowLeft, X, ChevronLeft, ChevronRight, Calendar, Sparkles, ExternalLink } from 'lucide-react'
+import { Folder, ArrowLeft, X, ChevronLeft, ChevronRight, Calendar, Sparkles } from 'lucide-react'
 import ScrollReveal from '@/components/ScrollReveal'
 import TextReveal from '@/components/TextReveal'
 import SpotlightCard from '@/components/SpotlightCard'
@@ -35,18 +35,18 @@ const albums: Album[] = [
     count: 12,
     driveUrl: 'https://drive.google.com/drive/folders/156kT6R9hKENkpQoOti0k4ZoeqeQlMts_',
     images: [
-      { src: '/events/mindzilla/20250220_091023.webp', title: 'Mindzilla Briefing', desc: 'Participants gathering for the event introduction and problem statement release.' },
-      { src: '/events/mindzilla/20250220_091031.webp', title: 'Brainstorming Session', desc: 'Teams whiteboard sketching ideas and logical maps for the analytical puzzles.' },
-      { src: '/events/mindzilla/20250220_091102.webp', title: 'Problem Solving', desc: 'Working through algorithmic optimization challenges under pressure.' },
-      { src: '/events/mindzilla/20250220_091146.webp', title: 'Collaboration Phase', desc: 'Peer-to-peer technical debugging and cross-team knowledge share.' },
-      { src: '/events/mindzilla/20250220_091159.webp', title: 'Strategic Decisions', desc: 'Analyzing trade-offs between speed, accuracy, and execution complexity.' },
-      { src: '/events/mindzilla/20250220_092640.webp', title: 'Logic Sprint', desc: 'Developing solutions for the interactive logic challenges.' },
-      { src: '/events/mindzilla/20250220_094043.webp', title: 'Tech Stack Check', desc: 'Validating deployment parameters and runtime safety checklists.' },
-      { src: '/events/mindzilla/20250220_094056.webp', title: 'Mentorship Checkpoint', desc: 'Seniors reviewing repository status and code quality parameters.' },
-      { src: '/events/mindzilla/20250220_094151.webp', title: 'Competition Arena', desc: 'The high-energy environment inside the VIT Bhopal tech park lab.' },
-      { src: '/events/mindzilla/20250220_095925.webp', title: 'Analytical Puzzles', desc: 'Decoupling complex data structures into simpler, solvable units.' },
-      { src: '/events/mindzilla/20250220_100317.webp', title: 'Final Code Commits', desc: 'Teams finalizing code pushes to their GitHub repositories.' },
-      { src: '/events/mindzilla/20250220_103004.webp', title: 'Mindzilla Champions', desc: 'Celebrating top teams and creative technical pitches at AdVITya.' }
+      { src: '/events/mindzilla/1The Gateway.jpeg', title: 'The Gateway', desc: 'The marathon begins at registration, where our team streamlined check-ins to set a high-energy tone for the hackathon.' },
+      { src: '/events/mindzilla/2Core Synergy.jpeg', title: 'Core Synergy', desc: 'The visionary minds behind the Bit By Bit club, steering logistics, technical roadmaps, and event execution.' },
+      { src: '/events/mindzilla/3AcademicStewardship.jpeg', title: 'Academic Stewardship', desc: 'Faculty and domain experts providing real-time architectural reviews and code debugging sessions for the teams.' },
+      { src: '/events/mindzilla/4ContinuousIntegration.jpeg', title: 'Continuous Integration', desc: 'Turning runtime errors into breakthroughs. Teams worked closely over laptops to review and optimize their applications.' },
+      { src: '/events/mindzilla/5TechnicalGrind.jpeg', title: 'Technical Grind', desc: 'Absolute concentration in the lab. Developers dived deep into their stacks, translating logic into code against the clock.' },
+      { src: '/events/mindzilla/6CreativeInterlude.jpeg', title: 'Creative Interlude', desc: 'Breaking the binary. Participants stepped away from screens to engage in paper crafts, refreshing their minds for the next sprint.' },
+      { src: '/events/mindzilla/7StrategicDecisions.jpeg', title: 'Strategic Decisions', desc: 'Testing cross-platform performance. Teams analyzed mobile layouts to ensure highly responsive and secure applications.' },
+      { src: '/events/mindzilla/8CapturingMemories.jpeg', title: 'Capturing Memories', desc: 'Framing hard work with community spirit. Our custom hand-drawn frame captured lasting social media memories.' },
+      { src: '/events/mindzilla/9JailbreakMoments.jpeg', title: 'Jailbreak Moments', desc: 'Bringing cheer to the chaos. The humorous "Jail" prop offered a lighthearted escape from intense compilation loops.' },
+      { src: '/events/mindzilla/10TheCelebrationHub.jpeg', title: 'The Celebration Hub', desc: 'Pure relief and joy as faculty and students witness a breakthrough, celebrating a successful project run and a beautifully completed milestone.' },
+      { src: '/events/mindzilla/11UnifiedCommunity.jpeg', title: 'Unified Community', desc: 'Standing tall after 48 hours of building. A triumphant group photo capturing the shared grit of our developers and faculty.' },
+      { src: '/events/mindzilla/12TriumphantFinale.jpeg', title: 'Triumphant Finale', desc: 'The ultimate celebration. Honoring the top-performing teams who pushed technical boundaries to secure the podium.' }
     ]
   },
   {
@@ -58,18 +58,18 @@ const albums: Album[] = [
     count: 12,
     driveUrl: 'https://drive.google.com/drive/folders/1cQ7FwA51Qf4Bu4yfbqLl8sckmix4i_97',
     images: [
-      { src: '/events/playtopia/20260227_103309.webp', title: 'Gaming Stations Setup', desc: 'Consoles and gaming rigs prepped for tournament-style matchplay.' },
-      { src: '/events/playtopia/20260227_103550.webp', title: 'Intense Matchups', desc: 'Competitors locked in head-to-head fighting game duels.' },
-      { src: '/events/playtopia/20260227_103552.webp', title: 'Spectator Crowd', desc: 'Vocal crowd cheering for their favorite players in the arena.' },
-      { src: '/events/playtopia/20260227_103744.webp', title: 'Strategy Briefing', desc: 'Coordinating team gameplay roles and map layouts before match launch.' },
-      { src: '/events/playtopia/20260227_103755.webp', title: 'Victory Celebration', desc: 'Players celebrating a clutch match-point win in the closing round.' },
-      { src: '/events/playtopia/20260227_104038.webp', title: 'Interactive Zone', desc: 'Students exploring VR and motion-sensing game installations.' },
-      { src: '/events/playtopia/20260227_112131.webp', title: 'Console Showdowns', desc: 'FIFA tournament group stages running concurrently under neon lights.' },
-      { src: '/events/playtopia/20260227_112134.webp', title: 'LAN Play Action', desc: 'Competitive PC multiplayer setups buzzing with tactical comms.' },
-      { src: '/events/playtopia/IMG20260226180718.webp', title: 'Playtopia Front Desk', desc: 'Club registrations and bracket validation counters.' },
-      { src: '/events/playtopia/IMG20260226180720.webp', title: 'Neon Lounge Vibes', desc: 'Atmospheric gaming zone featuring LED glow and background music.' },
-      { src: '/events/playtopia/IMG20260226180751.webp', title: 'Arcade Classics Section', desc: 'Retro gaming cabinets drawing long lines of nostalgic players.' },
-      { src: '/events/playtopia/IMG20260226180753.webp', title: 'Award Ceremony', desc: 'Handing over the custom trophies to the Playtopia champion squad.' }
+      { src: '/events/playtopia/1TheWelcomeTerminal.jpeg', title: 'The Welcome Terminal', desc: 'Welcoming eager crowds at the front registration desk, officially kickstarting the high-energy gaming arena.' },
+      { src: '/events/playtopia/2StrategicDebriefs.jpeg', title: 'Strategic Debriefs', desc: 'Club organizers and faculty leads aligning backstage to ensure flawless coordination across all gaming zones.' },
+      { src: '/events/playtopia/3TheVisualShowcase.jpeg', title: 'The Visual Showcase', desc: 'Checking out the official event poster on screen, featuring bold gaming graphics and character artwork that set the tone for the entire arena.' },
+      { src: '/events/playtopia/4VIP.jpeg', title: 'VIP', desc: 'Honored guests and senior faculty touring the arena, experiencing the vibrant atmosphere and creative event setups firsthand.' },
+      { src: '/events/playtopia/5ThePhotobooth.jpeg', title: 'The Photobooth', desc: 'Striking a pose at our dedicated event photobooth to capture high-energy memories and showcase our official participant passes.' },
+      { src: '/events/playtopia/6MatchTactics.jpeg', title: 'Match Tactics', desc: 'Competitors huddling up to discuss their next moves, map out team coordination, and claim the competitive edge.' },
+      { src: '/events/playtopia/7PlayZones.jpeg', title: 'Play Zones', desc: 'A vibrant mix of console setups, custom arcade zones, and physical layout designs built for maximum entertainment.' },
+      { src: '/events/playtopia/8ScoringCheckpoint.jpeg', title: 'Scoring Checkpoint', desc: 'Faculty and leads monitoring the tournament brackets, ensuring fair play and keeping track of leaderboard standouts.' },
+      { src: '/events/playtopia/9TheJoyofPlay.jpeg', title: 'The Joy of Play', desc: 'Pure enjoyment and laughter as faculty and players share a casual gaming moment, celebrating a fun and successful match.' },
+      { src: '/events/playtopia/10TheFeedbackStation.jpeg', title: 'The Feedback Station', desc: 'Faculty and organizers checking out the live player feedback station, capturing real-time impressions and tournament reviews.' },
+      { src: '/events/playtopia/11UnifiedCore.jpeg', title: 'Unified Core', desc: 'Standing together after an unforgettable event—a triumphant snapshot capturing the shared energy of the entire team.' },
+      { src: '/events/playtopia/12Winners.jpeg', title: 'Winners', desc: 'Celebrating the gaming champions as they claim their podium finishes and lift their well-deserved prizes.' }
     ]
   }
 ]
@@ -123,15 +123,15 @@ export default function Gallery() {
               Event Gallery
             </div>
           </ScrollReveal>
-          
+
           <TextReveal
             text="Club Memories."
             className="font-sans font-bold text-4xl md:text-5xl tracking-tight text-foreground leading-[1.1]"
           />
-          
+
           <ScrollReveal delay={0.2}>
             <p className="text-text-sec text-base md:text-lg max-w-xl leading-relaxed">
-              Explore the archives of Bit-By-Bit's flagship events, technical hackathons, game design arenas, and community sprints.
+              Explore the archives of Bit-By-Bit&apos;s flagship events, technical hackathons, game design arenas, and community sprints.
             </p>
           </ScrollReveal>
         </div>
@@ -153,7 +153,7 @@ export default function Gallery() {
               >
                 {albums.map((album, idx) => (
                   <ScrollReveal key={album.id} delay={idx * 0.1}>
-                    <div 
+                    <div
                       onClick={() => setActiveAlbum(album.id)}
                       className="group cursor-pointer flex flex-col h-full"
                     >
@@ -164,35 +164,35 @@ export default function Gallery() {
                           <div className="relative w-2/3 h-2/3 flex items-center justify-center">
                             {/* Left stacked image */}
                             <div className="absolute w-[80%] h-[80%] rounded-lg overflow-hidden border-2 border-border-custom shadow-2xl rotate-[-8deg] -translate-x-6 translate-y-2 group-hover:rotate-[-14deg] group-hover:-translate-x-10 group-hover:-translate-y-2 transition-all duration-500 origin-bottom-left ease-out">
-                              <Image 
-                                src={album.images[0].src} 
-                                alt="preview 1" 
-                                fill 
-                                className="object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-500" 
+                              <Image
+                                src={album.images[0].src}
+                                alt="preview 1"
+                                fill
+                                className="object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-500"
                               />
                             </div>
-                            
+
                             {/* Right stacked image */}
                             <div className="absolute w-[80%] h-[80%] rounded-lg overflow-hidden border-2 border-border-custom shadow-2xl rotate-[8deg] translate-x-6 translate-y-2 group-hover:rotate-[14deg] group-hover:translate-x-10 group-hover:-translate-y-2 transition-all duration-500 origin-bottom-right ease-out">
-                              <Image 
-                                src={album.images[1].src} 
-                                alt="preview 2" 
-                                fill 
-                                className="object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-500" 
+                              <Image
+                                src={album.images[1].src}
+                                alt="preview 2"
+                                fill
+                                className="object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-500"
                               />
                             </div>
-                            
+
                             {/* Center prominent stacked image */}
                             <div className="absolute w-[85%] h-[85%] rounded-lg overflow-hidden border-2 border-border-custom shadow-2xl z-10 group-hover:-translate-y-4 group-hover:scale-105 transition-all duration-500 ease-out">
-                              <Image 
-                                src={album.cover} 
-                                alt="cover" 
-                                fill 
-                                className="object-cover group-hover:scale-105 transition-transform duration-700" 
+                              <Image
+                                src={album.cover}
+                                alt="cover"
+                                fill
+                                className="object-cover group-hover:scale-105 transition-transform duration-700"
                               />
                             </div>
                           </div>
-                          
+
                           {/* Folder Tab Overlay Tag */}
                           <div className="absolute top-3 left-3 px-3 py-1 bg-background/80 border border-border-custom/50 rounded-full flex items-center gap-1.5 backdrop-blur-sm z-20">
                             <Folder size={12} className="text-primary" />
@@ -250,17 +250,7 @@ export default function Gallery() {
                       <Folder size={14} />
                       {currentAlbum?.images.length} Photos
                     </div>
-                    {currentAlbum?.driveUrl && (
-                      <a
-                        href={currentAlbum.driveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-1.5 font-mono text-xs uppercase font-bold tracking-wider text-white bg-primary hover:bg-primary-hover border border-primary/30 rounded-xl transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-primary/10"
-                      >
-                        <ExternalLink size={12} />
-                        View All on Drive
-                      </a>
-                    )}
+
                   </div>
                 </div>
 
@@ -272,34 +262,34 @@ export default function Gallery() {
                         onClick={() => setLightboxIndex(idx)}
                         className="group cursor-pointer flex flex-col h-full"
                       >
-                        <SpotlightCard 
+                        <SpotlightCard
                           className="overflow-hidden bg-background border border-border-custom hover:border-primary/50 transition-all duration-300 relative h-full"
                         >
-                        <div className="relative w-full aspect-video overflow-hidden">
-                          {/* Dot matrix grid texture on hover */}
-                          <div className="absolute inset-0 bg-[radial-gradient(#2563eb_1.5px,transparent_1.5px)] bg-[size:16px_16px] opacity-0 group-hover:opacity-10 transition-opacity duration-300 z-10 pointer-events-none" />
-                          
-                          <Image
-                            src={item.src}
-                            alt={item.title}
-                            fill
-                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                            className="object-cover grayscale-[35%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-out"
-                            priority={idx < 3}
-                          />
-                        </div>
+                          <div className="relative w-full aspect-video overflow-hidden">
+                            {/* Dot matrix grid texture on hover */}
+                            <div className="absolute inset-0 bg-[radial-gradient(#2563eb_1.5px,transparent_1.5px)] bg-[size:16px_16px] opacity-0 group-hover:opacity-10 transition-opacity duration-300 z-10 pointer-events-none" />
 
-                        <div className="p-4 border-t border-border-custom/50 bg-card-bg relative z-10">
-                          <h4 className="font-sans font-bold text-sm text-foreground mb-1 group-hover:text-primary transition-colors duration-200">
-                            {item.title}
-                          </h4>
-                          <p className="text-text-sec text-[11px] leading-relaxed">
-                            {item.desc}
-                          </p>
-                        </div>
-                      </SpotlightCard>
-                    </div>
-                  </ScrollReveal>
+                            <Image
+                              src={item.src}
+                              alt={item.title}
+                              fill
+                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                              className="object-cover grayscale-[35%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-out"
+                              priority={idx < 3}
+                            />
+                          </div>
+
+                          <div className="p-4 border-t border-border-custom/50 bg-card-bg relative z-10">
+                            <h4 className="font-sans font-bold text-sm text-foreground mb-1 group-hover:text-primary transition-colors duration-200">
+                              {item.title}
+                            </h4>
+                            <p className="text-text-sec text-[11px] leading-relaxed">
+                              {item.desc}
+                            </p>
+                          </div>
+                        </SpotlightCard>
+                      </div>
+                    </ScrollReveal>
                   ))}
                 </div>
               </motion.div>
@@ -324,8 +314,8 @@ export default function Gallery() {
               <span className="font-mono text-xs text-text-sec uppercase tracking-widest">
                 {currentAlbum.title}
               </span>
-              
-              <button 
+
+              <button
                 onClick={(e) => {
                   e.stopPropagation()
                   setLightboxIndex(null)
@@ -350,7 +340,7 @@ export default function Gallery() {
               </button>
 
               {/* Main Active Image Display */}
-              <div 
+              <div
                 className="flex-1 h-[65vh] md:h-[75vh] w-full relative flex items-center justify-center"
                 onClick={(e) => e.stopPropagation()}
               >
