@@ -110,3 +110,8 @@ body {
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+
+.outline-text {
+  -webkit-text-stroke: 1px #3b82f6;
+  color: transparent;
+}
