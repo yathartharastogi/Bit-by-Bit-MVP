@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Folder, ArrowLeft, X, ChevronLeft, ChevronRight, Calendar, Sparkles, ExternalLink } from 'lucide-react'
+import { Folder, ArrowLeft, X, ChevronLeft, ChevronRight, Calendar, Sparkles } from 'lucide-react'
 import ScrollReveal from '@/components/ScrollReveal'
 import TextReveal from '@/components/TextReveal'
 import SpotlightCard from '@/components/SpotlightCard'
@@ -131,7 +131,7 @@ export default function Gallery() {
 
           <ScrollReveal delay={0.2}>
             <p className="text-text-sec text-base md:text-lg max-w-xl leading-relaxed">
-              Explore the archives of Bit-By-Bit's flagship events, technical hackathons, game design arenas, and community sprints.
+              Explore the archives of Bit-By-Bit&apos;s flagship events, technical hackathons, game design arenas, and community sprints.
             </p>
           </ScrollReveal>
         </div>
@@ -250,17 +250,7 @@ export default function Gallery() {
                       <Folder size={14} />
                       {currentAlbum?.images.length} Photos
                     </div>
-                    {currentAlbum?.driveUrl && (
-                      <a
-                        href={currentAlbum.driveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-1.5 font-mono text-xs uppercase font-bold tracking-wider text-white bg-primary hover:bg-primary-hover border border-primary/30 rounded-xl transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-primary/10"
-                      >
-                        <ExternalLink size={12} />
-                        View All on Drive
-                      </a>
-                    )}
+
                   </div>
                 </div>
 
