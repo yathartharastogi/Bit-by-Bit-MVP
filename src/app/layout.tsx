@@ -7,6 +7,7 @@ import Loader from "@/components/Loader";
 import ParticleBackground from "@/components/ParticleBackground";
 import NexusScene from "@/components/three/NexusScene";
 import GlobalScrollBlur from "@/components/GlobalScrollBlur";
+import ScalePotential from "@/components/ScalePotential";
 
 const inter = Inter({
   variable: "--font-geist-sans",
@@ -52,6 +53,7 @@ export default function RootLayout({
 
         <main className="flex-grow flex flex-col relative" style={{ zIndex: 1 }}>
           {children}
+          <ScalePotential/>
         </main>
         <Footer />
       </body>
