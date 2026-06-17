@@ -6,25 +6,25 @@ import { CheckCircle2 } from 'lucide-react'
 
 export default function About() {
   const values = [
-    { title: 'Community First', desc: 'People before projects. Always. We grow by lifting each other up.' },
-    { title: 'Open to All', desc: 'No prerequisites except curiosity. Standard branch, age, or background is never a barrier.' },
-    { title: 'Bias for Action', desc: 'Build first. Perfect later. Shipping code is the ultimate proof of learning.' },
-    { title: 'Think Big', desc: 'Transforming classroom exercises into products that can have real-world campus impact.' }
+    { title: 'Community First', desc: 'People before projects. Always. An environment filled with innovation and teamwork. We grow by lifting each other up' },
+    { title: 'Open to All', desc: 'No prerequisites except curiosity. Students of all branches and backgrounds deserve a space to discover new skills and solve problem together.' },
+    { title: 'Bias for Action', desc: 'Build first. Perfect later. Shipping code is the ultimate proof of learning. The club celebrates trying,falling, and improving.' },
+    { title: 'Think Big', desc: 'Transforming classroom exercises into products that can have real-world campus impact. Every effort is aimed at making learning meaningful.' }
   ]
 
   const milestones = [
-    { date: 'September 2020', title: 'The Beginning', desc: '5 students with one shared laptop and infinite ambition founded the club in a hostel room.' },
-    { date: 'January 2021', title: 'First Event: CodeSprint', desc: 'Our first competitive coding event drew 80 participants — 4× what we expected.' },
-    { date: 'August 2021', title: 'BitHack 1.0', desc: '15 teams, 36 hours of non-stop building. The winner joined a top startup 6 months later.' },
-    { date: '2022', title: '100 Active Members', desc: 'Launched 5 specialized domains. Hosted 12 hands-on workshops. Community grew organically through word of mouth.' },
-    { date: '2023', title: 'National Recognition', desc: 'Hosted first national-level hackathon. Featured in college press. Secured sponsorships from industry partners.' },
-    { date: '2024–Present', title: '500+ Members & Growing', desc: '24 events, 80+ workshops, and a community that keeps leveling up every single semester.' }
+    { date: '2017', title: 'The First Bit', desc: 'Founded with a singular vision: to break down the barriers of complex tech education and build an unstructured sanctuary for builders on campus.' },
+    { date: '2018 — 2021', title: 'The Core Stack', desc: 'Focused on open-source development, internal technical bootcamps, and engineering our first cohort of specialized web, AI, and systems domains.' },
+    { date: '2022 — 2024', title: 'Scaling The Network', desc: 'Expanded into an institutional powerhouse—hosting national-level hackathons, forming strategic industry links, and cross-collaborating across technical ecosystems.' },
+    { date: '2025', title: 'Mindzilla', desc: 'Launched our flagship technical coding sprint at AdVITya. High-energy problem solving that pushed competitive programming and algorithmic thinking to the absolute limit.' },
+    { date: '2026', title: 'Playtopia', desc: 'Proved that builders know how to play. Orchestrated a massive non-technical gaming and interactive arena, creating a high-octane entertainment hub for the entire campus.' },
+    { date: 'Present', title: 'The 500+ Ecosystem', desc: 'Operating as a fully self-sustaining community of engineers, designers, and creators—constantly shipping code, hosting events, and defining campus tech culture.' }
   ]
 
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero section — transparent so global Nexus background shows through */}
-      <section className="py-20 relative overflow-hidden min-h-[60vh] flex items-center">
+      <section className="py-18 md:py-22 relative overflow-hidden flex items-center">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(37,99,235,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(37,99,235,0.015)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
         <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
           <div className="max-w-2xl space-y-6 text-left">
@@ -35,9 +35,9 @@ export default function About() {
               text="More Than Code. We Build Community."
               className="font-sans font-bold text-4xl md:text-5xl tracking-tight text-foreground leading-[1.1]"
             />
-            <ScrollReveal delay={0.2}>
+            <ScrollReveal delay={0.1}>
               <p className="text-text-sec text-base md:text-lg max-w-2xl leading-relaxed">
-                Bit-By-Bit Club was born from a simple belief — that students at VIT Bhopal deserve a space to build, fail, learn, and grow together without gatekeeping or prerequisites.
+                Bit By Bit Club is more than just a student club — it is a space where curiosity turns into creativity and ideas turn into experiences. Built by students, for students, the club brings together tech enthusiasts, creators, and learners who believe in exploring, experimenting, and growing together. At Bit By Bit, learning goes beyond classrooms and code.
               </p>
             </ScrollReveal>
           </div>
@@ -45,9 +45,9 @@ export default function About() {
       </section>
 
       {/* Mission Section */}
-      <section className="py-20 transition-colors duration-300">
+      <section className="pb-22 md:pb-26 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-          
+
           {/* Mission and values details */}
           <div className="space-y-6">
             <ScrollReveal>
@@ -60,15 +60,20 @@ export default function About() {
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
               <p className="text-text-sec text-sm leading-relaxed">
-                Our mission is to democratize tech education and innovation at VIT Bhopal. Every student, regardless of branch or background, deserves access to world-class technical knowledge and a network that pushes them to do their best work.
+                The club focuses on creating opportunities where students can discover new skills, collaborate on ideas, solve problems, and challenge themselves in an environment filled with innovation and teamwork.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.3}>
               <p className="text-text-sec text-sm leading-relaxed">
-                Our vision is a campus-wide culture of building — where the default response to an idea is &quot;let&apos;s try it,&quot; where failure is celebrated as a step forward, and where your first project leads to your next opportunity.
+                Whether it’s through technical activities, interactive events, or creative initiatives, every effort is aimed at making learning more engaging and meaningful. The club celebrates the process of trying, failing, learning, and improving.
               </p>
             </ScrollReveal>
-            
+            <ScrollReveal delay={0.4}>
+              <p className="text-text-sec text-sm leading-relaxed">
+                With every event, project, and collaboration, Bit By Bit continues to grow as a community that inspires innovation, builds connections, and help students take their next step - One Bit at a time.
+              </p>
+            </ScrollReveal>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
               {values.map((v, idx) => (
                 <ScrollReveal key={v.title} delay={idx * 0.08}>
@@ -94,7 +99,7 @@ export default function About() {
                 From 0 to 500+.
               </h2>
             </ScrollReveal>
-            
+
             <ScrollReveal delay={0.2}>
               <TracingTimeline items={milestones} />
             </ScrollReveal>
@@ -103,7 +108,7 @@ export default function About() {
       </section>
 
       {/* CTA section */}
-      <section className="py-20 text-center relative overflow-hidden transition-colors duration-300">
+      <section className="pt-12 pb-16 md:pt-16 md:pb-24 text-center relative overflow-hidden transition-colors duration-300">
         <div className="max-w-xl mx-auto px-6 space-y-6 relative z-10">
           <ScrollReveal>
             <div className="font-mono text-xs font-semibold text-primary uppercase tracking-widest">Be Part of It</div>
