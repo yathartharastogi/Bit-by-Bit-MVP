@@ -53,7 +53,7 @@ export default function RootLayout({
 
         <main className="flex-grow flex flex-col relative" style={{ zIndex: 1 }}>
           {children}
-          <ScalePotential />
+          <ScalePotential/>
         </main>
         <Footer />
       </body>

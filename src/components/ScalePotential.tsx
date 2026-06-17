@@ -44,4 +44,4 @@ export default function ScalePotential() {
       </div>
     </section>
   )
-}
+}   
