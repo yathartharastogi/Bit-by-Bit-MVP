@@ -48,7 +48,6 @@ export default function About() {
               <WebGlobe3D />
             </div>
           </div>
-          </div>
         </div>
       </section>
 
