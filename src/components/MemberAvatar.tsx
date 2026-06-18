@@ -11,11 +11,11 @@ interface MemberAvatarProps {
 }
 
 export default function MemberAvatar({ src, name, initials, gradient }: MemberAvatarProps) {
-  const [imgError, setImgError] = useState(false)
+  const [imgError, setImgError] = useState(!src)
 
   return (
     <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-foreground/[0.03] border border-border-custom/50 shadow-inner group">
-      {!imgError ? (
+      {!imgError && src ? (
         <Image
           src={src}
           alt={name}
