@@ -90,7 +90,6 @@ export default function AnimatedTerminal() {
           newHistory.push({ text: '    • Yathartha Rastogi', type: 'output' })
           newHistory.push({ text: '  Development Crew:', type: 'comment' })
           newHistory.push({ text: '    • Joydeep Dutta', type: 'output' })
-          newHistory.push({ text: '    • Kripa Mehndiratta', type: 'output' })
           newHistory.push({ text: '    • Vansh Singh', type: 'output' })
           newHistory.push({ text: '    • Yashwant Sonawane', type: 'output' })
         } else if (cmdLower === 'contact') {
