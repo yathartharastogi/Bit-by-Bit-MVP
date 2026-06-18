@@ -1,7 +1,7 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import { Suspense, useMemo, useRef } from 'react'
+import { Suspense, useState, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { Float, Sphere, Line } from '@react-three/drei'
 import * as THREE from 'three'
@@ -15,7 +15,7 @@ function NetworkNodes() {
   const nodeCount = 40
   const radius = 3.5
   
-  const { positions, connections } = useMemo(() => {
+  const [{ positions, connections }] = useState(() => {
     const pos: [number, number, number][] = []
     for (let i = 0; i < nodeCount; i++) {
       const u = Math.random()
@@ -51,7 +51,7 @@ function NetworkNodes() {
     }
     
     return { positions: pos, connections: conns }
-  }, [])
+  })
 
   useFrame((state) => {
     if (groupRef.current) {

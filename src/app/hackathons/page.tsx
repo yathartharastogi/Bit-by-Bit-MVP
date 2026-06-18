@@ -6,6 +6,7 @@ import ScrollReveal from '@/components/ScrollReveal'
 import TextReveal from '@/components/TextReveal'
 import TracingTimeline from '@/components/TracingTimeline'
 import { Sparkles, Calendar, MapPin, Award } from 'lucide-react'
+import FloatingCodeIcon from '@/components/three/FloatingCodeIcon'
 
 export default function Hackathons() {
   const pastEditions = [
@@ -39,11 +40,18 @@ export default function Hackathons() {
             <div className="font-mono text-xs font-semibold text-primary uppercase tracking-widest">Flagship Hackathons</div>
           </ScrollReveal>
           
-          <TextReveal
-            text="36 Hours to Change Everything."
-            className="font-sans font-bold text-4xl md:text-5xl tracking-tight text-foreground leading-[1.1]"
-          />
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 md:gap-12 py-2">
+            <TextReveal
+              text="36 Hours to Change Everything."
+              className="font-sans font-bold text-4xl md:text-5xl tracking-tight text-foreground leading-[1.1] flex-1 max-w-2xl"
+            />
+            
+            <div className="hidden md:flex justify-center items-center flex-shrink-0">
+              <FloatingCodeIcon />
+            </div>
+          </div>
           
+
           <ScrollReveal delay={0.2}>
             <p className="text-text-sec text-base md:text-lg max-w-xl leading-relaxed">
               BitHack is where ideas become prototypes, strangers become teammates, and students become engineers. Our flagship series has launched student careers.

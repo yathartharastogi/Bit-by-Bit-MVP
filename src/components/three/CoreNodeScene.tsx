@@ -59,7 +59,7 @@ function OrbitalRing({
     [radius, tubeRadius]
   )
 
-  const binaries = useMemo(() => {
+  const [binaries] = useState(() => {
     const chars = []
     const count = 12
     for (let i = 0; i < count; i++) {
@@ -72,7 +72,7 @@ function OrbitalRing({
       })
     }
     return chars
-  }, [radius])
+  })
 
   return (
     <group ref={ringRef} rotation={[rotX, 0, rotZ]}>

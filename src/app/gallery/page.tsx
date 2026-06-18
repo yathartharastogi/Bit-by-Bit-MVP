@@ -7,6 +7,9 @@ import { Folder, ArrowLeft, X, ChevronLeft, ChevronRight, Calendar, Sparkles } f
 import ScrollReveal from '@/components/ScrollReveal'
 import TextReveal from '@/components/TextReveal'
 import SpotlightCard from '@/components/SpotlightCard'
+import dynamic from 'next/dynamic'
+
+import OrbitalGallery from '@/components/OrbitalGallery'
 
 interface GalleryImage {
   src: string
@@ -156,83 +159,16 @@ export default function Gallery() {
           <AnimatePresence mode="wait">
             {activeAlbum === null ? (
               // ------------------- ALBUM SELECTION VIEW -------------------
+              // ------------------- ALBUM SELECTION ORBITAL VIEW -------------------
               <motion.div
-                key="album-list"
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.3 }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto"
+                key="orbital-carousel"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.05 }}
+                transition={{ duration: 0.5 }}
+                className="w-full"
               >
-                {albums.map((album, idx) => (
-                  <ScrollReveal key={album.id} delay={idx * 0.1}>
-                    <div
-                      onClick={() => setActiveAlbum(album.id)}
-                      className="group cursor-pointer flex flex-col h-full"
-                    >
-                      <SpotlightCard className="p-6 bg-background border border-border-custom hover:border-primary/50 transition-all duration-300 flex flex-col h-full">
-                        {/* Folder Photo Pile Visual */}
-                        <div className="relative w-full aspect-video rounded-xl bg-card-bg/50 border border-border-custom/50 flex items-center justify-center overflow-hidden mb-6 group-hover:bg-primary/[0.02] transition-colors duration-300">
-                          {/* Photo Deck stacking effect */}
-                          <div className="relative w-2/3 h-2/3 flex items-center justify-center">
-                            {/* Left stacked image */}
-                            <div className="absolute w-[80%] h-[80%] rounded-lg overflow-hidden border-2 border-border-custom shadow-2xl rotate-[-8deg] -translate-x-6 translate-y-2 group-hover:rotate-[-14deg] group-hover:-translate-x-10 group-hover:-translate-y-2 transition-all duration-500 origin-bottom-left ease-out">
-                              <Image
-                                src={album.images[0].src}
-                                alt="preview 1"
-                                fill
-                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 500px"
-                                className="object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-500"
-                              />
-                            </div>
-
-                            {/* Right stacked image */}
-                            <div className="absolute w-[80%] h-[80%] rounded-lg overflow-hidden border-2 border-border-custom shadow-2xl rotate-[8deg] translate-x-6 translate-y-2 group-hover:rotate-[14deg] group-hover:translate-x-10 group-hover:-translate-y-2 transition-all duration-500 origin-bottom-right ease-out">
-                              <Image
-                                src={album.images[1].src}
-                                alt="preview 2"
-                                fill
-                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 500px"
-                                className="object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-500"
-                              />
-                            </div>
-
-                            {/* Center prominent stacked image */}
-                            <div className="absolute w-[85%] h-[85%] rounded-lg overflow-hidden border-2 border-border-custom shadow-2xl z-10 group-hover:-translate-y-4 group-hover:scale-105 transition-all duration-500 ease-out">
-                              <Image
-                                src={album.cover}
-                                alt="cover"
-                                fill
-                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 500px"
-                                className="object-cover group-hover:scale-105 transition-transform duration-700"
-                              />
-                            </div>
-                          </div>
-
-                          {/* Folder Tab Overlay Tag */}
-                          <div className="absolute top-3 left-3 px-3 py-1 bg-background/80 border border-border-custom/50 rounded-full flex items-center gap-1.5 backdrop-blur-sm z-20">
-                            <Folder size={12} className="text-primary" />
-                            <span className="font-mono text-[10px] text-text-sec uppercase tracking-wider">{album.count} Photos</span>
-                          </div>
-                        </div>
-
-                        {/* Text Metadata */}
-                        <div className="text-left space-y-2 mt-auto">
-                          <div className="flex items-center gap-2 text-primary font-mono text-[10px] uppercase tracking-wider">
-                            <Calendar size={12} />
-                            {album.date}
-                          </div>
-                          <h3 className="font-sans font-bold text-xl text-foreground group-hover:text-primary transition-colors duration-300">
-                            {album.title}
-                          </h3>
-                          <p className="text-text-sec text-xs leading-relaxed line-clamp-2">
-                            {album.desc}
-                          </p>
-                        </div>
-                      </SpotlightCard>
-                    </div>
-                  </ScrollReveal>
-                ))}
+                <OrbitalGallery albums={albums} onSelectAlbum={setActiveAlbum} />
               </motion.div>
             ) : (
               // ------------------- ALBUM ACTIVE GRID VIEW -------------------
