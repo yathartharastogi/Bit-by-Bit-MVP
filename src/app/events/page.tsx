@@ -24,7 +24,7 @@ const defaultEvents: Event[] = [
     date: new Date('2026-11-20T10:00:00Z'),
     type: 'hackathon',
     capacity: 250,
-    imageUrl: '/events/mindzilla/20250220_091159.webp',
+    imageUrl: '/events/mindzilla/1The Gateway.jpeg',
     status: 'UPCOMING',
     location: 'Tech Park Lab, VIT Bhopal'
   }

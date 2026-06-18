@@ -31,7 +31,7 @@ const albums: Album[] = [
     id: 'mindzilla',
     title: 'Mindzilla 2025',
     desc: "Relive the high-energy problem-solving atmosphere of Bit-By-Bit's flagship logic and coding sprint event held at AdVITya.",
-    cover: '/events/mindzilla/20250220_091159.webp',
+    cover: '/events/mindzilla/1The Gateway.jpeg',
     date: 'February 20, 2025',
     count: 12,
     driveUrl: 'https://drive.google.com/drive/folders/156kT6R9hKENkpQoOti0k4ZoeqeQlMts_',
@@ -60,7 +60,7 @@ const albums: Album[] = [
     id: 'playtopia',
     title: 'Playtopia 2026',
     desc: 'Moments of ultimate gaming tournaments, interactive sports setups, and vibrant student participation during the Playtopia event.',
-    cover: '/events/playtopia/IMG20260226180720.webp',
+    cover: '/events/playtopia/1TheWelcomeTerminal.jpeg',
     date: 'February 26-27, 2026',
     count: 12,
     driveUrl: 'https://drive.google.com/drive/folders/1cQ7FwA51Qf4Bu4yfbqLl8sckmix4i_97',
@@ -181,6 +181,7 @@ export default function Gallery() {
                                 src={album.images[0].src}
                                 alt="preview 1"
                                 fill
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 500px"
                                 className="object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-500"
                               />
                             </div>
@@ -191,6 +192,7 @@ export default function Gallery() {
                                 src={album.images[1].src}
                                 alt="preview 2"
                                 fill
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 500px"
                                 className="object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-500"
                               />
                             </div>
@@ -201,6 +203,7 @@ export default function Gallery() {
                                 src={album.cover}
                                 alt="cover"
                                 fill
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 500px"
                                 className="object-cover group-hover:scale-105 transition-transform duration-700"
                               />
                             </div>

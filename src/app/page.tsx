@@ -48,7 +48,7 @@ const defaultEvents: Event[] = [
     description: 'Flagship technical problem-solving competition of Bit-By-Bit Club. Challenge your critical thinking, resolve logical sprints, and solve analytical puzzles under pressure.',
     date: new Date('2026-11-20T10:00:00Z'),
     type: 'hackathon',
-    imageUrl: '/events/mindzilla/20250220_091159.webp',
+    imageUrl: '/events/mindzilla/1The Gateway.jpeg',
     status: 'UPCOMING',
     location: 'Tech Park Lab, VIT Bhopal'
   }

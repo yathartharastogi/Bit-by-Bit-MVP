@@ -65,6 +65,7 @@ export default function Loader() {
                 alt="Bit-By-Bit Logo"
                 fill
                 priority
+                sizes="(max-width: 640px) 112px, (max-width: 768px) 176px, 192px"
                 className="object-contain"
               />
             </motion.div>
