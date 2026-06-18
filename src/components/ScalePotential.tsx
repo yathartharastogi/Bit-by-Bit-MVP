@@ -1,8 +1,15 @@
 'use client'
 import React from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export default function ScalePotential() {
+  const pathname = usePathname()
+
+  if (pathname === '/team') {
+    return null
+  }
+
   return (
     <section className="relative py-32 px-6 text-center overflow-hidden bg-[#020617] z-10">
       {/* 
