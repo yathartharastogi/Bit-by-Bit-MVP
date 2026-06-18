@@ -52,3 +52,4 @@ dev.db-journal
 .env.local
 antigravity-workflow.md
 DEVELOPER_GUIDE.md
+/src/app/team/temp/

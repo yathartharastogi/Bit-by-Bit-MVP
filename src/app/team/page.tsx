@@ -18,7 +18,7 @@ const CORE_TEAM = [
     av: 'AS', 
     color: 'border-blue-500/30 text-blue-500 bg-blue-500/10', 
     gradient: 'from-blue-600 via-indigo-600 to-violet-600', 
-    avatar: '', 
+    avatar: '/team/atherva.png', 
     quote: 'Insert personal quote here...' 
   },
   { 
@@ -30,7 +30,7 @@ const CORE_TEAM = [
     av: 'CA', 
     color: 'border-purple-500/30 text-purple-500 bg-purple-500/10', 
     gradient: 'from-purple-600 via-fuchsia-600 to-pink-600', 
-    avatar: '', 
+    avatar: '/team/chavi.jpg', 
     quote: 'Insert personal quote here...' 
   },
   { 
@@ -42,7 +42,7 @@ const CORE_TEAM = [
     av: 'JA', 
     color: 'border-emerald-500/30 text-emerald-500 bg-emerald-500/10', 
     gradient: 'from-emerald-600 via-teal-600 to-cyan-600', 
-    avatar: '', 
+    avatar: '/team/jiya.jpeg', 
     quote: 'Insert personal quote here...' 
   }
 ]
@@ -59,7 +59,7 @@ const DOMAIN_LEADS = [
     av: 'YS', 
     color: 'border-emerald-500/30 text-emerald-500 bg-emerald-500/10', 
     gradient: 'from-teal-500 to-emerald-500', 
-    avatar: '', 
+    avatar: '/team/yashodhara.jpeg', 
     quote: 'Insert personal quote here...' 
   },
   { 
@@ -72,7 +72,8 @@ const DOMAIN_LEADS = [
     av: 'AS', 
     color: 'border-emerald-500/30 text-emerald-500 bg-emerald-500/10', 
     gradient: 'from-teal-400 to-emerald-400', 
-    avatar: '', 
+    avatar: '/team/abhimanyu.png', 
+    objectPosition: 'top', 
     quote: 'Insert personal quote here...' 
   },
   { 
@@ -85,7 +86,7 @@ const DOMAIN_LEADS = [
     av: 'VM', 
     color: 'border-blue-500/30 text-blue-500 bg-blue-500/10', 
     gradient: 'from-blue-500 to-cyan-500', 
-    avatar: '', 
+    avatar: '/team/vedant.jpg', 
     quote: 'Insert personal quote here...' 
   },
   { 
@@ -98,7 +99,7 @@ const DOMAIN_LEADS = [
     av: 'DJ', 
     color: 'border-blue-500/30 text-blue-500 bg-blue-500/10', 
     gradient: 'from-blue-400 to-cyan-400', 
-    avatar: '', 
+    avatar: '/team/dipanshu.jpeg', 
     quote: 'Insert personal quote here...' 
   },
   { 
@@ -111,7 +112,7 @@ const DOMAIN_LEADS = [
     av: 'TS', 
     color: 'border-pink-500/30 text-pink-500 bg-pink-500/10', 
     gradient: 'from-pink-500 to-rose-500', 
-    avatar: '', 
+    avatar: '/team/tanisha.jpg', 
     quote: 'Insert personal quote here...' 
   },
   { 
@@ -124,7 +125,7 @@ const DOMAIN_LEADS = [
     av: 'DS', 
     color: 'border-pink-500/30 text-pink-500 bg-pink-500/10', 
     gradient: 'from-pink-400 to-rose-400', 
-    avatar: '', 
+    avatar: '/team/divyansh.jpg', 
     quote: 'Insert personal quote here...' 
   },
   { 
@@ -137,7 +138,7 @@ const DOMAIN_LEADS = [
     av: 'SM', 
     color: 'border-orange-500/30 text-orange-500 bg-orange-500/10', 
     gradient: 'from-amber-500 to-orange-500', 
-    avatar: '', 
+    avatar: '/team/shreya.jpg', 
     quote: 'Insert personal quote here...' 
   },
   { 
@@ -163,7 +164,7 @@ const DOMAIN_LEADS = [
     av: 'GP', 
     color: 'border-purple-500/30 text-purple-500 bg-purple-500/10', 
     gradient: 'from-violet-400 to-fuchsia-400', 
-    avatar: '', 
+    avatar: '/team/gayatri.jpg', 
     quote: 'Insert personal quote here...' 
   },
   { 
@@ -176,7 +177,7 @@ const DOMAIN_LEADS = [
     av: 'DP', 
     color: 'border-yellow-500/30 text-yellow-500 bg-yellow-500/10', 
     gradient: 'from-yellow-500 to-amber-500', 
-    avatar: '', 
+    avatar: '/team/dhyan.jpg', 
     quote: 'Insert personal quote here...' 
   },
   { 
@@ -189,7 +190,7 @@ const DOMAIN_LEADS = [
     av: 'SP', 
     color: 'border-yellow-500/30 text-yellow-500 bg-yellow-500/10', 
     gradient: 'from-yellow-400 to-amber-400', 
-    avatar: '', 
+    avatar: '/team/sarika.jpg', 
     quote: 'Insert personal quote here...' 
   }
 ]
@@ -204,7 +205,7 @@ const DEV_TEAM_LEAD = {
   av: 'YR',
   color: 'border-indigo-500/30 text-indigo-500 bg-indigo-500/10',
   gradient: 'from-indigo-600 via-blue-600 to-cyan-500',
-  avatar: '',
+  avatar: '/team/yathartha.jpg',
   quote: 'Insert personal quote here...'
 }
 
@@ -218,19 +219,7 @@ const DEV_TEAM_MEMBERS = [
     av: 'JD', 
     color: 'border-cyan-500/30 text-cyan-500 bg-cyan-500/10', 
     gradient: 'from-cyan-500 to-teal-500', 
-    avatar: '', 
-    quote: 'Insert personal quote here...' 
-  },
-  { 
-    name: 'Kripa Mehndiratta', 
-    role: 'Core Developer', 
-    reg: '25BAI10906', 
-    email: 'kripa.25bai10906@vitbhopal.ac.in', 
-    phone: '8737086169', 
-    av: 'KM', 
-    color: 'border-purple-500/30 text-purple-500 bg-purple-500/10', 
-    gradient: 'from-violet-500 to-indigo-500', 
-    avatar: '', 
+    avatar: '/team/joy.jpeg', 
     quote: 'Insert personal quote here...' 
   },
   { 
@@ -400,6 +389,7 @@ export default function Team() {
                         name={member.name} 
                         initials={member.av} 
                         gradient={member.gradient} 
+                        objectPosition={(member as any).objectPosition}
                       />
 
                       <h3 className="font-sans font-bold text-lg text-foreground mt-4 mb-0.5 leading-tight">{member.name}</h3>
@@ -489,6 +479,7 @@ export default function Team() {
                         name={member.name} 
                         initials={member.av} 
                         gradient={member.gradient} 
+                        objectPosition={(member as any).objectPosition}
                       />
 
                       <h3 className="font-sans font-bold text-base text-foreground mt-4 mb-0.5 leading-tight">{member.name}</h3>
@@ -583,6 +574,7 @@ export default function Team() {
                         name={DEV_TEAM_LEAD.name} 
                         initials={DEV_TEAM_LEAD.av} 
                         gradient={DEV_TEAM_LEAD.gradient} 
+                        objectPosition={(DEV_TEAM_LEAD as any).objectPosition}
                       />
 
                       <h3 className="font-sans font-bold text-lg text-foreground mt-4 mb-0.5 leading-tight flex items-center gap-2">
@@ -660,6 +652,7 @@ export default function Team() {
                           name={member.name} 
                           initials={member.av} 
                           gradient={member.gradient} 
+                          objectPosition={(member as any).objectPosition}
                         />
 
                         <h3 className="font-sans font-bold text-base text-foreground mt-4 mb-0.5 leading-tight">{member.name}</h3>

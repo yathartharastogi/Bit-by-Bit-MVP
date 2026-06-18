@@ -8,9 +8,10 @@ interface MemberAvatarProps {
   name: string
   initials: string
   gradient: string
+  objectPosition?: string
 }
 
-export default function MemberAvatar({ src, name, initials, gradient }: MemberAvatarProps) {
+export default function MemberAvatar({ src, name, initials, gradient, objectPosition }: MemberAvatarProps) {
   const [imgError, setImgError] = useState(!src)
 
   return (
@@ -22,6 +23,7 @@ export default function MemberAvatar({ src, name, initials, gradient }: MemberAv
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
+          style={{ objectPosition: objectPosition || 'center' }}
           onError={() => setImgError(true)}
         />
       ) : (
