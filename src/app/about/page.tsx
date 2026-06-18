@@ -3,6 +3,7 @@ import TracingTimeline from '@/components/TracingTimeline'
 import ScrollReveal from '@/components/ScrollReveal'
 import TextReveal from '@/components/TextReveal'
 import { CheckCircle2 } from 'lucide-react'
+import WebGlobe3D from '@/components/three/WebGlobe3D'
 
 export default function About() {
   const values = [
@@ -27,19 +28,25 @@ export default function About() {
       <section className="py-20 relative overflow-hidden min-h-[60vh] flex items-center">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(37,99,235,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(37,99,235,0.015)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
         <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
-          <div className="max-w-2xl space-y-6 text-left">
-            <ScrollReveal>
-              <div className="font-mono text-xs font-semibold text-primary uppercase tracking-widest">Our Story</div>
-            </ScrollReveal>
-            <TextReveal
-              text="More Than Code. We Build Community."
-              className="font-sans font-bold text-4xl md:text-5xl tracking-tight text-foreground leading-[1.1]"
-            />
-            <ScrollReveal delay={0.2}>
-              <p className="text-text-sec text-base md:text-lg max-w-2xl leading-relaxed">
-                Bit-By-Bit Club was born from a simple belief — that students at VIT Bhopal deserve a space to build, fail, learn, and grow together without gatekeeping or prerequisites.
-              </p>
-            </ScrollReveal>
+          <div className="flex flex-col md:flex-row-reverse md:items-center justify-between gap-8 md:gap-12 py-2">
+            <div className="max-w-2xl space-y-6 text-left">
+              <ScrollReveal>
+                <div className="font-mono text-xs font-semibold text-primary uppercase tracking-widest">Our Story</div>
+              </ScrollReveal>
+              <TextReveal
+                text="More Than Code. We Build Community."
+                className="font-sans font-bold text-4xl md:text-5xl tracking-tight text-foreground leading-[1.1]"
+              />
+              <ScrollReveal delay={0.2}>
+                <p className="text-text-sec text-base md:text-lg max-w-2xl leading-relaxed">
+                  Bit-By-Bit Club was born from a simple belief — that students at VIT Bhopal deserve a space to build, fail, learn, and grow together without gatekeeping or prerequisites.
+                </p>
+              </ScrollReveal>
+            </div>
+            
+            <div className="hidden md:flex justify-center items-center flex-shrink-0">
+              <WebGlobe3D />
+            </div>
           </div>
         </div>
       </section>

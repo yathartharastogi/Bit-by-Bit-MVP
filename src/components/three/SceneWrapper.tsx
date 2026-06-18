@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState, type ReactNode } from 'react'
 import { Canvas } from '@react-three/fiber'
 import type { CanvasProps } from '@react-three/fiber'
+import ErrorBoundary from '@/components/ErrorBoundary'
 
 // ─── Quality Tier Detection ───────────────────────────────────────────────────
 type QualityTier = 1 | 2 | 3
@@ -107,17 +108,19 @@ export default function SceneWrapper({
 
   return (
     <div ref={containerRef} className={className}>
-      <Canvas
-        frameloop={!visible ? 'never' : demandFrameloop ? 'demand' : 'always'}
-        dpr={getDpr(tier)}
-        aria-hidden="true"
-        role="presentation"
-        gl={{ antialias: tier === 1, powerPreference: 'default', alpha: true }}
-        onCreated={({ gl }) => gl.setClearColor(0x000000, 0)}
-        {...canvasProps}
-      >
-        {children}
-      </Canvas>
+      <ErrorBoundary fallback={fallback}>
+        <Canvas
+          frameloop={!visible ? 'never' : demandFrameloop ? 'demand' : 'always'}
+          dpr={getDpr(tier)}
+          aria-hidden="true"
+          role="presentation"
+          gl={{ antialias: tier === 1, powerPreference: 'default', alpha: true }}
+          onCreated={({ gl }) => gl.setClearColor(0x000000, 0)}
+          {...canvasProps}
+        >
+          {children}
+        </Canvas>
+      </ErrorBoundary>
     </div>
   )
 }

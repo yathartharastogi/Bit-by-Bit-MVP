@@ -7,6 +7,7 @@ import SpotlightCard from '@/components/SpotlightCard'
 import ScrollReveal from '@/components/ScrollReveal'
 import TextReveal from '@/components/TextReveal'
 import AnimatedTerminal from '@/components/AnimatedTerminal'
+import DomainsCPUSection from '@/components/DomainsCPUSection'
 import { Calendar, MapPin, Code, Palette, Share2, Layers, ClipboardList } from 'lucide-react'
 
 // Default fallbacks in case DB is not seeded or encounters issues
@@ -239,45 +240,8 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Domains Section */}
-      <section className="py-24 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-6 space-y-12">
-          <div className="text-center space-y-4 max-w-xl mx-auto">
-            <ScrollReveal>
-              <div className="font-mono text-xs font-semibold text-primary uppercase tracking-widest">What We Do</div>
-            </ScrollReveal>
-            <TextReveal
-              text="Find Your Domain."
-              as="h2"
-              className="font-sans font-bold text-3xl tracking-tight text-foreground justify-center"
-            />
-            <ScrollReveal delay={0.1}>
-              <p className="text-text-sec text-sm leading-relaxed">
-                Every skill has a home here. Build, design, write, or organize — pick your path and grow with people who share your passion.
-              </p>
-            </ScrollReveal>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-            {domains.map((domain, idx) => (
-              <ScrollReveal key={domain.name} delay={idx * 0.05}>
-                <SpotlightCard className="p-6 flex flex-col items-center text-center justify-between border border-border-custom bg-card-bg hover:-translate-y-2 transition-all duration-300 group h-full">
-                  <div className="flex flex-col items-center">
-                    <div className="w-12 h-12 rounded-2xl bg-foreground/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200">
-                      {domain.icon}
-                    </div>
-                    <h3 className="font-sans font-bold text-sm text-foreground mb-2">{domain.name}</h3>
-                    <p className="text-text-sec text-xs leading-relaxed">{domain.desc}</p>
-                  </div>
-                  <div className="mt-6 font-mono text-[9px] font-semibold text-primary tracking-tight px-2 py-0.5 rounded border border-primary/20 bg-primary/5">
-                    {domain.tags}
-                  </div>
-                </SpotlightCard>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Domains Section — 3-column layout with 3D CPU in the centre */}
+      <DomainsCPUSection domains={domains} />
 
       {/* Dynamic News / Announcements Feed & Events */}
       <section className="py-24 transition-colors duration-300">
