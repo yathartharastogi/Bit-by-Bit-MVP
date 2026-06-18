@@ -377,41 +377,6 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Apply CTA Section */}
-      <section className="relative py-24 overflow-hidden transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-8 space-y-4 text-left">
-              <ScrollReveal>
-                <h2 className="font-sans font-bold text-4xl md:text-5xl tracking-tight text-foreground">
-                  Ready to Build?
-                </h2>
-              </ScrollReveal>
-              
-              <ScrollReveal delay={0.1}>
-                <p className="text-text-sec text-base md:text-lg max-w-xl leading-relaxed">
-                  Whether you are looking to win your first hackathon or just want to hang out with other builders. We have a spot for you.
-                </p>
-              </ScrollReveal>
-            </div>
-            
-            <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-row gap-4 justify-end items-center w-full">
-              <Link
-                href="/contact"
-                className="w-full sm:w-auto px-8 py-4 font-mono text-sm uppercase font-bold tracking-wider text-white bg-primary hover:bg-primary-hover rounded-full transition-all duration-200 hover:-translate-y-1 shadow-lg shadow-primary/20 text-center"
-              >
-                Join Us 🚀
-              </Link>
-              <Link
-                href="/team"
-                className="w-full sm:w-auto px-8 py-4 font-mono text-sm uppercase font-bold tracking-wider text-text-sec hover:text-foreground bg-card-bg border border-border-custom hover:border-primary rounded-full transition-all duration-200 hover:-translate-y-1 text-center"
-              >
-                Ping Officers 💬
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }
