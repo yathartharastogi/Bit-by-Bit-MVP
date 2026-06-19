@@ -9,189 +9,189 @@ import MemberAvatar from '@/components/MemberAvatar'
 
 // Executive Committee (Core Board)
 const CORE_TEAM = [
-  { 
-    name: 'Atherva Sahai', 
-    role: 'President', 
-    reg: '24BCE10072', 
-    email: 'atherverva.24bce10072@vitbhopal.ac.in', 
-    phone: '8817136170', 
-    av: 'AS', 
-    color: 'border-blue-500/30 text-blue-500 bg-blue-500/10', 
-    gradient: 'from-blue-600 via-indigo-600 to-violet-600', 
-    avatar: '/team/atherva.png', 
-    quote: 'Insert personal quote here...' 
+  {
+    name: 'Atherva Sahai',
+    role: 'President',
+    reg: '24BCE10072',
+    email: 'atherverva.24bce10072@vitbhopal.ac.in',
+    phone: '8817136170',
+    av: 'AS',
+    color: 'border-blue-500/30 text-blue-500 bg-blue-500/10',
+    gradient: 'from-blue-600 via-indigo-600 to-violet-600',
+    avatar: '/team/atherva.png',
+    quote: 'Insert personal quote here...'
   },
-  { 
-    name: 'Chavi Agrawal', 
-    role: 'Vice President', 
-    reg: '24BCY10035', 
-    email: 'chhavi.24bcy10035@vitbhopal.ac.in', 
-    phone: '9471009641', 
-    av: 'CA', 
-    color: 'border-purple-500/30 text-purple-500 bg-purple-500/10', 
-    gradient: 'from-purple-600 via-fuchsia-600 to-pink-600', 
-    avatar: '/team/chavi.jpg', 
-    quote: 'Insert personal quote here...' 
+  {
+    name: 'Chavi Agrawal',
+    role: 'Vice President',
+    reg: '24BCY10035',
+    email: 'chhavi.24bcy10035@vitbhopal.ac.in',
+    phone: '9471009641',
+    av: 'CA',
+    color: 'border-purple-500/30 text-purple-500 bg-purple-500/10',
+    gradient: 'from-purple-600 via-fuchsia-600 to-pink-600',
+    avatar: '/team/chavi.jpg',
+    quote: 'Insert personal quote here...'
   },
-  { 
-    name: 'Jiya Arora', 
-    role: 'General Secretary', 
-    reg: '24BAI10034', 
-    email: 'jiya.24bai10034@vitbhopal.ac.in', 
-    phone: '9910448908', 
-    av: 'JA', 
-    color: 'border-emerald-500/30 text-emerald-500 bg-emerald-500/10', 
-    gradient: 'from-emerald-600 via-teal-600 to-cyan-600', 
-    avatar: '/team/jiya.jpeg', 
-    quote: 'Insert personal quote here...' 
+  {
+    name: 'Jiya Arora',
+    role: 'General Secretary',
+    reg: '24BAI10034',
+    email: 'jiya.24bai10034@vitbhopal.ac.in',
+    phone: '9910448908',
+    av: 'JA',
+    color: 'border-emerald-500/30 text-emerald-500 bg-emerald-500/10',
+    gradient: 'from-emerald-600 via-teal-600 to-cyan-600',
+    avatar: '/team/jiya.jpeg',
+    quote: 'Insert personal quote here...'
   }
 ]
 
 // Domain Leads (Leads & Co-leads)
 const DOMAIN_LEADS = [
-  { 
-    name: 'Yashodhara Singh', 
-    domain: 'Event Management', 
-    role: 'Domain Lead', 
-    reg: '24BCE10696', 
-    email: 'yashodhara.24bce10696@vitbhopal.ac.in', 
-    phone: '6265440730', 
-    av: 'YS', 
-    color: 'border-emerald-500/30 text-emerald-500 bg-emerald-500/10', 
-    gradient: 'from-teal-500 to-emerald-500', 
-    avatar: '/team/yashodhara.jpeg', 
-    quote: 'Insert personal quote here...' 
+  {
+    name: 'Yashodhara Singh',
+    domain: 'Event Management',
+    role: 'Domain Lead',
+    reg: '24BCE10696',
+    email: 'yashodhara.24bce10696@vitbhopal.ac.in',
+    phone: '6265440730',
+    av: 'YS',
+    color: 'border-emerald-500/30 text-emerald-500 bg-emerald-500/10',
+    gradient: 'from-teal-500 to-emerald-500',
+    avatar: '/team/yashodhara.jpeg',
+    quote: 'Insert personal quote here...'
   },
-  { 
-    name: 'Abhimanyu Singh', 
-    domain: 'Event Management', 
-    role: 'Co-Lead', 
-    reg: '24BCE10726', 
-    email: 'abhimanyu.24bce10726@vitbhopal.ac.in', 
-    phone: '9460389012', 
-    av: 'AS', 
-    color: 'border-emerald-500/30 text-emerald-500 bg-emerald-500/10', 
-    gradient: 'from-teal-400 to-emerald-400', 
-    avatar: '/team/abhimanyu.png', 
-    objectPosition: 'top', 
-    quote: 'Insert personal quote here...' 
+  {
+    name: 'Abhimanyu Singh',
+    domain: 'Event Management',
+    role: 'Co-Lead',
+    reg: '24BCE10726',
+    email: 'abhimanyu.24bce10726@vitbhopal.ac.in',
+    phone: '9460389012',
+    av: 'AS',
+    color: 'border-emerald-500/30 text-emerald-500 bg-emerald-500/10',
+    gradient: 'from-teal-400 to-emerald-400',
+    avatar: '/team/abhimanyu.png',
+    objectPosition: 'top',
+    quote: 'Insert personal quote here...'
   },
-  { 
-    name: 'Vedant Mishra', 
-    domain: 'Technical Team', 
-    role: 'Domain Lead', 
-    reg: '24BCE10779', 
-    email: 'vedant.24bce10779@vitbhopal.ac.in', 
-    phone: '7565842406', 
-    av: 'VM', 
-    color: 'border-blue-500/30 text-blue-500 bg-blue-500/10', 
-    gradient: 'from-blue-500 to-cyan-500', 
-    avatar: '/team/vedant.jpg', 
-    quote: 'Insert personal quote here...' 
+  {
+    name: 'Vedant Mishra',
+    domain: 'Technical Team',
+    role: 'Domain Lead',
+    reg: '24BCE10779',
+    email: 'vedant.24bce10779@vitbhopal.ac.in',
+    phone: '7565842406',
+    av: 'VM',
+    color: 'border-blue-500/30 text-blue-500 bg-blue-500/10',
+    gradient: 'from-blue-500 to-cyan-500',
+    avatar: '/team/vedant.jpg',
+    quote: 'Insert personal quote here...'
   },
-  { 
-    name: 'Dipanshu Joshi', 
-    domain: 'Technical Team', 
-    role: 'Co-Lead', 
-    reg: '24BAI10707', 
-    email: 'dipanshu.24bai10707@vitbhopal.ac.in', 
-    phone: '8502076849', 
-    av: 'DJ', 
-    color: 'border-blue-500/30 text-blue-500 bg-blue-500/10', 
-    gradient: 'from-blue-400 to-cyan-400', 
-    avatar: '/team/dipanshu.jpeg', 
-    quote: 'Insert personal quote here...' 
+  {
+    name: 'Dipanshu Joshi',
+    domain: 'Technical Team',
+    role: 'Co-Lead',
+    reg: '24BAI10707',
+    email: 'dipanshu.24bai10707@vitbhopal.ac.in',
+    phone: '8502076849',
+    av: 'DJ',
+    color: 'border-blue-500/30 text-blue-500 bg-blue-500/10',
+    gradient: 'from-blue-400 to-cyan-400',
+    avatar: '/team/dipanshu.jpeg',
+    quote: 'Insert personal quote here...'
   },
-  { 
-    name: 'Tanisha Sharma', 
-    domain: 'Content Team', 
-    role: 'Domain Lead', 
-    reg: '24BAI10165', 
-    email: 'tanisha.24bai10165@vitbhopal.ac.in', 
-    phone: '8094444766', 
-    av: 'TS', 
-    color: 'border-pink-500/30 text-pink-500 bg-pink-500/10', 
-    gradient: 'from-pink-500 to-rose-500', 
-    avatar: '/team/tanisha.jpg', 
-    quote: 'Insert personal quote here...' 
+  {
+    name: 'Tanisha Sharma',
+    domain: 'Content Team',
+    role: 'Domain Lead',
+    reg: '24BAI10165',
+    email: 'tanisha.24bai10165@vitbhopal.ac.in',
+    phone: '8094444766',
+    av: 'TS',
+    color: 'border-pink-500/30 text-pink-500 bg-pink-500/10',
+    gradient: 'from-pink-500 to-rose-500',
+    avatar: '/team/tanisha.jpg',
+    quote: 'Insert personal quote here...'
   },
-  { 
-    name: 'Divyansh Singh', 
-    domain: 'Content Team', 
-    role: 'Co-Lead', 
-    reg: '24BCE11135', 
-    email: 'divyansh.24bce11135@vitbhopal.ac.in', 
-    phone: '9695391306', 
-    av: 'DS', 
-    color: 'border-pink-500/30 text-pink-500 bg-pink-500/10', 
-    gradient: 'from-pink-400 to-rose-400', 
-    avatar: '/team/divyansh.jpg', 
-    quote: 'Insert personal quote here...' 
+  {
+    name: 'Divyansh Singh',
+    domain: 'Content Team',
+    role: 'Co-Lead',
+    reg: '24BCE11135',
+    email: 'divyansh.24bce11135@vitbhopal.ac.in',
+    phone: '9695391306',
+    av: 'DS',
+    color: 'border-pink-500/30 text-pink-500 bg-pink-500/10',
+    gradient: 'from-pink-400 to-rose-400',
+    avatar: '/team/divyansh.jpg',
+    quote: 'Insert personal quote here...'
   },
-  { 
-    name: 'Shreya Mittal', 
-    domain: 'PR & Outreach', 
-    role: 'Domain Lead', 
-    reg: '24BSA10056', 
-    email: 'shreya.24bsa10056@vitbhopal.ac.in', 
-    phone: '9893161565', 
-    av: 'SM', 
-    color: 'border-orange-500/30 text-orange-500 bg-orange-500/10', 
-    gradient: 'from-amber-500 to-orange-500', 
-    avatar: '/team/shreya.jpg', 
-    quote: 'Insert personal quote here...' 
+  {
+    name: 'Shreya Mittal',
+    domain: 'PR & Outreach',
+    role: 'Domain Lead',
+    reg: '24BSA10056',
+    email: 'shreya.24bsa10056@vitbhopal.ac.in',
+    phone: '9893161565',
+    av: 'SM',
+    color: 'border-orange-500/30 text-orange-500 bg-orange-500/10',
+    gradient: 'from-amber-500 to-orange-500',
+    avatar: '/team/shreya.jpg',
+    quote: 'Insert personal quote here...'
   },
-  { 
-    name: 'Akshit Bakshi', 
-    domain: 'Design Team', 
-    role: 'Domain Lead', 
-    reg: '24BCY10356', 
-    email: 'akshit.24bcy10356@vitbhopal.ac.in', 
-    phone: '9818394521', 
-    av: 'AB', 
-    color: 'border-purple-500/30 text-purple-500 bg-purple-500/10', 
-    gradient: 'from-violet-500 to-fuchsia-500', 
-    avatar: '', 
-    quote: 'Insert personal quote here...' 
+  {
+    name: 'Akshit Bakshi',
+    domain: 'Design Team',
+    role: 'Domain Lead',
+    reg: '24BCY10356',
+    email: 'akshit.24bcy10356@vitbhopal.ac.in',
+    phone: '9818394521',
+    av: 'AB',
+    color: 'border-purple-500/30 text-purple-500 bg-purple-500/10',
+    gradient: 'from-violet-500 to-fuchsia-500',
+    avatar: '',
+    quote: 'Insert personal quote here...'
   },
-  { 
-    name: 'Gayatri Palodkar', 
-    domain: 'Design Team', 
-    role: 'Co-Lead', 
-    reg: '25MIM10096', 
-    email: 'gayatri.25mim10096@vitbhopal.ac.in', 
-    phone: '9699188461', 
-    av: 'GP', 
-    color: 'border-purple-500/30 text-purple-500 bg-purple-500/10', 
-    gradient: 'from-violet-400 to-fuchsia-400', 
-    avatar: '/team/gayatri.jpg', 
-    quote: 'Insert personal quote here...' 
+  {
+    name: 'Gayatri Palodkar',
+    domain: 'Design Team',
+    role: 'Co-Lead',
+    reg: '25MIM10096',
+    email: 'gayatri.25mim10096@vitbhopal.ac.in',
+    phone: '9699188461',
+    av: 'GP',
+    color: 'border-purple-500/30 text-purple-500 bg-purple-500/10',
+    gradient: 'from-violet-400 to-fuchsia-400',
+    avatar: '/team/gayatri.jpeg',
+    quote: 'Insert personal quote here...'
   },
-  { 
-    name: 'Dhyan Patel', 
-    domain: 'Finance Team', 
-    role: 'Domain Lead', 
-    reg: '24BSA10274', 
-    email: 'dhyan.24bsa10274@vitbhopal.ac.in', 
-    phone: '9426151944', 
-    av: 'DP', 
-    color: 'border-yellow-500/30 text-yellow-500 bg-yellow-500/10', 
-    gradient: 'from-yellow-500 to-amber-500', 
-    avatar: '/team/dhyan.jpg', 
-    quote: 'Insert personal quote here...' 
+  {
+    name: 'Dhyan Patel',
+    domain: 'Finance Team',
+    role: 'Domain Lead',
+    reg: '24BSA10274',
+    email: 'dhyan.24bsa10274@vitbhopal.ac.in',
+    phone: '9426151944',
+    av: 'DP',
+    color: 'border-yellow-500/30 text-yellow-500 bg-yellow-500/10',
+    gradient: 'from-yellow-500 to-amber-500',
+    avatar: '/team/dhyan.jpg',
+    quote: 'Insert personal quote here...'
   },
-  { 
-    name: 'Sarika Parmar', 
-    domain: 'Finance Team', 
-    role: 'Co-Lead', 
-    reg: '23MIM10210', 
-    email: 'sarika.23mim10210@vitbhopal.ac.in', 
-    phone: '6268646624', 
-    av: 'SP', 
-    color: 'border-yellow-500/30 text-yellow-500 bg-yellow-500/10', 
-    gradient: 'from-yellow-400 to-amber-400', 
-    avatar: '/team/sarika.jpg', 
-    quote: 'Insert personal quote here...' 
+  {
+    name: 'Sarika Parmar',
+    domain: 'Finance Team',
+    role: 'Co-Lead',
+    reg: '23MIM10210',
+    email: 'sarika.23mim10210@vitbhopal.ac.in',
+    phone: '6268646624',
+    av: 'SP',
+    color: 'border-yellow-500/30 text-yellow-500 bg-yellow-500/10',
+    gradient: 'from-yellow-400 to-amber-400',
+    avatar: '/team/sarika.jpg',
+    quote: 'Insert personal quote here...'
   }
 ]
 
@@ -210,41 +210,41 @@ const DEV_TEAM_LEAD = {
 }
 
 const DEV_TEAM_MEMBERS = [
-  { 
-    name: 'Joydeep Dutta', 
-    role: 'Core Developer', 
-    reg: '25BCY10002', 
-    email: 'joydeep.25bcy10002@vitbhopal.ac.in', 
-    phone: '7905083253', 
-    av: 'JD', 
-    color: 'border-cyan-500/30 text-cyan-500 bg-cyan-500/10', 
-    gradient: 'from-cyan-500 to-teal-500', 
-    avatar: '/team/joy.jpeg', 
-    quote: 'Insert personal quote here...' 
+  {
+    name: 'Joydeep Dutta',
+    role: 'Core Developer',
+    reg: '25BCY10002',
+    email: 'joydeep.25bcy10002@vitbhopal.ac.in',
+    phone: '7905083253',
+    av: 'JD',
+    color: 'border-cyan-500/30 text-cyan-500 bg-cyan-500/10',
+    gradient: 'from-cyan-500 to-teal-500',
+    avatar: '/team/joy.jpeg',
+    quote: 'Insert personal quote here...'
   },
-  { 
-    name: 'Vansh Singh', 
-    role: 'Core Developer', 
-    reg: '25BCE10723', 
-    email: 'vansh.25bce10723@vitbhopal.ac.in', 
-    phone: '9997503925', 
-    av: 'VS', 
-    color: 'border-emerald-500/30 text-emerald-500 bg-emerald-500/10', 
-    gradient: 'from-emerald-500 to-teal-500', 
-    avatar: '', 
-    quote: 'Insert personal quote here...' 
+  {
+    name: 'Vansh Singh',
+    role: 'Core Developer',
+    reg: '25BCE10723',
+    email: 'vansh.25bce10723@vitbhopal.ac.in',
+    phone: '9997503925',
+    av: 'VS',
+    color: 'border-emerald-500/30 text-emerald-500 bg-emerald-500/10',
+    gradient: 'from-emerald-500 to-teal-500',
+    avatar: '',
+    quote: 'Insert personal quote here...'
   },
-  { 
-    name: 'Yashwant Sonawane', 
-    role: 'Core Developer', 
-    reg: '25BAI10061', 
-    email: 'yashwant.25bai10061@vitbhopal.ac.in', 
-    phone: '7744942169', 
-    av: 'YS', 
-    color: 'border-blue-500/30 text-blue-500 bg-blue-500/10', 
-    gradient: 'from-blue-500 to-indigo-500', 
-    avatar: '', 
-    quote: 'Insert personal quote here...' 
+  {
+    name: 'Yashwant Sonawane',
+    role: 'Core Developer',
+    reg: '25BAI10061',
+    email: 'yashwant.25bai10061@vitbhopal.ac.in',
+    phone: '7744942169',
+    av: 'YS',
+    color: 'border-blue-500/30 text-blue-500 bg-blue-500/10',
+    gradient: 'from-blue-500 to-indigo-500',
+    avatar: '/team/yashwant.jpg',
+    quote: 'Insert personal quote here...'
   }
 ]
 
@@ -265,9 +265,9 @@ export default function Team() {
   const filteredCores = useMemo(() => {
     if (!searchQuery) return CORE_TEAM
     const q = searchQuery.toLowerCase()
-    return CORE_TEAM.filter(c => 
-      c.name.toLowerCase().includes(q) || 
-      c.role.toLowerCase().includes(q) || 
+    return CORE_TEAM.filter(c =>
+      c.name.toLowerCase().includes(q) ||
+      c.role.toLowerCase().includes(q) ||
       c.reg.toLowerCase().includes(q)
     )
   }, [searchQuery])
@@ -275,10 +275,10 @@ export default function Team() {
   const filteredLeads = useMemo(() => {
     if (!searchQuery) return DOMAIN_LEADS
     const q = searchQuery.toLowerCase()
-    return DOMAIN_LEADS.filter(l => 
-      l.name.toLowerCase().includes(q) || 
-      l.role.toLowerCase().includes(q) || 
-      l.domain.toLowerCase().includes(q) || 
+    return DOMAIN_LEADS.filter(l =>
+      l.name.toLowerCase().includes(q) ||
+      l.role.toLowerCase().includes(q) ||
+      l.domain.toLowerCase().includes(q) ||
       l.reg.toLowerCase().includes(q)
     )
   }, [searchQuery])
@@ -286,9 +286,9 @@ export default function Team() {
   const filteredDevLead = useMemo(() => {
     if (!searchQuery) return [DEV_TEAM_LEAD]
     const q = searchQuery.toLowerCase()
-    const match = 
-      DEV_TEAM_LEAD.name.toLowerCase().includes(q) || 
-      DEV_TEAM_LEAD.role.toLowerCase().includes(q) || 
+    const match =
+      DEV_TEAM_LEAD.name.toLowerCase().includes(q) ||
+      DEV_TEAM_LEAD.role.toLowerCase().includes(q) ||
       DEV_TEAM_LEAD.reg.toLowerCase().includes(q)
     return match ? [DEV_TEAM_LEAD] : []
   }, [searchQuery])
@@ -296,9 +296,9 @@ export default function Team() {
   const filteredDevMembers = useMemo(() => {
     if (!searchQuery) return DEV_TEAM_MEMBERS
     const q = searchQuery.toLowerCase()
-    return DEV_TEAM_MEMBERS.filter(d => 
-      d.name.toLowerCase().includes(q) || 
-      d.role.toLowerCase().includes(q) || 
+    return DEV_TEAM_MEMBERS.filter(d =>
+      d.name.toLowerCase().includes(q) ||
+      d.role.toLowerCase().includes(q) ||
       d.reg.toLowerCase().includes(q)
     )
   }, [searchQuery])
@@ -384,11 +384,11 @@ export default function Team() {
                   <SpotlightCard className="p-6 bg-card-bg/50 border border-border-custom flex flex-col justify-between rounded-2xl min-h-[350px] hover:border-primary/30 transition-all duration-300 group">
                     <div className="flex flex-col w-full">
                       {/* Portrait Avatar Frame */}
-                      <MemberAvatar 
-                        src={member.avatar} 
-                        name={member.name} 
-                        initials={member.av} 
-                        gradient={member.gradient} 
+                      <MemberAvatar
+                        src={member.avatar}
+                        name={member.name}
+                        initials={member.av}
+                        gradient={member.gradient}
                         objectPosition={(member as any).objectPosition}
                       />
 
@@ -474,11 +474,11 @@ export default function Team() {
                   <SpotlightCard className="p-5 bg-card-bg/50 border border-border-custom flex flex-col justify-between rounded-2xl min-h-[300px] hover:border-primary/20 transition-all duration-300 group">
                     <div className="flex flex-col w-full">
                       {/* Portrait Avatar Frame */}
-                      <MemberAvatar 
-                        src={member.avatar} 
-                        name={member.name} 
-                        initials={member.av} 
-                        gradient={member.gradient} 
+                      <MemberAvatar
+                        src={member.avatar}
+                        name={member.name}
+                        initials={member.av}
+                        gradient={member.gradient}
                         objectPosition={(member as any).objectPosition}
                       />
 
@@ -569,11 +569,11 @@ export default function Team() {
                   <SpotlightCard className="p-6 bg-card-bg/60 border border-primary/30 flex flex-col justify-between rounded-2xl min-h-[350px] shadow-lg shadow-primary/5 hover:border-primary/50 transition-all duration-300 group">
                     <div className="flex flex-col w-full">
                       {/* Portrait Avatar Frame */}
-                      <MemberAvatar 
-                        src={DEV_TEAM_LEAD.avatar} 
-                        name={DEV_TEAM_LEAD.name} 
-                        initials={DEV_TEAM_LEAD.av} 
-                        gradient={DEV_TEAM_LEAD.gradient} 
+                      <MemberAvatar
+                        src={DEV_TEAM_LEAD.avatar}
+                        name={DEV_TEAM_LEAD.name}
+                        initials={DEV_TEAM_LEAD.av}
+                        gradient={DEV_TEAM_LEAD.gradient}
                         objectPosition={(DEV_TEAM_LEAD as any).objectPosition}
                       />
 
@@ -647,11 +647,11 @@ export default function Team() {
                     <SpotlightCard className="p-5 bg-card-bg/40 border border-border-custom flex flex-col justify-between rounded-2xl min-h-[300px] hover:border-primary/20 transition-all duration-300 group">
                       <div className="flex flex-col w-full">
                         {/* Portrait Avatar Frame */}
-                        <MemberAvatar 
-                          src={member.avatar} 
-                          name={member.name} 
-                          initials={member.av} 
-                          gradient={member.gradient} 
+                        <MemberAvatar
+                          src={member.avatar}
+                          name={member.name}
+                          initials={member.av}
+                          gradient={member.gradient}
                           objectPosition={(member as any).objectPosition}
                         />
 
