@@ -122,7 +122,7 @@ export default async function Home() {
 
             <ScrollReveal delay={0.2}>
               <p className="text-text-sec text-base md:text-lg max-w-xl leading-relaxed">
-                VIT Bhopal's premier tech community — a launchpad for developers, designers, and innovators who want to build real things, win hackathons, and grow together.
+                VIT Bhopal&apos;s premier tech community — a launchpad for developers, designers, and innovators who want to build real things, win hackathons, and grow together.
               </p>
             </ScrollReveal>
 
@@ -189,7 +189,7 @@ export default async function Home() {
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
               <p className="text-text-sec text-sm leading-relaxed">
-                Founded by 5 students in a hostel room in 2020, Bit-By-Bit grew from a small study group into VIT Bhopal's most active tech community. No prerequisites. No gatekeeping. Just builders helping builders.
+                Founded by 5 students in a hostel room in 2020, Bit-By-Bit grew from a small study group into VIT Bhopal&apos;s most active tech community. No prerequisites. No gatekeeping. Just builders helping builders.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.3}>
@@ -257,7 +257,7 @@ export default async function Home() {
               </ScrollReveal>
               <ScrollReveal delay={0.1}>
                 <h2 className="font-sans font-bold text-3xl tracking-tight text-foreground">
-                  What's Happening
+                  What&apos;s Happening
                 </h2>
               </ScrollReveal>
             </div>

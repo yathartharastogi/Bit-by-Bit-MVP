@@ -110,13 +110,13 @@ function InstagramCoin() {
 
         {/* Lens (Torus) */}
         <mesh position={[0, 0, 0.18]}>
-          <torusGeometry args={[0.18, 0.05, 16, 32]} />
+          <torusGeometry args={[0.18, 0.05, 12, 24]} />
           {whiteMaterial}
         </mesh>
 
         {/* Dot */}
         <mesh position={[0.26, 0.26, 0.18]}>
-          <sphereGeometry args={[0.05, 16, 16]} />
+          <sphereGeometry args={[0.05, 12, 12]} />
           {whiteMaterial}
         </mesh>
       </group>
@@ -165,7 +165,7 @@ function LinkedInCoin() {
             {whiteMaterial}
           </mesh>
           <mesh position={[-0.35, 0.32, 0]}>
-            <sphereGeometry args={[0.11, 16, 16]} />
+            <sphereGeometry args={[0.11, 12, 12]} />
             {whiteMaterial}
           </mesh>
 
@@ -178,7 +178,7 @@ function LinkedInCoin() {
             </mesh>
             {/* Arch */}
             <mesh position={[0, 0, 0]} scale={[1, 1, 0.625]}>
-              <torusGeometry args={[0.15, 0.08, 16, 32, Math.PI]} />
+              <torusGeometry args={[0.15, 0.08, 12, 24, Math.PI]} />
               {whiteMaterial}
             </mesh>
             {/* Right stem */}
@@ -207,8 +207,50 @@ export default function SocialCoins3D() {
     <ErrorBoundary fallback={<div className="w-56 h-40 lg:w-80 lg:h-56 opacity-0 pointer-events-none" />}>
       <div className="relative flex items-center justify-center w-56 h-40 lg:w-80 lg:h-56 -my-4 lg:-my-8">
         
-        <Suspense fallback={<div className="w-full h-full rounded-full bg-transparent animate-pulse" />}>
-          <SceneWrapper className="w-full h-full" camera={{ position: [0, 0, 5], fov: 50 }} demandFrameloop={false} fallback={<div className="w-full h-full rounded-full bg-transparent" />}>
+        <Suspense fallback={
+          <div className="flex gap-6 mt-8 mb-2">
+            <a href="https://www.instagram.com/bitbybit_vitb/" target="_blank" rel="noopener noreferrer" className="p-3.5 rounded-2xl bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white shadow-lg shadow-pink-500/20 active:scale-95 transition-transform">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/company/bit-by-bit-club?originalSubdomain=in" target="_blank" rel="noopener noreferrer" className="p-3.5 rounded-2xl bg-[#0a66c2] text-white shadow-lg shadow-blue-500/20 active:scale-95 transition-transform">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect width="4" height="12" x="2" y="9"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+          </div>
+        }>
+          <SceneWrapper 
+            className="w-full h-full" 
+            camera={{ position: [0, 0, 5], fov: 50 }} 
+            demandFrameloop={false} 
+            dpr={[1, 1.25]} 
+            fallback={
+              <div className="flex items-center justify-center w-full h-full">
+                <div className="flex gap-6">
+                  <a href="https://www.instagram.com/bitbybit_vitb/" target="_blank" rel="noopener noreferrer" className="p-3.5 rounded-2xl bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white shadow-lg shadow-pink-500/20 active:scale-95 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                    </svg>
+                  </a>
+                  <a href="https://www.linkedin.com/company/bit-by-bit-club?originalSubdomain=in" target="_blank" rel="noopener noreferrer" className="p-3.5 rounded-2xl bg-[#0a66c2] text-white shadow-lg shadow-blue-500/20 active:scale-95 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                      <rect width="4" height="12" x="2" y="9"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            }
+          >
             <ambientLight intensity={0.6} />
             <directionalLight position={[5, 10, 5]} intensity={1.5} color="#ffffff" castShadow />
             

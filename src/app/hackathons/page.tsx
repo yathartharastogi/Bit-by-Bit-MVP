@@ -4,7 +4,8 @@ import Faq from '@/components/Faq'
 import SpotlightCard from '@/components/SpotlightCard'
 import ScrollReveal from '@/components/ScrollReveal'
 import TextReveal from '@/components/TextReveal'
-import TracingTimeline from '@/components/TracingTimeline'
+import dynamic from 'next/dynamic'
+const TracingTimeline = dynamic(() => import('@/components/TracingTimeline'))
 import { Sparkles, Calendar, MapPin, Award } from 'lucide-react'
 import FloatingCodeIcon from '@/components/three/FloatingCodeIcon'
 
@@ -73,7 +74,7 @@ export default function Hackathons() {
                   </div>
                   <h2 className="font-sans font-bold text-2xl md:text-3xl text-foreground">BitHack 2026</h2>
                   <p className="text-text-sec text-xs md:text-sm max-w-lg leading-relaxed">
-                    VIT Bhopal's biggest student-run hackathon is back. Join hundreds of developers, designers, and innovators to build products from scratch in 36 hours.
+                    VIT Bhopal&apos;s biggest student-run hackathon is back. Join hundreds of developers, designers, and innovators to build products from scratch in 36 hours.
                   </p>
                   
                   <div className="flex flex-wrap gap-4 pt-2">

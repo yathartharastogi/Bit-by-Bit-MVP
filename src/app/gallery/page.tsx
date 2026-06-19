@@ -2,14 +2,16 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Folder, ArrowLeft, X, ChevronLeft, ChevronRight, Calendar, Sparkles } from 'lucide-react'
+import { Folder, ArrowLeft, X, ChevronLeft, ChevronRight, Calendar, Sparkles, ExternalLink, Play } from 'lucide-react'
 import ScrollReveal from '@/components/ScrollReveal'
 import TextReveal from '@/components/TextReveal'
 import SpotlightCard from '@/components/SpotlightCard'
 import dynamic from 'next/dynamic'
 
-import OrbitalGallery from '@/components/OrbitalGallery'
+const OrbitalGallery = dynamic(() => import('@/components/OrbitalGallery'), { ssr: false })
+const MobileCarouselGallery = dynamic(() => import('@/components/MobileCarouselGallery'))
 
 interface GalleryImage {
   src: string
@@ -93,6 +95,23 @@ const albums: Album[] = [
 export default function Gallery() {
   const [activeAlbum, setActiveAlbum] = useState<string | null>(null)
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
+  
+  const [isMounted, setIsMounted] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+  const [visibleCount, setVisibleCount] = useState(6)
+
+  useEffect(() => {
+    setVisibleCount(6)
+  }, [activeAlbum])
+
+
+  useEffect(() => {
+    setIsMounted(true)
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   const currentAlbum = albums.find(a => a.id === activeAlbum)
 
@@ -168,7 +187,15 @@ export default function Gallery() {
                 transition={{ duration: 0.5 }}
                 className="w-full"
               >
-                <OrbitalGallery albums={albums} onSelectAlbum={setActiveAlbum} />
+                {!isMounted ? (
+                  <div className="w-full h-[600px] flex items-center justify-center">
+                    <div className="animate-pulse bg-primary/10 rounded-xl w-full max-w-md h-[400px]" />
+                  </div>
+                ) : isMobile ? (
+                  <MobileCarouselGallery albums={albums} onSelectAlbum={setActiveAlbum} />
+                ) : (
+                  <OrbitalGallery albums={albums} onSelectAlbum={setActiveAlbum} />
+                )}
               </motion.div>
             ) : (
               // ------------------- ALBUM ACTIVE GRID VIEW -------------------
@@ -208,42 +235,56 @@ export default function Gallery() {
 
                 {/* Grid of Images */}
                 <div className="w-full flex flex-col lg:flex-row gap-8 items-start lg:items-stretch">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 flex-1">
-                    {currentAlbum?.images.map((item, idx) => (
-                      <ScrollReveal key={idx} delay={idx * 0.05}>
-                        <div
-                          onClick={() => setLightboxIndex(idx)}
-                          className="group cursor-pointer flex flex-col h-full"
-                        >
-                          <SpotlightCard
-                            className="overflow-hidden bg-background border border-border-custom hover:border-primary/50 transition-all duration-300 relative h-full"
+                  <div className="flex-1 flex flex-col gap-6">
+                    <ScrollReveal>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {currentAlbum?.images.slice(0, visibleCount).map((item, idx) => (
+                          <div
+                            key={idx}
+                            onClick={() => setLightboxIndex(idx)}
+                            className="group cursor-pointer flex flex-col h-full"
                           >
-                            <div className="relative w-full aspect-video overflow-hidden">
-                              {/* Dot matrix grid texture on hover */}
-                              <div className="absolute inset-0 bg-[radial-gradient(#2563eb_1.5px,transparent_1.5px)] bg-[size:16px_16px] opacity-0 group-hover:opacity-10 transition-opacity duration-300 z-10 pointer-events-none" />
+                            <SpotlightCard
+                              className="overflow-hidden bg-background border border-border-custom hover:border-primary/50 transition-all duration-300 relative h-full"
+                            >
+                              <div className="relative w-full aspect-video overflow-hidden">
+                                {/* Dot matrix grid texture on hover */}
+                                <div className="absolute inset-0 bg-[radial-gradient(#2563eb_1.5px,transparent_1.5px)] bg-[size:16px_16px] opacity-0 group-hover:opacity-10 transition-opacity duration-300 z-10 pointer-events-none" />
 
-                              <Image
-                                src={item.src}
-                                alt={item.title}
-                                fill
-                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                className="object-cover grayscale-[35%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-out"
-                                priority={idx < 3}
-                              />
-                            </div>
+                                <Image
+                                  src={item.src}
+                                  alt={item.title}
+                                  fill
+                                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                  className="object-cover grayscale-[35%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-out"
+                                  priority={idx < 3}
+                                />
+                              </div>
 
-                            <div className="p-4 border-t border-border-custom/50 bg-card-bg relative z-10">
-                              <h4 className="font-sans font-bold text-sm text-foreground mb-1 group-hover:text-primary transition-colors duration-200">
-                                {item.title}
-                              </h4>
-                              <p className="text-text-sec text-[11px] leading-relaxed">
-                                {item.desc}
-                              </p>
-                            </div>
-                          </SpotlightCard>
-                        </div>
-                      </ScrollReveal>
-                    ))}
+                              <div className="p-4 border-t border-border-custom/50 bg-card-bg relative z-10">
+                                <h4 className="font-sans font-bold text-sm text-foreground mb-1 group-hover:text-primary transition-colors duration-200">
+                                  {item.title}
+                                </h4>
+                                <p className="text-text-sec text-[11px] leading-relaxed">
+                                  {item.desc}
+                                </p>
+                              </div>
+                            </SpotlightCard>
+                          </div>
+                        ))}
+                      </div>
+                    </ScrollReveal>
+                    
+                    {currentAlbum && visibleCount < currentAlbum.images.length && (
+                      <div className="flex justify-center mt-2 pb-4">
+                        <button
+                          onClick={() => setVisibleCount(prev => prev + 6)}
+                          className="px-6 py-2.5 rounded-full border border-border-custom bg-card-bg/50 hover:bg-primary/10 hover:border-primary/50 hover:text-primary transition-all duration-200 font-mono text-xs uppercase tracking-wider text-text-sec"
+                        >
+                          Load More
+                        </button>
+                      </div>
+                    )}
                   </div>
 
                   {/* RIGHT SIDE: Smooth Scrollable Narrative Story Panel - Now visible instantly on Album Click! */}

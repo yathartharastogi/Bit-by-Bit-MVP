@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 export default function ScalePotential() {
   const pathname = usePathname()
 
-  if (pathname === '/team') {
+  if (pathname === '/team' || pathname === '/contact') {
     return null
   }
 

@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import TracingTimeline from '@/components/TracingTimeline'
+import dynamic from 'next/dynamic'
+const TracingTimeline = dynamic(() => import('@/components/TracingTimeline'))
 import ScrollReveal from '@/components/ScrollReveal'
 import TextReveal from '@/components/TextReveal'
 import { CheckCircle2 } from 'lucide-react'
@@ -44,7 +45,7 @@ export default function About() {
               </ScrollReveal>
             </div>
             
-            <div className="hidden md:flex justify-center items-center flex-shrink-0">
+            <div className="flex justify-center items-center flex-shrink-0">
               <WebGlobe3D />
             </div>
           </div>
@@ -114,40 +115,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* CTA section */}
-      <section className="pt-12 pb-16 md:pt-16 md:pb-24 text-center relative overflow-hidden transition-colors duration-300">
-        <div className="max-w-xl mx-auto px-6 space-y-6 relative z-10">
-          <ScrollReveal>
-            <div className="font-mono text-xs font-semibold text-primary uppercase tracking-widest">Be Part of It</div>
-          </ScrollReveal>
-          <TextReveal
-            text="Your Story Starts Here."
-            as="h2"
-            className="font-sans font-bold text-2xl md:text-3xl tracking-tight text-foreground justify-center"
-          />
-          <ScrollReveal delay={0.1}>
-            <p className="text-text-sec text-sm leading-relaxed">
-              Every great builder was once a beginner. Come as you are. Leave as a creator. Apply to join our core domains or check upcoming public sessions.
-            </p>
-          </ScrollReveal>
-          <ScrollReveal delay={0.2}>
-            <div className="flex justify-center gap-3 pt-4">
-              <Link
-                href="/contact#join"
-                className="px-6 py-3 font-mono text-xs uppercase font-bold tracking-wider text-white bg-primary hover:bg-primary-hover rounded-full transition-all duration-200"
-              >
-                Apply Now ⚡
-              </Link>
-              <Link
-                href="/contact"
-                className="px-6 py-3 font-mono text-xs uppercase font-bold tracking-wider text-text-sec hover:text-foreground bg-card-bg/60 border border-border-custom rounded-full transition-all duration-200"
-              >
-                Contact Us
-              </Link>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+
     </div>
   )
 }

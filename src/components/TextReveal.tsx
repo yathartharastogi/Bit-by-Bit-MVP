@@ -1,63 +1,48 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { motion } from 'framer-motion'
 
 interface TextRevealProps {
   text: string
   className?: string
-  as?: 'h1' | 'h2' | 'p'
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span' | 'div'
 }
 
 export default function TextReveal({ text, className = '', as = 'h1' }: TextRevealProps) {
-  const [displayText, setDisplayText] = useState('')
-  const [hasTriggered, setHasTriggered] = useState(false)
-  const elementRef = useRef<HTMLElement>(null)
+  const MotionComponent = (motion as any)[as] || motion.h1
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setHasTriggered(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.1 }
-    )
+  const container = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.02, delayChildren: 0.1 },
+    },
+  }
 
-    if (elementRef.current) {
-      observer.observe(elementRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
-
-  useEffect(() => {
-    if (!hasTriggered) return
-
-    let charIdx = 0
-    const interval = setInterval(() => {
-      if (charIdx < text.length) {
-        setDisplayText(text.slice(0, charIdx + 1))
-        charIdx++
-      } else {
-        clearInterval(interval)
-      }
-    }, 70) // Balanced slow writing speed
-
-    return () => clearInterval(interval)
-  }, [text, hasTriggered])
-
-  const Component = as
+  const child = {
+    visible: {
+      opacity: 1,
+      display: 'inline-block',
+    },
+    hidden: {
+      opacity: 0,
+      display: 'inline-block',
+    },
+  }
 
   return (
-    <Component
-      ref={elementRef as any}
+    <MotionComponent
       className={className}
+      variants={container}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-10%' }}
     >
-      <span>{displayText}</span>
-      {hasTriggered && displayText.length < text.length && (
-        <span className="inline-block w-[3px] h-[1em] bg-primary ml-1 animate-pulse align-middle" />
-      )}
-    </Component>
+      {text.split('').map((char, index) => (
+        <motion.span variants={child} key={index}>
+          {char === ' ' ? '\u00A0' : char}
+        </motion.span>
+      ))}
+    </MotionComponent>
   )
 }

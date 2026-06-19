@@ -69,7 +69,7 @@ export default function ParticleBackground() {
 
         const y = Math.random() * height * -1.5 - 100
         const streamLength = Math.floor(Math.random() * 8) + 4
-        const chars = Array.from({ length: streamLength }, () => 
+        const chars = Array.from({ length: streamLength }, () =>
           Math.random() > 0.5 ? '1' : '0'
         )
 
@@ -101,62 +101,18 @@ export default function ParticleBackground() {
       return pts
     }
 
-    const createCubeModel = (size: number): { points: Point3D[]; connections: Array<[number, number]> } => {
-      const vertices: Point3D[] = [
-        { x: -size, y: -size, z: -size, char: '0' },
-        { x: size, y: -size, z: -size, char: '1' },
-        { x: size, y: size, z: -size, char: '0' },
-        { x: -size, y: size, z: -size, char: '1' },
-        { x: -size, y: -size, z: size, char: '1' },
-        { x: size, y: -size, z: size, char: '0' },
-        { x: size, y: size, z: size, char: '1' },
-        { x: -size, y: size, z: size, char: '0' }
-      ]
-      
-      const points = [...vertices]
-      const baseEdges: Array<[number, number]> = [
-        [0, 1], [1, 2], [2, 3], [3, 0], // back
-        [4, 5], [5, 6], [6, 7], [7, 4], // front
-        [0, 4], [1, 5], [2, 6], [3, 7]  // vertical link lines
-      ]
-      
-      const connections: Array<[number, number]> = []
-      const subdivisions = 2
-      let currIdx = vertices.length
-
-      baseEdges.forEach(([u, v]) => {
-        const p1 = vertices[u]
-        const p2 = vertices[v]
-        let prev = u
-        for (let s = 1; s <= subdivisions; s++) {
-          const t = s / (subdivisions + 1)
-          points.push({
-            x: p1.x + (p2.x - p1.x) * t,
-            y: p1.y + (p2.y - p1.y) * t,
-            z: p1.z + (p2.z - p1.z) * t,
-            char: Math.random() > 0.5 ? '1' : '0'
-          })
-          connections.push([prev, currIdx])
-          prev = currIdx
-          currIdx++
-        }
-        connections.push([prev, v])
-      })
-
-      return { points, connections }
-    }
 
     // Initialize 3D Models array
     const models: Model3D[] = []
     const initModels = () => {
       models.length = 0
       const baseRadius = Math.min(width, height)
-      
+
       // 1. Giant Center Sphere (full screen size on launch)
-      const sphereRadius = baseRadius * 0.35
+      const sphereRadius = baseRadius * 0.5
       const spherePoints = createSpherePoints(sphereRadius, 115)
       const sphereConnections: Array<[number, number]> = []
-      
+
       for (let i = 0; i < spherePoints.length; i++) {
         let conns = 0
         for (let j = i + 1; j < spherePoints.length; j++) {
@@ -184,19 +140,7 @@ export default function ParticleBackground() {
         colorType: 'cyan'
       })
 
-      // 2. Floating Cube (upper-left side)
-      const cubeSize = baseRadius * 0.12
-      const cube = createCubeModel(cubeSize)
-      models.push({
-        points: cube.points,
-        connections: cube.connections,
-        xOffset: 0.18,
-        yOffset: 0.26,
-        scaleMultiplier: 0.9,
-        rotateSpeedX: 0.0028,
-        rotateSpeedY: 0.0035,
-        colorType: 'purple'
-      })
+
 
     }
 
@@ -231,7 +175,7 @@ export default function ParticleBackground() {
         // Rotate X axis
         const y1 = p.y * cosX - p.z * sinX
         const z1 = p.y * sinX + p.z * cosX
-        
+
         // Rotate Y axis
         const x2 = p.x * cosY + z1 * sinY
         const z2 = -p.x * sinY + z1 * cosY
@@ -251,7 +195,7 @@ export default function ParticleBackground() {
       lastScrollY = currentScrollY
       const scrollRot = scrollDelta * 0.001
 
-      
+
       // Clear canvas fully so the WebGL scenes below are never painted over
       ctx.clearRect(0, 0, width, height)
 
@@ -286,8 +230,8 @@ export default function ParticleBackground() {
 
           let charColor = ''
           if (i === 0) {
-            charColor = dark 
-              ? `rgba(34, 211, 238, ${col.opacity})` 
+            charColor = dark
+              ? `rgba(34, 211, 238, ${col.opacity})`
               : `rgba(29, 78, 216, ${col.opacity})`
           } else {
             charColor = dark
@@ -314,7 +258,7 @@ export default function ParticleBackground() {
         // Mouse coordinates distance ratio
         const mouseDistX = mouse.x / (width / 2)
         const mouseDistY = mouse.y / (height / 2)
-        
+
         rotateAngleX += mouseDistY * 0.0006 + scrollRot
         rotateAngleY += mouseDistX * 0.0006 + (scrollRot * 0.5)
 
@@ -327,7 +271,7 @@ export default function ParticleBackground() {
           const scale = perspective / (perspective + p.z)
           const pX = p.x * scale * model.scaleMultiplier + centerX
           const pY = p.y * scale * model.scaleMultiplier + centerY
-          
+
           return {
             x: pX,
             y: pY,
@@ -354,7 +298,7 @@ export default function ParticleBackground() {
         model.connections.forEach(([u, v]) => {
           const p1 = projected[u]
           const p2 = projected[v]
-          
+
           if (!p1 || !p2) return
           if (p1.x < 0 || p1.x > width || p1.y < 0 || p1.y > height) return
           if (p2.x < 0 || p2.x > width || p2.y < 0 || p2.y > height) return
@@ -367,7 +311,7 @@ export default function ParticleBackground() {
 
         // Render binary digits (vertices) sorted by Z depth
         const sortedProjected = [...projected].sort((a, b) => a.z - b.z)
-        
+
         sortedProjected.forEach(p => {
           if (p.x < 0 || p.x > width || p.y < 0 || p.y > height) return
 

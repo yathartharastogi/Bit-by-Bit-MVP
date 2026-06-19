@@ -126,12 +126,12 @@ function WebDevElement() {
       <group ref={eyesRef}>
         {/* Left Eye */}
         <mesh position={[-0.35, 0.2, 0.2]}>
-          <sphereGeometry args={[0.08, 16, 16]} />
+          <sphereGeometry args={[0.08, 12, 12]} />
           <meshStandardMaterial color="#ffffff" emissive="#0ea5e9" emissiveIntensity={2} />
         </mesh>
         {/* Right Eye */}
         <mesh position={[0.35, 0.2, 0.2]}>
-          <sphereGeometry args={[0.08, 16, 16]} />
+          <sphereGeometry args={[0.08, 12, 12]} />
           <meshStandardMaterial color="#ffffff" emissive="#0ea5e9" emissiveIntensity={2} />
         </mesh>
       </group>

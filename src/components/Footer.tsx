@@ -15,7 +15,7 @@ export default function Footer() {
             <span className="font-mono text-xs font-normal text-text-sec px-1.5 py-0.5 rounded border border-border-custom bg-background">CLUB</span>
           </Link>
           <p className="text-text-sec text-sm max-w-sm leading-relaxed">
-            VIT Bhopal's premier tech community — a launchpad for developers, designers, and innovators who want to build real things, win hackathons, and grow together.
+            VIT Bhopal&apos;s premier tech community — a launchpad for developers, designers, and innovators who want to build real things, win hackathons, and grow together.
           </p>
           <div className="font-mono text-[10px] uppercase tracking-widest text-primary mt-6 font-semibold">
             Community first. Always.
