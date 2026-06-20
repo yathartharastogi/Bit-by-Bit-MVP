@@ -13,20 +13,30 @@ interface Event {
   imageUrl?: string | null
   status: string
   location?: string | null
+  registrationUrl?: string | null
+  longDescription?: string | null
+  timeline?: { time: string; title: string; description: string }[] | null
 }
 
 // Default fallback list in case database query encounters errors
 const defaultEvents: Event[] = [
   {
-    id: '1',
-    title: 'Mindzilla',
-    description: 'Flagship technical problem-solving competition of Bit-By-Bit Club. Challenge your critical thinking, resolve logical sprints, and solve analytical puzzles under pressure.',
-    date: new Date('2026-11-20T10:00:00Z'),
+    id: 'innofusion-fest',
+    title: 'InnoFusion Fest',
+    description: 'A 2+2 day Hackathon Series built around real industry problems, structured mentorship, and a grand offline finale.',
+    longDescription: 'Bit By Bit takes pride in organising impactful, student-centric technical events. We are excited to introduce InnoFusion Fest — a 2+2 day Hackathon Series built around real industry problems, structured mentorship, and a grand offline finale. The event is designed in a 2 Online + 2 Offline format: focused online days for speaker sessions, PPT presentations, and Top 12 shortlisting; followed by grand offline days for prototype demonstrations, final judging, and prize distribution.',
+    date: new Date('2026-07-25T10:00:00Z'),
     type: 'hackathon',
     capacity: 250,
-    imageUrl: '/events/mindzilla/1The Gateway.jpeg',
     status: 'UPCOMING',
-    location: 'Tech Park Lab, VIT Bhopal'
+    location: 'AB02 Audi-02, VIT Bhopal (Hybrid)',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfBpF7I44RVORzv_MAaJk01PUd6E8bAuuRRYwZ5lF1kcKhjzw/viewform?usp=sharing&ouid=113652932975824259890',
+    timeline: [
+      { time: 'Day 0 (25-26 July)', title: 'Online Conference', description: 'Real-world tech insights with industry speakers.' },
+      { time: 'Day 1 (31 July)', title: 'Speaker Day + Problem Reveal', description: 'Offline speaker sessions, problem statements revealed, and team PPT submissions begin.' },
+      { time: 'Day 2 & 3 (1-2 Aug)', title: 'PPT Presentation Round', description: 'Online pitches to industry judges with live Q&A.' },
+      { time: 'Day 4 (4 Aug)', title: 'Grand Finale', description: 'Offline working prototype presentations, final judging, and prize distribution.' }
+    ]
   }
 ]
 

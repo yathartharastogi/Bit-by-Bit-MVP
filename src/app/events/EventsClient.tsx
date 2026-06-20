@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Calendar, MapPin, Search } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import SpotlightCard from '@/components/SpotlightCard'
@@ -16,6 +16,9 @@ interface Event {
   imageUrl?: string | null
   status: string
   location?: string | null
+  registrationUrl?: string | null
+  longDescription?: string | null
+  timeline?: { time: string; title: string; description: string }[] | null
 }
 
 interface EventsClientProps {
@@ -26,6 +29,7 @@ export default function EventsClient({ initialEvents }: EventsClientProps) {
   const [activeFilter, setActiveFilter] = useState<string>('all')
   const [searchQuery, setSearchQuery] = useState<string>('')
   const [registrationEvent, setRegistrationEvent] = useState<Event | null>(null)
+  const [detailsEvent, setDetailsEvent] = useState<Event | null>(null)
   const [regName, setRegName] = useState('')
   const [regEmail, setRegEmail] = useState('')
   const [regStatus, setRegStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
@@ -44,6 +48,21 @@ export default function EventsClient({ initialEvents }: EventsClientProps) {
                           e.description.toLowerCase().includes(searchQuery.toLowerCase())
     return matchesCategory && matchesSearch
   })
+
+  useEffect(() => {
+    // Check if we need to scroll to an event
+    if (typeof window !== 'undefined' && window.location.hash) {
+      const id = window.location.hash.substring(1)
+      const element = document.getElementById(id)
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' })
+          const event = initialEvents.find(e => e.id === id)
+          if (event) setDetailsEvent(event)
+        }, 500)
+      }
+    }
+  }, [initialEvents])
 
   const handleRegisterSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -143,44 +162,53 @@ export default function EventsClient({ initialEvents }: EventsClientProps) {
 
             return (
               <ScrollReveal key={item.id} delay={idx * 0.05} className="h-full">
-                <SpotlightCard className="overflow-hidden flex flex-col justify-between group h-full border border-border-custom bg-background transition-all duration-300">
-                  <div className="p-6 space-y-4">
-                    <div className="flex items-center justify-between">
-                      <span className="font-mono text-[9px] font-bold text-primary px-2 py-0.5 rounded border border-primary/20 bg-primary/10 uppercase tracking-widest">
-                        {item.type}
-                      </span>
-                      <span className={`text-[9px] font-mono font-semibold uppercase px-2 py-0.5 rounded ${
-                        item.status === 'UPCOMING'
-                          ? 'text-emerald-500 bg-emerald-500/10 border border-emerald-500/20'
-                          : 'text-text-sec bg-foreground/5 border border-border-custom'
-                      }`}>
-                        {item.status.toLowerCase()}
-                      </span>
-                    </div>
+                <div id={item.id} className="h-full">
+                  <SpotlightCard className="overflow-hidden h-full border border-border-custom bg-background transition-all duration-300">
+                    <div className="flex flex-col justify-between h-full cursor-pointer group" onClick={() => setDetailsEvent(item)}>
+                      <div className="p-6 space-y-4">
+                        <div className="flex items-center justify-between">
+                          <span className="font-mono text-[9px] font-bold text-primary px-2 py-0.5 rounded border border-primary/20 bg-primary/10 uppercase tracking-widest">
+                            {item.type}
+                          </span>
+                          <span className={`text-[9px] font-mono font-semibold uppercase px-2 py-0.5 rounded ${
+                            item.status === 'UPCOMING'
+                              ? 'text-emerald-500 bg-emerald-500/10 border border-emerald-500/20'
+                              : 'text-text-sec bg-foreground/5 border border-border-custom'
+                          }`}>
+                            {item.status.toLowerCase()}
+                          </span>
+                        </div>
 
-                    <div>
-                      <h3 className="font-sans font-bold text-lg text-foreground mb-2 group-hover:text-primary transition-colors">
-                        {item.title}
-                      </h3>
-                      <p className="text-text-sec text-xs leading-relaxed line-clamp-3">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
+                        <div>
+                          <h3 className="font-sans font-bold text-lg text-foreground mb-2 group-hover:text-primary transition-colors">
+                            {item.title}
+                          </h3>
+                          <p className="text-text-sec text-xs leading-relaxed line-clamp-3">
+                            {item.description}
+                          </p>
+                        </div>
+                      </div>
 
-                  <div className="p-6 border-t border-border-custom/50 bg-foreground/[0.01] flex flex-col gap-2.5">
-                    <div className="flex items-center gap-2 text-text-sec text-[10px] font-mono">
-                      <Calendar size={14} className="text-primary" />
-                      {dateStr}
-                    </div>
-                    <div className="flex items-center gap-2 text-text-sec text-[10px] font-mono">
-                      <MapPin size={14} className="text-primary" />
-                      {item.location || 'VIT Bhopal'}
-                    </div>
+                      <div className="p-6 border-t border-border-custom/50 bg-foreground/[0.01] flex flex-col gap-2.5">
+                        <div className="flex items-center gap-2 text-text-sec text-[10px] font-mono" suppressHydrationWarning>
+                          <Calendar size={14} className="text-primary" />
+                          {dateStr}
+                        </div>
+                        <div className="flex items-center gap-2 text-text-sec text-[10px] font-mono">
+                          <MapPin size={14} className="text-primary" />
+                          {item.location || 'VIT Bhopal'}
+                        </div>
 
                     {item.status === 'UPCOMING' ? (
                       <button
-                        onClick={() => setRegistrationEvent(item)}
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          if (item.registrationUrl) {
+                            window.open(item.registrationUrl, '_blank')
+                          } else {
+                            setRegistrationEvent(item)
+                          }
+                        }}
                         className="mt-4 w-full py-2.5 flex items-center justify-center font-mono text-[10px] uppercase font-bold text-white bg-primary hover:bg-primary-hover rounded-xl transition-all duration-200 hover:-translate-y-0.5"
                       >
                         Register Now
@@ -194,11 +222,13 @@ export default function EventsClient({ initialEvents }: EventsClientProps) {
                       </button>
                     )}
                   </div>
-                </SpotlightCard>
-              </ScrollReveal>
-            )
-          })}
-        </div>
+                </div>
+              </SpotlightCard>
+            </div>
+          </ScrollReveal>
+        )
+      })}
+    </div>
       )}
 
       {/* Registration Modal Overlay with smooth AnimatePresence */}
@@ -286,6 +316,112 @@ export default function EventsClient({ initialEvents }: EventsClientProps) {
                     </button>
                   </div>
                 </form>
+              )}
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* Event Details Modal */}
+      <AnimatePresence>
+        {detailsEvent && (
+          <div className="fixed inset-0 z-[60] flex items-center justify-center p-6">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setDetailsEvent(null)}
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            />
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 15 }}
+              transition={{ type: 'spring', duration: 0.4 }}
+              className="bg-card-bg border border-border-custom w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-2xl p-8 shadow-2xl relative z-10 scrollbar-none"
+            >
+              <button 
+                onClick={() => setDetailsEvent(null)}
+                className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-foreground/5 hover:bg-foreground/10 text-text-sec hover:text-foreground transition-colors"
+              >
+                ✕
+              </button>
+
+              <div className="flex items-center gap-2 mb-4">
+                <span className="font-mono text-[10px] font-bold text-primary px-2 py-0.5 rounded border border-primary/20 bg-primary/10 uppercase tracking-widest">
+                  {detailsEvent.type}
+                </span>
+                <span className={`text-[10px] font-mono font-semibold uppercase px-2 py-0.5 rounded ${
+                  detailsEvent.status === 'UPCOMING'
+                    ? 'text-emerald-500 bg-emerald-500/10 border border-emerald-500/20'
+                    : 'text-text-sec bg-foreground/5 border border-border-custom'
+                }`}>
+                  {detailsEvent.status.toLowerCase()}
+                </span>
+              </div>
+
+              <h2 className="font-sans font-bold text-2xl md:text-3xl text-foreground mb-4">
+                {detailsEvent.title}
+              </h2>
+
+              <div className="flex flex-wrap items-center gap-4 text-text-sec text-xs font-mono mb-8 border-b border-border-custom/50 pb-6">
+                <div className="flex items-center gap-2" suppressHydrationWarning>
+                  <Calendar size={14} className="text-primary" />
+                  {new Date(detailsEvent.date).toLocaleDateString('en-US', {
+                    month: 'short', day: 'numeric', year: 'numeric'
+                  })}
+                </div>
+                <div className="flex items-center gap-2">
+                  <MapPin size={14} className="text-primary" />
+                  {detailsEvent.location || 'VIT Bhopal'}
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <div>
+                  <h3 className="font-sans font-bold text-lg text-foreground mb-2">About the Event</h3>
+                  <p className="text-text-sec text-sm leading-relaxed whitespace-pre-line">
+                    {detailsEvent.longDescription || detailsEvent.description}
+                  </p>
+                </div>
+
+                {detailsEvent.timeline && detailsEvent.timeline.length > 0 && (
+                  <div>
+                    <h3 className="font-sans font-bold text-lg text-foreground mb-4">Event Timeline</h3>
+                    <div className="space-y-4">
+                      {detailsEvent.timeline.map((item, idx) => (
+                        <div key={idx} className="flex gap-4 p-4 rounded-xl border border-border-custom bg-background/50">
+                          <div className="w-24 flex-shrink-0 font-mono text-[10px] text-primary uppercase font-bold tracking-wider pt-0.5">
+                            {item.time}
+                          </div>
+                          <div>
+                            <h4 className="font-sans font-bold text-sm text-foreground mb-1">{item.title}</h4>
+                            <p className="text-text-sec text-xs leading-relaxed">{item.description}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {detailsEvent.status === 'UPCOMING' && (
+                <div className="mt-8 pt-6 border-t border-border-custom/50">
+                  <button
+                    onClick={() => {
+                      if (detailsEvent.registrationUrl) {
+                        window.open(detailsEvent.registrationUrl, '_blank')
+                      } else {
+                        setDetailsEvent(null)
+                        setRegistrationEvent(detailsEvent)
+                      }
+                    }}
+                    className="w-full py-3 flex items-center justify-center font-mono text-[11px] uppercase font-bold text-white bg-primary hover:bg-primary-hover rounded-xl transition-all duration-200 hover:-translate-y-0.5"
+                  >
+                    Register Now
+                  </button>
+                </div>
               )}
             </motion.div>
           </div>

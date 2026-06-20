@@ -78,8 +78,8 @@ export default function AnimatedTerminal() {
           newHistory.push({ text: 'We build things bit by bit, peer-by-peer.', type: 'output' })
         } else if (cmdLower === 'events') {
           newHistory.push({ text: 'Upcoming Programs:', type: 'success' })
-          newHistory.push({ text: '- Mindzilla 2026: Flagship technical problem-solving competition.', type: 'output' })
-          newHistory.push({ text: '  Date: November 20, 2026 | Location: Tech Park Labs, VIT Bhopal', type: 'output' })
+          newHistory.push({ text: '- InnoFusion Fest 2026: 3+2 Hackathon Series.', type: 'output' })
+          newHistory.push({ text: '  Date: July 25, 2026 | Location: AB02 Audi-02, VIT Bhopal', type: 'output' })
           newHistory.push({ text: '- BitHack 2026: 36-Hour National Level Hackathon.', type: 'output' })
           newHistory.push({ text: '  Date: October 25-26, 2026 | Prize Pool: ₹1.5 Lakhs', type: 'output' })
         } else if (cmdLower === 'devs') {
