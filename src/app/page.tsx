@@ -70,7 +70,8 @@ export default async function Home() {
       take: 4
     })
     if (dbAnnouncements.length > 0) {
-      announcements = dbAnnouncements.map(a => ({
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      announcements = dbAnnouncements.map((a: any) => ({
         ...a,
         createdAt: new Date(a.createdAt)
       }))
@@ -82,7 +83,8 @@ export default async function Home() {
       take: 3
     })
     if (dbEvents.length > 0) {
-      events = dbEvents.map(e => ({
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      events = dbEvents.map((e: any) => ({
         ...e,
         date: new Date(e.date)
       }))

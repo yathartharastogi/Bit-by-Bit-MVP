@@ -42,7 +42,8 @@ export default async function Events() {
       }
     })
     if (dbEvents.length > 0) {
-      events = dbEvents.map(e => ({
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      events = dbEvents.map((e: any) => ({
         ...e,
         date: new Date(e.date)
       }))
@@ -52,7 +53,8 @@ export default async function Events() {
   }
 
   // Format date strings for serialization into client component
-  const serializedEvents = events.map(e => ({
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const serializedEvents = events.map((e: any) => ({
     ...e,
     date: e.date.toISOString()
   }))
