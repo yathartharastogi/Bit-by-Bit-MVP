@@ -8,15 +8,18 @@ generator client {
 }
 
 model Event {
-  id          String   @id @default(uuid())
-  title       String
-  description String
-  date        DateTime
-  type        String   // e.g. "hackathon", "workshop", "design"
-  capacity    Int?
-  imageUrl    String?
-  status      String   // e.g. "UPCOMING", "PAST"
-  location    String?
+  id              String   @id @default(uuid())
+  title           String
+  description     String
+  date            DateTime
+  type            String   // e.g. "hackathon", "workshop", "design"
+  capacity        Int?
+  imageUrl        String?
+  status          String   // e.g. "UPCOMING", "PAST"
+  location        String?
+  registrationUrl String?
+  longDescription String?
+  timeline        Json?
 }
 
 model Announcement {
