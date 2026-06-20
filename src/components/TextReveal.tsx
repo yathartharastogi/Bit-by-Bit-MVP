@@ -9,7 +9,6 @@ interface TextRevealProps {
 }
 
 export default function TextReveal({ text, className = '', as = 'h1' }: TextRevealProps) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const MotionComponent = (motion as any)[as] || motion.h1
 
   const container = {

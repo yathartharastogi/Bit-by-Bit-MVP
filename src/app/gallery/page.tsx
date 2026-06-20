@@ -101,13 +101,11 @@ export default function Gallery() {
   const [visibleCount, setVisibleCount] = useState(6)
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setVisibleCount(6)
   }, [activeAlbum])
 
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsMounted(true)
     const checkMobile = () => setIsMobile(window.innerWidth < 1024)
     checkMobile()

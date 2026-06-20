@@ -74,7 +74,6 @@ export default function SceneWrapper({
 
   // Detect tier and WebGL support after mount (client only)
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true)
     setTier(detectQualityTier())
     setWebglOk(supportsWebGL())
