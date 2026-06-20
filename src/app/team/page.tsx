@@ -232,7 +232,7 @@ const DEV_TEAM_MEMBERS = [
     av: 'VS',
     color: 'border-emerald-500/30 text-emerald-500 bg-emerald-500/10',
     gradient: 'from-emerald-500 to-teal-500',
-    avatar: '',
+    avatar: '/team/vansh.jpg',
     quote: 'Insert personal quote here...'
   },
   {
