@@ -12,6 +12,7 @@ export default function Loader() {
     // Check sessionStorage to prevent repeated delays on page navigation
     const hasLoaded = sessionStorage.getItem('bitbybit-loaded')
     if (hasLoaded) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setLoading(false)
       return
     }

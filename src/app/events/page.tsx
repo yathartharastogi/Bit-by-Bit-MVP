@@ -75,7 +75,7 @@ export default async function Events() {
           
           <ScrollReveal delay={0.2}>
             <p className="text-text-sec text-base md:text-lg max-w-xl leading-relaxed">
-              Hackathons, workshops, design jams, talks — something's always happening at Bit-By-Bit. Join us in our upcoming sessions.
+              Hackathons, workshops, design jams, talks — something&apos;s always happening at Bit-By-Bit. Join us in our upcoming sessions.
             </p>
           </ScrollReveal>
         </div>
