@@ -20,7 +20,6 @@ const CORE_TEAM = [
     color: 'border-blue-500/30 text-blue-500 bg-blue-500/10',
     gradient: 'from-blue-600 via-indigo-600 to-violet-600',
     avatar: '/team/atherva.png',
-    quote: 'Insert personal quote here...'
   },
   {
     name: 'Chavi Agrawal',
@@ -32,7 +31,6 @@ const CORE_TEAM = [
     color: 'border-purple-500/30 text-purple-500 bg-purple-500/10',
     gradient: 'from-purple-600 via-fuchsia-600 to-pink-600',
     avatar: '/team/chavi.jpg',
-    quote: 'Insert personal quote here...'
   },
   {
     name: 'Jiya Arora',
@@ -44,7 +42,6 @@ const CORE_TEAM = [
     color: 'border-emerald-500/30 text-emerald-500 bg-emerald-500/10',
     gradient: 'from-emerald-600 via-teal-600 to-cyan-600',
     avatar: '/team/jiya.jpeg',
-    quote: 'Insert personal quote here...'
   }
 ]
 
@@ -61,7 +58,6 @@ const DOMAIN_LEADS = [
     color: 'border-emerald-500/30 text-emerald-500 bg-emerald-500/10',
     gradient: 'from-teal-500 to-emerald-500',
     avatar: '/team/yashodhara.jpeg',
-    quote: 'Insert personal quote here...'
   },
   {
     name: 'Abhimanyu Singh',
@@ -75,7 +71,6 @@ const DOMAIN_LEADS = [
     gradient: 'from-teal-400 to-emerald-400',
     avatar: '/team/abhimanyu.png',
     objectPosition: 'top',
-    quote: 'Insert personal quote here...'
   },
   {
     name: 'Vedant Mishra',
@@ -88,7 +83,6 @@ const DOMAIN_LEADS = [
     color: 'border-blue-500/30 text-blue-500 bg-blue-500/10',
     gradient: 'from-blue-500 to-cyan-500',
     avatar: '/team/vedant.jpg',
-    quote: 'Insert personal quote here...'
   },
   {
     name: 'Dipanshu Joshi',
@@ -101,7 +95,6 @@ const DOMAIN_LEADS = [
     color: 'border-blue-500/30 text-blue-500 bg-blue-500/10',
     gradient: 'from-blue-400 to-cyan-400',
     avatar: '/team/dipanshu.jpeg',
-    quote: 'Insert personal quote here...'
   },
   {
     name: 'Tanisha Sharma',
@@ -114,7 +107,6 @@ const DOMAIN_LEADS = [
     color: 'border-pink-500/30 text-pink-500 bg-pink-500/10',
     gradient: 'from-pink-500 to-rose-500',
     avatar: '/team/tanisha.jpg',
-    quote: 'Insert personal quote here...'
   },
   {
     name: 'Divyansh Singh',
@@ -127,7 +119,6 @@ const DOMAIN_LEADS = [
     color: 'border-pink-500/30 text-pink-500 bg-pink-500/10',
     gradient: 'from-pink-400 to-rose-400',
     avatar: '/team/divyansh.jpg',
-    quote: 'Insert personal quote here...'
   },
   {
     name: 'Shreya Mittal',
@@ -140,7 +131,6 @@ const DOMAIN_LEADS = [
     color: 'border-orange-500/30 text-orange-500 bg-orange-500/10',
     gradient: 'from-amber-500 to-orange-500',
     avatar: '/team/shreya.jpg',
-    quote: 'Insert personal quote here...'
   },
   {
     name: 'Akshit Bakshi',
@@ -153,7 +143,6 @@ const DOMAIN_LEADS = [
     color: 'border-purple-500/30 text-purple-500 bg-purple-500/10',
     gradient: 'from-violet-500 to-fuchsia-500',
     avatar: '',
-    quote: 'Insert personal quote here...'
   },
   {
     name: 'Gayatri Palodkar',
@@ -166,7 +155,6 @@ const DOMAIN_LEADS = [
     color: 'border-purple-500/30 text-purple-500 bg-purple-500/10',
     gradient: 'from-violet-400 to-fuchsia-400',
     avatar: '/team/gayatri.jpeg',
-    quote: 'Insert personal quote here...'
   },
   {
     name: 'Dhyan Patel',
@@ -179,7 +167,6 @@ const DOMAIN_LEADS = [
     color: 'border-yellow-500/30 text-yellow-500 bg-yellow-500/10',
     gradient: 'from-yellow-500 to-amber-500',
     avatar: '/team/dhyan.jpg',
-    quote: 'Insert personal quote here...'
   },
   {
     name: 'Sarika Parmar',
@@ -192,7 +179,6 @@ const DOMAIN_LEADS = [
     color: 'border-yellow-500/30 text-yellow-500 bg-yellow-500/10',
     gradient: 'from-yellow-400 to-amber-400',
     avatar: '/team/sarika.jpg',
-    quote: 'Insert personal quote here...'
   }
 ]
 
@@ -207,7 +193,6 @@ const DEV_TEAM_LEAD = {
   color: 'border-indigo-500/30 text-indigo-500 bg-indigo-500/10',
   gradient: 'from-indigo-600 via-blue-600 to-cyan-500',
   avatar: '/team/yathartha.jpg',
-  quote: 'Insert personal quote here...'
 }
 
 const DEV_TEAM_MEMBERS = [
@@ -221,7 +206,6 @@ const DEV_TEAM_MEMBERS = [
     color: 'border-cyan-500/30 text-cyan-500 bg-cyan-500/10',
     gradient: 'from-cyan-500 to-teal-500',
     avatar: '/team/joy.jpeg',
-    quote: 'Insert personal quote here...'
   },
   {
     name: 'Vansh Singh',
@@ -233,7 +217,6 @@ const DEV_TEAM_MEMBERS = [
     color: 'border-emerald-500/30 text-emerald-500 bg-emerald-500/10',
     gradient: 'from-emerald-500 to-teal-500',
     avatar: '/team/vansh.jpg',
-    quote: 'Insert personal quote here...'
   },
   {
     name: 'Yashwant Sonawane',
@@ -245,7 +228,6 @@ const DEV_TEAM_MEMBERS = [
     color: 'border-blue-500/30 text-blue-500 bg-blue-500/10',
     gradient: 'from-blue-500 to-indigo-500',
     avatar: '/team/yashwant.jpg',
-    quote: 'Insert personal quote here...'
   }
 ]
 
@@ -398,10 +380,7 @@ export default function Team() {
                         {member.role}
                       </div>
 
-                      {/* Quote block */}
-                      <div className="relative mt-2 mb-4 px-3 py-2 bg-foreground/[0.015] border-l-2 border-primary/50 rounded-r-lg font-sans text-xs italic text-text-sec leading-relaxed">
-                        {member.quote}
-                      </div>
+
 
                       <div className="font-mono text-[9px] text-text-sec px-2 py-0.5 rounded bg-background border border-border-custom w-fit">
                         {member.reg}
@@ -494,10 +473,7 @@ export default function Team() {
                         </span>
                       </div>
 
-                      {/* Quote block */}
-                      <div className="relative mt-2 mb-4 px-3 py-2 bg-foreground/[0.015] border-l-2 border-primary/50 rounded-r-lg font-sans text-xs italic text-text-sec leading-relaxed">
-                        {member.quote}
-                      </div>
+
 
                       <div className="font-mono text-[9px] text-text-sec px-2 py-0.5 rounded bg-background border border-border-custom w-fit">
                         {member.reg}
@@ -588,10 +564,7 @@ export default function Team() {
                         {DEV_TEAM_LEAD.role}
                       </div>
 
-                      {/* Quote block */}
-                      <div className="relative mt-2 mb-4 px-3 py-2 bg-[#3b82f6]/5 border-l-2 border-[#3b82f6] rounded-r-lg font-sans text-xs italic text-text-sec leading-relaxed">
-                        {DEV_TEAM_LEAD.quote}
-                      </div>
+
 
                       <div className="font-mono text-[9px] text-text-sec px-2 py-0.5 rounded bg-background border border-border-custom w-fit">
                         {DEV_TEAM_LEAD.reg}
@@ -661,10 +634,7 @@ export default function Team() {
                           {member.role}
                         </div>
 
-                        {/* Quote block */}
-                        <div className="relative mt-2 mb-4 px-3 py-2 bg-foreground/[0.015] border-l-2 border-primary/50 rounded-r-lg font-sans text-xs italic text-text-sec leading-relaxed">
-                          {member.quote}
-                        </div>
+
 
                         <div className="font-mono text-[9px] text-text-sec px-2 py-0.5 rounded bg-background border border-border-custom w-fit">
                           {member.reg}
