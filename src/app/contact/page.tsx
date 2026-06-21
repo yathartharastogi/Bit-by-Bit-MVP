@@ -143,7 +143,7 @@ export default function Contact() {
                 <Mail className="text-primary" size={18} />
                 <div>
                   <div className="font-mono text-[9px] text-text-sec uppercase tracking-wider">Email Support</div>
-                  <div className="text-xs font-bold text-foreground">bitbybit@vitbhopal.ac.in</div>
+                  <div className="text-xs font-bold text-foreground">codingblocks@vitbhopal.ac.in</div>
                 </div>
               </div>
 
