@@ -43,9 +43,9 @@ export default function Hackathons() {
           
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 md:gap-12 py-2">
             <TextReveal
-              text="36 Hours to Change Everything"
-              className="font-sans font-bold text-4xl md:text-5xl tracking-tight text-foreground leading-[1.1] flex-1 max-w-2xl"
-            />
+  text="36 Hours to Change Everything"
+  className="font-sans font-bold text-2xl md:text-4xl tracking-tight text-foreground leading-[1.1] flex-1 max-w-2xl"
+/>
             
             <div className="hidden md:flex justify-center items-center flex-shrink-0">
               <FloatingCodeIcon />
