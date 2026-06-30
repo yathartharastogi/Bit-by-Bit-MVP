@@ -8,6 +8,7 @@ import ParticleBackground from "@/components/ParticleBackground";
 import NexusScene from "@/components/three/NexusScene";
 import GlobalScrollBlur from "@/components/GlobalScrollBlur";
 import ScalePotential from "@/components/ScalePotential";
+import { Analytics } from '@vercel/analytics/next';
 
 
 
@@ -48,6 +49,7 @@ export default function RootLayout({
           <ScalePotential />
         </main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
